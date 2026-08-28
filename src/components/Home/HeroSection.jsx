@@ -26,9 +26,9 @@ export default function HeroSection() {
     const normY = ((y / rect.height) - 0.5) * 2;
 
     setMousePos({ x, y, normX, normY, isHovered: true });
-  };
+    };
 
-  const handleMouseLeave = () => {
+    const handleMouseLeave = () => {
     setMousePos((prev) => ({ ...prev, normX: 0, normY: 0, isHovered: false }));
   };
 
@@ -61,36 +61,36 @@ export default function HeroSection() {
         }}
       >
         <div className="frprotech-hero-gradient-overlay" />
-        
+
         {/* Floating Matrix Particle Dots */}
         <div className="frprotech-hero-dots-container">
           {dotRows.map((top, rIdx) =>
             dotColumns.map((left, cIdx) => (
-              <div
+                <div
                 key={`${rIdx}-${cIdx}`}
                 className="frprotech-floating-dot"
-                style={{
-                  left: `${left}%`,
-                  top: `${top}%`,
+                  style={{
+                    left: `${left}%`,
+                    top: `${top}%`,
                   animationDelay: `${(rIdx + cIdx) * 0.3}s`,
                   animationDuration: `${4 + ((rIdx * cIdx) % 5)}s`
                 }}
-              />
+        />
             ))
           )}
           {/* Ambient Accent Floating Orbs */}
-          <div
+        <div
             className="frprotech-orb orb-left"
-            style={{
+          style={{
               transform: `translate3d(${mousePos.normX * 25}px, ${mousePos.normY * 25}px, 0)`
-            }}
-          />
-          <div
+          }}
+        />
+        <div
             className="frprotech-orb orb-right"
-            style={{
+          style={{
               transform: `translate3d(${mousePos.normX * -20}px, ${mousePos.normY * -20}px, 0)`
-            }}
-          />
+          }}
+        />
         </div>
 
         {/* Vignette radial mask */}
