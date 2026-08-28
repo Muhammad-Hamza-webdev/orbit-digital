@@ -1,0 +1,80 @@
+export const projectsData = [
+  {
+    id: "nexus-fintech-platform",
+    slug: "nexus-fintech-platform",
+    title: "Nexus Global Fintech Platform",
+    category: "Web Development",
+    client: "Nexus Capital",
+    year: "2026",
+    description: "A next-generation financial portal offering real-time asset analytics, portfolio management, and ultra-fast transaction rendering.",
+    image: "/assets/img/portfolio/project-1.svg",
+    technologies: ["Next.js", "React", "CSS Grid", "REST APIs"],
+    metrics: "+140% Conversion Rate, <300ms Page Load Time",
+    url: "#"
+  },
+  {
+    id: "horizon-health-app",
+    slug: "horizon-health-app",
+    title: "Horizon Digital Health Experience",
+    category: "UI/UX Design",
+    client: "Horizon Care",
+    year: "2025",
+    description: "Comprehensive patient care dashboard, appointment booking system, and telehealth portal with accessible WCAG AAA interface.",
+    image: "/assets/img/portfolio/project-2.svg",
+    technologies: ["UI/UX Design", "Design Systems", "Figma", "Accessibility"],
+    metrics: "4.9/5 User Satisfaction, 99.9% Uptime",
+    url: "#"
+  },
+  {
+    id: "lumina-ecommerce",
+    slug: "lumina-ecommerce",
+    title: "Lumina Luxury Commerce Engine",
+    category: "Web Development",
+    client: "Lumina Brands",
+    year: "2025",
+    description: "High-end direct-to-consumer storefront with responsive interactive product customizers and seamless fluid cart interaction.",
+    image: "/assets/img/portfolio/project-3.svg",
+    technologies: ["Next.js", "Custom CSS", "Fluid Motion", "Stripe API"],
+    metrics: "+85% Mobile Revenue Growth",
+    url: "#"
+  },
+  {
+    id: "strata-cloud-suite",
+    slug: "strata-cloud-suite",
+    title: "Strata Enterprise SaaS Platform",
+    category: "Cloud Solutions",
+    client: "Strata Inc.",
+    year: "2026",
+    description: "Cloud management dashboard for multi-region server infrastructure, automated telemetry monitoring, and incident alerting.",
+    image: "/assets/img/portfolio/project-4.svg",
+    technologies: ["React", "JavaScript", "Cloud APIs", "WebSockets"],
+    metrics: "10M+ Daily API Events Handled",
+    url: "#"
+  },
+  {
+    id: "vertex-brand-redesign",
+    slug: "vertex-brand-redesign",
+    title: "Vertex AI Identity & Web System",
+    category: "Branding",
+    client: "Vertex AI",
+    year: "2025",
+    description: "Complete visual rebranding, custom design token system, and high-converting marketing site for an AI technology leader.",
+    image: "/assets/img/portfolio/project-5.svg",
+    technologies: ["Brand Strategy", "Logo Design", "Next.js", "Responsive Architecture"],
+    metrics: "2.5x Increase in Enterprise Inquiries",
+    url: "#"
+  },
+  {
+    id: "pulse-mobility-app",
+    slug: "pulse-mobility-app",
+    title: "Pulse Electric Mobility Network",
+    category: "Cloud Solutions",
+    client: "Pulse EV",
+    year: "2026",
+    description: "Real-time electric vehicle charging locator, reservation platform, and fleet telemetry monitoring mobile web app.",
+    image: "/assets/img/portfolio/project-6.svg",
+    technologies: ["Next.js", "PWA", "Maps Integration", "Fluid CSS"],
+    metrics: "500k+ Active Mobile Users",
+    url: "#"
+  }
+];
