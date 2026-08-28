@@ -404,11 +404,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ------------------------------------------
-   9. HERO SECTION STYLES (frprotech style)
+   9. HERO SECTION STYLES (frprotech.com exact match)
    ------------------------------------------ */
-.hero-frprotech-style {
+.frprotech-hero-section {
   position: relative;
-  min-height: 85vh;
+  min-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -416,6 +416,204 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #FFFFFF;
   overflow: hidden;
 }
+
+.hero-mouse-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 300ms ease;
+  will-change: background;
+}
+
+.frprotech-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.frprotech-hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 40%, #ffffff 100%);
+}
+
+.frprotech-hero-dots-container {
+  position: absolute;
+  inset: 0;
+}
+
+.frprotech-floating-dot {
+  position: absolute;
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  opacity: 0.45;
+  will-change: transform, opacity;
+  animation: floatDot 5s ease-in-out infinite alternate;
+}
+
+@keyframes floatDot {
+  0% { transform: translateY(0) scale(1); opacity: 0.3; }
+  100% { transform: translateY(-12px) scale(1.4); opacity: 0.7; }
+}
+
+.frprotech-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb-left {
+  top: 20%;
+  left: 15%;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+}
+
+.orb-right {
+  top: 35%;
+  right: 12%;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+}
+
+.frprotech-hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, transparent 0%, rgba(255, 255, 255, 0.6) 80%);
+}
+
+.frprotech-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Staggered Fade-Up Animations */
+.frprotech-fade-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.frprotech-hero-content.is-animated .frprotech-fade-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-1 { transition-delay: 100ms; }
+.fade-2 { transition-delay: 220ms; }
+.fade-3 { transition-delay: 340ms; }
+.fade-4 { transition-delay: 460ms; }
+.fade-5 { transition-delay: 580ms; }
+
+.frprotech-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background-color: rgba(91, 95, 239, 0.05);
+  border: 1px solid rgba(91, 95, 239, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-bottom: 24px;
+}
+
+.frprotech-badge-star {
+  color: #F59E0B;
+}
+
+.frprotech-hero-title {
+  font-size: clamp(1.875rem, 5vw, 3.5rem);
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.frprotech-gradient-text {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary), var(--color-accent));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: frGradientWave 6s linear infinite;
+}
+
+@keyframes frGradientWave {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.frprotech-hero-desc {
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #223E4E;
+}
+
+.frprotech-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.frprotech-btn-pill {
+  border-radius: var(--radius-full) !important;
+  padding: 16px 36px !important;
+  font-size: 1rem !important;
+}
+
+.frprotech-metrics-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 32px);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.frprotech-metric-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: #223E4E;
+  font-weight: 500;
+}
+
+.frprotech-metric-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background-color: #F9F9F9;
+  border: 1px solid rgba(34, 62, 78, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
 
 .hero-bg-glow {
   position: absolute;
