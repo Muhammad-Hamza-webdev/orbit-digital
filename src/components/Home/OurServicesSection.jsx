@@ -9,7 +9,6 @@ const servicesData = [
     tabTitle: 'Branding and Identity',
     heading: 'Branding and Identity',
     description: 'Build a memorable brand that stands out in the market and resonates with your target audience.',
-    number: '01',
     tags: [
       { name: 'Logo Design', icon: 'palette' },
       { name: 'Brand Identity & Guidelines', icon: 'file-text' },
@@ -22,7 +21,6 @@ const servicesData = [
     tabTitle: 'Graphic Design',
     heading: 'Graphic Design',
     description: 'Eye-catching designs that communicate your message effectively across all digital & marketing channels.',
-    number: '02',
     tags: [
       { name: 'Ad Creatives', icon: 'image' },
       { name: 'Social Media Design', icon: 'share' },
@@ -39,7 +37,6 @@ const servicesData = [
     tabTitle: 'UI/UX & Product Design',
     heading: 'UI/UX & Product Design',
     description: 'User-centered interfaces and scalable digital product design systems engineered for high conversion.',
-    number: '03',
     tags: [
       { name: 'Wireframing & Prototyping', icon: 'panels' },
       { name: 'Mobile App Design', icon: 'image' },
@@ -52,7 +49,6 @@ const servicesData = [
     tabTitle: 'Website Development',
     heading: 'Website Development',
     description: 'Fast, secure, responsive web applications built with modern Next.js App Router and optimized clean code.',
-    number: '04',
     tags: [
       { name: 'Next.js & React Apps', icon: 'panels' },
       { name: 'Responsive Web Architecture', icon: 'image' },
@@ -65,7 +61,6 @@ const servicesData = [
     tabTitle: 'SEO & Social Media Marketing',
     heading: 'SEO & Social Media Marketing',
     description: 'Data-driven search optimization and social media strategies designed to boost rank, traffic, and sales.',
-    number: '05',
     tags: [
       { name: 'On-Page & Technical SEO', icon: 'file-text' },
       { name: 'Growth Engineering', icon: 'share' },
@@ -80,16 +75,15 @@ export default function OurServicesSection() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const stickyThreshold = 180;
+      const triggerPoint = window.innerHeight * 0.4;
       let currentActive = servicesData[0].id;
 
-      for (let i = servicesData.length - 1; i >= 0; i--) {
-        const card = document.getElementById(servicesData[i].id);
-        if (card) {
-          const rect = card.getBoundingClientRect();
-          if (rect.top <= stickyThreshold) {
-            currentActive = servicesData[i].id;
-            break;
+      for (const service of servicesData) {
+        const element = document.getElementById(service.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= triggerPoint && rect.bottom >= 100) {
+            currentActive = service.id;
           }
         }
       }
@@ -105,7 +99,7 @@ export default function OurServicesSection() {
   const scrollToService = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -130;
+      const yOffset = -120;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -127,7 +121,7 @@ export default function OurServicesSection() {
           {/* Left Column: Sticky Tab Sidebar */}
           <div className="services-sidebar-col">
             <div className="services-sticky-sidebar">
-              {servicesData.map((s, idx) => {
+              {servicesData.map((s) => {
                 const isActive = activeTab === s.id;
                 return (
                   <button
@@ -137,10 +131,7 @@ export default function OurServicesSection() {
                   >
                     {isActive && <div className="services-active-line" />}
                     <div className="flex items-center justify-between width-full">
-                      <div className="flex items-center gap-3">
-                        <span className="services-tab-num">{s.number}</span>
-                        <span className="services-tab-text">{s.tabTitle}</span>
-                      </div>
+                      <span className="services-tab-text">{s.tabTitle}</span>
                       <svg
                         width="18"
                         height="18"
@@ -164,59 +155,41 @@ export default function OurServicesSection() {
 
           {/* Right Column: Stacked Service Feature Cards */}
           <div className="services-cards-col">
-            {servicesData.map((s, idx) => {
-              const topOffset = 110 + idx * 16; // Each card stacks with a neat top header overlap
-              const zIndex = idx + 1;
-              const isLast = idx === servicesData.length - 1;
+            {servicesData.map((s) => (
+              <div key={s.id} id={s.id} className="service-detail-card">
+                <h3 className="service-detail-heading">{s.heading}</h3>
+                <p className="service-detail-desc">{s.description}</p>
 
-              return (
-                <div
-                  key={s.id}
-                  id={s.id}
-                  className="service-detail-card service-stack-card"
-                  style={{
-                    position: 'sticky',
-                    top: `${topOffset}px`,
-                    zIndex: zIndex,
-                    marginBottom: isLast ? '0px' : '28vh',
-                  }}
-                >
-                  <div className="card-top-tag">
-                    <span className="card-badge">{s.number} — Service Focus</span>
-                  </div>
-                  <h3 className="service-detail-heading">{s.heading}</h3>
-                  <p className="service-detail-desc">{s.description}</p>
-
-                  {/* Sub-feature Badge Tags */}
-                  <div className="service-tags-flex">
-                    {s.tags.map((tag, tagIdx) => (
-                      <div key={tagIdx} className="service-tag-pill">
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="service-tag-icon"
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                          <path d="m9 12 2 2 4-4" />
-                        </svg>
-                        <span>{tag.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                {/* Sub-feature Badge Tags */}
+                <div className="service-tags-flex">
+                  {s.tags.map((tag, idx) => (
+                    <div key={idx} className="service-tag-pill">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="service-tag-icon"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="m9 12 2 2 4-4" />
+                      </svg>
+                      <span>{tag.name}</span>
+                    </div>
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </Container>
     </section>
   );
 }
+
 
 

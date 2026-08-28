@@ -1050,65 +1050,51 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ------------------------------------------
-   12. OUR SERVICES STICKY CARD STACKING STYLES
+   12. OUR SERVICES SECTION STYLES (frprotech match)
    ------------------------------------------ */
 .our-services-frprotech-section {
-  padding-block: clamp(60px, 8vw, 100px);
+  padding-block: clamp(60px, 8vw, 120px);
   background-color: #FFFFFF;
-  position: relative;
 }
 
 .services-frprotech-grid {
   display: grid;
-  grid-template-columns: 4.2fr 7.8fr;
-  gap: clamp(24px, 4vw, 54px);
+  grid-template-columns: 4.5fr 7.5fr;
+  gap: clamp(30px, 4vw, 64px);
   align-items: start;
 }
 
-.services-sidebar-col {
-  width: 100%;
+@media (max-width: 991px) {
+  .services-frprotech-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .services-sticky-sidebar {
   position: sticky;
-  top: 110px;
+  top: 100px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 10;
 }
 
 .services-tab-btn {
   width: 100%;
   text-align: left;
-  padding: 16px 22px;
+  padding: 18px 24px;
   border-radius: var(--radius-lg);
-  background-color: #FFFFFF;
-  border: 1px solid var(--color-border);
+  background-color: transparent;
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
 
-.services-tab-num {
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: var(--color-text-muted);
-  opacity: 0.6;
-  transition: all 0.3s ease;
-}
-
-.services-tab-btn.is-active .services-tab-num {
-  color: var(--color-primary);
-  opacity: 1;
-}
-
 .services-tab-btn.is-active {
-  border-color: rgba(91, 95, 239, 0.4);
   background-color: #FFFFFF;
-  box-shadow: 0 8px 28px rgba(91, 95, 239, 0.12);
-  transform: translateX(4px);
+  border-color: var(--color-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .services-active-line {
@@ -1118,70 +1104,59 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 4px;
   background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  border-radius: 0 4px 4px 0;
 }
 
 .services-tab-text {
-  font-size: 1.08rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-secondary);
 }
 
 .services-tab-arrow {
   color: var(--color-text-muted);
-  opacity: 0.3;
-  transition: all 0.3s ease;
+  opacity: 0.4;
+  transition: all var(--transition-fast);
 }
 
 .services-tab-arrow.is-active-arrow {
   color: var(--color-primary);
   opacity: 1;
-  transform: translate(3px, -3px);
+  transform: translate(2px, -2px);
 }
 
 .services-cards-col {
-  display: block;
-  position: relative;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.service-detail-card.service-stack-card {
-  padding: clamp(32px, 4vw, 48px);
+.service-detail-card {
+  padding: clamp(28px, 4vw, 40px);
   background-color: #FFFFFF;
-  border: 1px solid rgba(91, 95, 239, 0.15);
-  border-radius: 28px;
-  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.04), 0 16px 48px rgba(0, 0, 0, 0.07);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  will-change: transform;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: var(--transition-normal);
 }
 
-.card-top-tag {
-  margin-bottom: 14px;
-}
-
-.card-badge {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  background: rgba(91, 95, 239, 0.08);
-  padding: 5px 14px;
-  border-radius: var(--radius-full);
+.service-detail-card:hover {
+  border-color: rgba(91, 95, 239, 0.3);
+  box-shadow: 0 8px 32px rgba(91, 95, 239, 0.08);
 }
 
 .service-detail-heading {
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
   font-weight: 800;
   color: var(--color-secondary);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .service-detail-desc {
-  font-size: 1.08rem;
-  line-height: 1.65;
+  font-size: 1.05rem;
+  line-height: 1.6;
   color: var(--color-text-muted);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .service-tags-flex {
@@ -1194,7 +1169,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 18px;
+  padding: 8px 16px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
@@ -1207,20 +1182,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
 }
 
-@media (max-width: 991px) {
-  .services-frprotech-grid {
-    grid-template-columns: 1fr;
-  }
-  .services-sticky-sidebar {
-    position: relative;
-    top: 0;
-  }
-  .service-detail-card.service-stack-card {
-    position: relative !important;
-    top: 0 !important;
-    margin-bottom: 24px !important;
-  }
-}
 
 
 
