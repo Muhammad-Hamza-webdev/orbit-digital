@@ -1,7 +1,6 @@
 import HeroSection from "../components/Home/HeroSection";
-import StatsSection from "../components/Home/StatsSection";
-import ServicesOverview from "../components/Home/ServicesOverview";
-import PortfolioOverview from "../components/Home/PortfolioOverview";
+import OurWorkSection from "../components/Home/OurWorkSection";
+import OurServicesSection from "../components/Home/OurServicesSection";
 import ProcessSection from "../components/Home/ProcessSection";
 import TestimonialsSection from "../components/Home/TestimonialsSection";
 import CtaSection from "../components/Home/CtaSection";
@@ -9,10 +8,16 @@ import CtaSection from "../components/Home/CtaSection";
 export default function Home() {
   return (
     <>
+      {/* 1. Hero Section */}
       <HeroSection />
-      <StatsSection />
-      <ServicesOverview limit={6} />
-      <PortfolioOverview limit={3} />
+
+      {/* 2. Our Work Section (frprotech style carousel) */}
+      <OurWorkSection />
+
+      {/* 3. Our Services Section (frprotech style sticky sidebar + feature cards) */}
+      <OurServicesSection />
+
+      {/* 4. Process, Testimonials & CTA */}
       <ProcessSection />
       <TestimonialsSection />
       <CtaSection />
