@@ -402,3 +402,125 @@ h1, h2, h3, h4, h5, h6 {
     scroll-behavior: auto !important;
   }
 }
+
+/* ------------------------------------------
+   9. HERO SECTION STYLES (frprotech style)
+   ------------------------------------------ */
+.hero-frprotech-style {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(80px, 10vw, 140px) clamp(60px, 8vw, 100px);
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 65% 50% at 50% 30%, rgba(91, 95, 239, 0.08) 0%, transparent 80%);
+}
+
+.hero-center-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-top-badge-wrapper {
+  margin-bottom: 24px;
+}
+
+.hero-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background-color: rgba(91, 95, 239, 0.06);
+  border: 1px solid rgba(91, 95, 239, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.hero-top-badge-icon {
+  color: #F59E0B;
+  font-size: 1rem;
+}
+
+.hero-title {
+  margin-bottom: 20px;
+  font-size: clamp(2.2rem, 5vw, 4.25rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.hero-description {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: 36px;
+  font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.hero-btn-pill {
+  border-radius: var(--radius-full) !important;
+  padding: 16px 36px !important;
+  font-size: 1rem !important;
+}
+
+.hero-metrics-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 40px);
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+}
+
+.hero-metric-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-metric-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.hero-metric-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
