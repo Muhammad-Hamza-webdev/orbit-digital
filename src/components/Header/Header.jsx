@@ -180,9 +180,9 @@ export default function Header() {
           </nav>
 
           <div className="mobile-drawer__footer">
-            <Button href="/contact" variant="primary" size="lg" fullWidth onClick={() => setIsMenuOpen(false)}>
+            {/* <Button href="/contact" variant="primary" size="lg" fullWidth onClick={() => setIsMenuOpen(false)}>
               Get Started ↗
-            </Button>
+            </Button> */}
             <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
               hello@orbitdigital.com • +1 (800) 555-0199
             </div>

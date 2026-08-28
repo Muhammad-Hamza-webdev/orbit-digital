@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Container({ children, className = '', ...props }) {
+export default function Container({ children, ...props }) {
   return (
-    <div className={`container ${className}`.trim()} {...props}>
+    <div className="container" {...props}>
       {children}
     </div>
   );
