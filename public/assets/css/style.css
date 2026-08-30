@@ -530,7 +530,7 @@ h1, h2, h3, h4, h5, h6 {
 .frprotech-hero-title {
   font-size: clamp(1.875rem, 5vw, 3.5rem);
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--color-secondary);
   letter-spacing: -0.02em;
   margin-bottom: 20px;
@@ -1027,77 +1027,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 44px;
 }
 
-/* ------------------------------------------
-   12. OUR SERVICES 100% WIDTH STICKY CARD STACKING STYLES
-   ------------------------------------------ */
-.our-services-frprotech-section {
-  padding-block: clamp(60px, 8vw, 120px);
-  background-color: #FFFFFF;
-  position: relative;
-}
 
-.service-detail-card.service-stack-card {
-  padding: clamp(32px, 4vw, 48px);
-  background-color: #FFFFFF;
-  border: 1px solid rgba(91, 95, 239, 0.15);
-  border-radius: 28px;
-  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.04), 0 16px 48px rgba(0, 0, 0, 0.07);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  will-change: transform;
-}
-
-.card-top-tag {
-  margin-bottom: 14px;
-}
-
-.card-badge {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  background: rgba(91, 95, 239, 0.08);
-  padding: 5px 14px;
-  border-radius: var(--radius-full);
-}
-
-.service-detail-heading {
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-  font-weight: 800;
-  color: var(--color-secondary);
-  margin-bottom: 14px;
-}
-
-.service-detail-desc {
-  font-size: 1.08rem;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-  margin-bottom: 28px;
-}
-
-.service-tags-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.service-tag-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-secondary);
-}
-
-.service-tag-icon {
-  color: var(--color-primary);
-}
 
 
 
