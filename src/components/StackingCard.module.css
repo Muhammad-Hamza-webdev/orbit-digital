@@ -85,7 +85,7 @@
 }
 
 .tagIcon {
-  color: #4ea62f;
+  color: #8B5CF6;
   flex-shrink: 0;
 }
 
@@ -123,3 +123,16 @@
   color: #94a3b8;
   line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+  .stackingCard {
+    padding: 30px 20px;
+    min-height: auto;
+    border-radius: 1.25rem;
+  }
+
+  .cardImageContainer {
+    height: 220px;
+  }
+}
+
