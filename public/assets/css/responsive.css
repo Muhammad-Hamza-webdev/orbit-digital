@@ -385,3 +385,60 @@
 @media (min-width: 1200px) {
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* ------------------------------------------
+   5. FOOTER & SERVICES RESPONSIVE
+   ------------------------------------------ */
+@media (max-width: 991px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-detail-card.service-stack-card {
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 24px !important;
+  }
+
+  [class*="stackingCard"] {
+    padding: 30px 20px !important;
+    min-height: auto !important;
+    border-radius: 1.25rem !important;
+  }
+
+  [class*="cardImageContainer"] {
+    height: 220px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------
+   6. REDUCED MOTION ACCESSIBILITY
+   ------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .contour-line {
+    animation: none !important;
+    transform: none !important;
+  }
+  .contour-headline-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+
+

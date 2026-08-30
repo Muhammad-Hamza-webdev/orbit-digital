@@ -393,16 +393,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-muted);
 }
 
-/* Reduced Motion Safety */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 /* ------------------------------------------
    9. HERO SECTION STYLES (frprotech.com exact match)
    ------------------------------------------ */
@@ -734,18 +724,6 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 2.2fr 1fr 1fr 1.4fr;
   gap: clamp(30px, 4vw, 60px);
   margin-bottom: 50px;
-}
-
-@media (max-width: 991px) {
-  .footer-main-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 575px) {
-  .footer-main-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .footer-bio-text {
@@ -1121,13 +1099,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
 }
 
-@media (max-width: 768px) {
-  .service-detail-card.service-stack-card {
-    position: relative !important;
-    top: 0 !important;
-    margin-bottom: 24px !important;
-  }
-}
 
 
 

@@ -211,20 +211,8 @@ export default function HeroAnimation({
         .contour-headline-stagger > *:nth-child(3) { animation-delay: 0.34s; }
         .contour-headline-stagger > *:nth-child(4) { animation-delay: 0.46s; }
         .contour-headline-stagger > *:nth-child(5) { animation-delay: 0.58s; }
-
-        /* Accessibility: Motion Freeze */
-        @media (prefers-reduced-motion: reduce) {
-          .contour-line {
-            animation: none !important;
-            transform: none !important;
-          }
-          .contour-headline-stagger > * {
-            opacity: 1 !important;
-            transform: none !important;
-            animation: none !important;
-          }
-        }
       `}</style>
     </div>
   );
 }
+

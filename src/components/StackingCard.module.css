@@ -124,15 +124,4 @@
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-  .stackingCard {
-    padding: 30px 20px;
-    min-height: auto;
-    border-radius: 1.25rem;
-  }
-
-  .cardImageContainer {
-    height: 220px;
-  }
-}
 
