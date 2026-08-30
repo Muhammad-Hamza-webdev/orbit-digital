@@ -79,6 +79,12 @@
 
   /* Fonts */
   --font-family-base: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Card Stack & Component Tokens */
+  --accent-color: #8B5CF6;
+  --primary-text: #FFFFFF;
+  --text-muted: #9CA3AF;
 
   /* Spacing Tokens */
   --space-xs: 0.5rem;   /* 8px */
@@ -1026,6 +1032,144 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--color-primary);
   width: 44px;
 }
+
+/* ================================================
+   CARDS STACK (cs-*) — scoped to avoid collisions
+   ================================================ */
+.cs-section {
+  position: relative;
+  background-color: #f6e5ff;
+  padding-bottom: 60vh;   /* scroll real-estate so last card can stick */
+}
+
+.cs-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Each card sits in normal flow with generous margin so scroll distance exists */
+.cs-card {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 520px;
+  margin: 10vh auto 30vh auto;
+  padding: 48px;
+  border-radius: 20px;
+  border: 1px solid;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  transform-origin: top center;
+  box-sizing: border-box;
+}
+
+/* ---- Header: big title + SVG clip float above divider ---- */
+.cs-card-header {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+.cs-card-title {
+  font-size: clamp(56px, 7vw, 120px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-family: var(--font-family-base);
+}
+
+.cs-clip {
+  width: 36px;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+/* ---- Divider ---- */
+.cs-divider {
+  width: 100%;
+  height: 1px;
+  margin: 40px 0 36px;
+  opacity: 0.3;
+}
+
+/* ---- Body ---- */
+.cs-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex: 1;
+}
+
+/* ---- Services list ---- */
+.cs-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 220px;
+}
+
+.cs-services li {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* ---- Gradient visual box ---- */
+.cs-visual {
+  flex: 1;
+  height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cs-gradient {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .cs-card {
+    padding: 32px 24px;
+    min-height: 420px;
+    margin-bottom: 20vh;
+  }
+
+  .cs-body {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .cs-visual {
+    width: 100%;
+    height: 220px;
+  }
+
+  .cs-services {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cs-card {
+    width: 95%;
+    padding: 24px 18px;
+  }
+
+  .cs-card-title {
+    font-size: clamp(40px, 12vw, 72px);
+  }
+}
+
+
+
 
 
 
