@@ -581,3 +581,33 @@ body {
   }
 }
 
+/* ==========================================
+   PERFORMANCE: MOBILE OPTIMISATIONS
+   ========================================== */
+
+/* Kill the dot-grid animation on mobile — it causes unnecessary paint work */
+@media (max-width: 768px) {
+  .frprotech-css-dots {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  /* Slow down marquee on small screens to avoid paint jank */
+  .work-marquee {
+    animation-duration: 25s;
+  }
+
+  /* Below-fold sections: browser skips paint until near viewport */
+  .our-work-fullwidth-section,
+  .cs-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+  }
+}
+
+/* Disable marquee hover-pause on touch devices (hover doesn't apply, but belt-and-suspenders) */
+@media (hover: none) {
+  .work-marquee:hover {
+    animation-play-state: running;
+  }
+}
