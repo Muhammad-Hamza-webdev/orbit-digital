@@ -1050,113 +1050,52 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ------------------------------------------
-   12. OUR SERVICES SECTION STYLES (frprotech match)
+   12. OUR SERVICES 100% WIDTH STICKY CARD STACKING STYLES
    ------------------------------------------ */
 .our-services-frprotech-section {
   padding-block: clamp(60px, 8vw, 120px);
   background-color: #FFFFFF;
-}
-
-.services-frprotech-grid {
-  display: grid;
-  grid-template-columns: 4.5fr 7.5fr;
-  gap: clamp(30px, 4vw, 64px);
-  align-items: start;
-}
-
-@media (max-width: 991px) {
-  .services-frprotech-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.services-sticky-sidebar {
-  position: sticky;
-  top: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.services-tab-btn {
-  width: 100%;
-  text-align: left;
-  padding: 18px 24px;
-  border-radius: var(--radius-lg);
-  background-color: transparent;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all var(--transition-fast);
   position: relative;
-  overflow: hidden;
 }
 
-.services-tab-btn.is-active {
+.service-detail-card.service-stack-card {
+  padding: clamp(32px, 4vw, 48px);
   background-color: #FFFFFF;
-  border-color: var(--color-border);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(91, 95, 239, 0.15);
+  border-radius: 28px;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.04), 0 16px 48px rgba(0, 0, 0, 0.07);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
-.services-active-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
-  border-radius: 0 4px 4px 0;
+.card-top-tag {
+  margin-bottom: 14px;
 }
 
-.services-tab-text {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-secondary);
-}
-
-.services-tab-arrow {
-  color: var(--color-text-muted);
-  opacity: 0.4;
-  transition: all var(--transition-fast);
-}
-
-.services-tab-arrow.is-active-arrow {
+.card-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-primary);
-  opacity: 1;
-  transform: translate(2px, -2px);
-}
-
-.services-cards-col {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.service-detail-card {
-  padding: clamp(28px, 4vw, 40px);
-  background-color: #FFFFFF;
-  border: 1px solid var(--color-border);
-  border-radius: 24px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  transition: var(--transition-normal);
-}
-
-.service-detail-card:hover {
-  border-color: rgba(91, 95, 239, 0.3);
-  box-shadow: 0 8px 32px rgba(91, 95, 239, 0.08);
+  background: rgba(91, 95, 239, 0.08);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
 }
 
 .service-detail-heading {
-  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 800;
   color: var(--color-secondary);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .service-detail-desc {
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: 1.08rem;
+  line-height: 1.65;
   color: var(--color-text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .service-tags-flex {
@@ -1169,7 +1108,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 9px 18px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
@@ -1181,6 +1120,15 @@ h1, h2, h3, h4, h5, h6 {
 .service-tag-icon {
   color: var(--color-primary);
 }
+
+@media (max-width: 768px) {
+  .service-detail-card.service-stack-card {
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 24px !important;
+  }
+}
+
 
 
 

@@ -1,10 +1,9 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Container from '../Common/Container';
-import styles from '../StackingCard.module.css';
+import styles from './StackingCard.module.css';
 import {
   Palette,
   FileText,
@@ -113,7 +112,7 @@ const servicesCardsData = [
 const topOffsets = [119.067, 153.167, 187.267, 221.367, 257.467];
 const scaleValues = [0.85, 0.885, 0.92, 0.955, 0.99];
 
-export default function OurServicesSection() {
+export default function StackingCard() {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -158,55 +157,46 @@ export default function OurServicesSection() {
   }, []);
 
   return (
-    <section id="services" ref={containerRef} className="section our-services-frprotech-section">
-      <Container>
-        {/* Section Heading */}
-        <div className="section-heading text-center" style={{ marginBottom: '48px' }}>
-          <p className="section-badge frprotech-subbadge">OUR SERVICES</p>
-          <h2 className="heading-2">
-            What We Help You <span className="frprotech-gradient-text">Build</span>
-          </h2>
-        </div>
+    <main ref={containerRef} className={styles.stackingMain}>
+      <h1 className={styles.title}>Our Services</h1>
 
-        {/* Stacking Cards Container */}
-        <div className={styles.stacking}>
-          {servicesCardsData.map((card, index) => (
-            <div
-              key={card.id}
-              id={card.id}
-              className={styles.stackingCard}
-              style={{ zIndex: index + 1 }}
-            >
-              <div className={styles.cardHeader}>
-                <h3 className={styles.cardTitle}>{card.title}</h3>
-                <p className={styles.cardDescription}>{card.description}</p>
-                
-                <div className={styles.tagsContainer}>
-                  {card.tags.map((tag, idx) => {
-                    const TagIcon = tag.icon;
-                    return (
-                      <div key={idx} className={styles.tagPill}>
-                        <TagIcon className={styles.tagIcon} size={16} />
-                        <span>{tag.name}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className={styles.cardImageContainer}>
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className={styles.cardImage}
-                  loading="lazy"
-                  onLoad={() => ScrollTrigger.refresh()}
-                />
+      <div className={styles.stacking}>
+        {servicesCardsData.map((card, index) => (
+          <div
+            key={card.id}
+            id={card.id}
+            className={styles.stackingCard}
+            style={{ zIndex: index + 1 }}
+          >
+            <div className={styles.cardHeader}>
+              <h3 className={styles.cardTitle}>{card.title}</h3>
+              <p className={styles.cardDescription}>{card.description}</p>
+              
+              <div className={styles.tagsContainer}>
+                {card.tags.map((tag, idx) => {
+                  const TagIcon = tag.icon;
+                  return (
+                    <div key={idx} className={styles.tagPill}>
+                      <TagIcon className={styles.tagIcon} size={16} />
+                      <span>{tag.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          ))}
-        </div>
-      </Container>
-    </section>
+
+            <div className={styles.cardImageContainer}>
+              <img
+                src={card.image}
+                alt={card.title}
+                className={styles.cardImage}
+                loading="lazy"
+                onLoad={() => ScrollTrigger.refresh()}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }

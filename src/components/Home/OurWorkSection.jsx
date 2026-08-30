@@ -71,7 +71,7 @@ export default function OurWorkSection() {
     <section className="section our-work-fullwidth-section">
       {/* Centered Heading */}
       <div className="section-heading text-center" style={{ marginBottom: '44px', paddingInline: '20px' }}>
-        <p className="frprotech-subbadge">OUR WORK</p>
+        <p className="section-badge frprotech-subbadge">OUR WORK</p>
         <h2 className="heading-2">
           Design That Turns Visitors <span className="frprotech-gradient-text">Into Customers</span>
         </h2>

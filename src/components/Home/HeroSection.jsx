@@ -1,96 +1,45 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '../Common/Container';
 import Button from '../Common/Button';
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
-  const heroRef = useRef(null);
-
-  // Mouse position state relative to Hero container
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0, normX: 0, normY: 0, isHovered: false });
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const handleMouseMove = (e) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    // Normalized coords from -1 to 1 relative to center
-    const normX = ((x / rect.width) - 0.5) * 2;
-    const normY = ((y / rect.height) - 0.5) * 2;
-
-    setMousePos({ x, y, normX, normY, isHovered: true });
-    };
-
-    const handleMouseLeave = () => {
-    setMousePos((prev) => ({ ...prev, normX: 0, normY: 0, isHovered: false }));
-  };
 
   // Generate grid matrix of animated floating dots matching frprotech hero background
   const dotColumns = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95];
   const dotRows = [10, 30, 50, 70, 90, 110];
 
   return (
-    <section
-      ref={heroRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="section frprotech-hero-section"
-    >
-      {/* Follow-Mouse Interactive Spotlight Glow */}
-      <div
-        className="hero-mouse-spotlight"
-        style={{
-          opacity: mousePos.isHovered ? 1 : 0,
-          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(91, 95, 239, 0.08), transparent 75%)`,
-        }}
-      />
-
-      {/* Background Animated Layer with Mouse Parallax */}
-      <div
-        className="frprotech-hero-bg"
-        style={{
-          transform: `translate3d(${mousePos.normX * -12}px, ${mousePos.normY * -12}px, 0)`,
-          transition: mousePos.isHovered ? 'transform 100ms ease-out' : 'transform 600ms ease-out',
-        }}
-      >
+    <section className="section frprotech-hero-section">
+      {/* Background Animated Layer */}
+      <div className="frprotech-hero-bg">
         <div className="frprotech-hero-gradient-overlay" />
 
         {/* Floating Matrix Particle Dots */}
         <div className="frprotech-hero-dots-container">
           {dotRows.map((top, rIdx) =>
             dotColumns.map((left, cIdx) => (
-                <div
+              <div
                 key={`${rIdx}-${cIdx}`}
                 className="frprotech-floating-dot"
-                  style={{
-                    left: `${left}%`,
-                    top: `${top}%`,
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
                   animationDelay: `${(rIdx + cIdx) * 0.3}s`,
                   animationDuration: `${4 + ((rIdx * cIdx) % 5)}s`
                 }}
-        />
+              />
             ))
           )}
           {/* Ambient Accent Floating Orbs */}
-        <div
-            className="frprotech-orb orb-left"
-          style={{
-              transform: `translate3d(${mousePos.normX * 25}px, ${mousePos.normY * 25}px, 0)`
-          }}
-        />
-        <div
-            className="frprotech-orb orb-right"
-          style={{
-              transform: `translate3d(${mousePos.normX * -20}px, ${mousePos.normY * -20}px, 0)`
-          }}
-        />
+          <div className="frprotech-orb orb-left" />
+          <div className="frprotech-orb orb-right" />
         </div>
 
         {/* Vignette radial mask */}
@@ -98,15 +47,7 @@ export default function HeroSection() {
       </div>
 
       <Container>
-        <div
-          className={`frprotech-hero-content ${mounted ? 'is-animated' : ''}`}
-          style={{
-            transform: mousePos.isHovered
-              ? `perspective(1000px) rotateY(${mousePos.normX * 2.5}deg) rotateX(${-mousePos.normY * 2.5}deg)`
-              : 'perspective(1000px) rotateY(0deg) rotateX(0deg)',
-            transition: mousePos.isHovered ? 'transform 150ms ease-out' : 'transform 600ms ease-out',
-          }}
-        >
+        <div className={`frprotech-hero-content ${mounted ? 'is-animated' : ''}`}>
           
           {/* Top Badge */}
           <div className="frprotech-fade-item fade-1">
