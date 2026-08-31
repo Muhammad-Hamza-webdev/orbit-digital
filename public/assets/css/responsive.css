@@ -305,7 +305,7 @@ body {
 .grid-4 {
   display: grid;
   gap: clamp(16px, 2.5vw, 30px);
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* Footer & Services Base (Mobile) */
@@ -314,106 +314,6 @@ body {
 }
 
 
-
-/* ---- .pin-spacer mobile fix (330px–767px) ----
-   GSAP sets inline height/padding on .pin-spacer based on card dimensions
-   at init time. On small screens those inline values are too large/wrong.
-   Force the spacer to not clip its pinned child. 768px+ restores via the
-   existing 768px block below. */
-.pin-spacer {
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  overflow: visible !important;
-  /* Let the card's own margin drive spacing; don't let the spacer add more */
-  padding-top: 0 !important;
-}
-
-/* ---- .cs-services horizontal scroll below 768px ----
-   Base mobile rule — no new media query needed. */
-.cs-services {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  display: flex !important;  /* overrides component's display: grid */
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 16px;
-  max-height: 70px !important;
-  padding-bottom: 8px;
-  scrollbar-width: none;
-}
-
-.cs-services::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
-
-/* Each service item must not shrink so horizontal scroll is triggered */
-.cs-services li {
-  flex-shrink: 0;
-}
-
-/* cs-section & cs-card: mobile spacing (330px–767px) */
-.cs-section {
-  padding-bottom: clamp(220px, 32vh, 300px) !important;
-}
-
-.cs-card {
-  height: 510px !important;
-  min-height: 510px !important;
-  max-height: 510px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 6vh auto 20vh auto !important;
-  padding: 24px 20px !important;
-  border-radius: 18px !important;
-  box-sizing: border-box !important;
-}
-
-.cs-card:last-child {
-  margin-bottom: 0 !important;
-}
-
-.cs-card-header {
-  gap: 12px !important;
-}
-
-.cs-card-title {
-  font-size: clamp(22px, 5.5vw, 28px) !important;
-  margin-bottom: 4px !important;
-}
-
-.cs-card-desc {
-  font-size: 13px !important;
-  line-height: 1.4 !important;
-  max-height: 38px !important;
-  overflow: hidden !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-}
-
-.cs-clip {
-  width: 24px !important;
-}
-
-.cs-divider {
-  margin: 14px 0 !important;
-}
-
-.cs-body {
-  flex-direction: column !important;
-  gap: 12px !important;
-  flex: 1 !important;
-  min-height: 0 !important;
-}
-
-.cs-visual {
-  width: 100% !important;
-  flex: 1 !important;
-  min-height: 0 !important;
-  max-height: none !important;
-  border-radius: 12px !important;
-}
 
 /* Performance & Base Mobile Enhancements */
 .frprotech-css-dots {
@@ -492,96 +392,6 @@ body {
     display: none;
   }
 
-
-
-  /* Restore .pin-spacer for desktop — let GSAP control it fully */
-  .pin-spacer {
-    max-width: revert !important;
-    overflow: revert !important;
-    padding-top: revert !important;
-  }
-
-  /* Restore .cs-section & .cs-card for desktop (768px up to 1920px+) — fixed 620px */
-  .cs-section {
-    padding-bottom: clamp(260px, 30vh, 360px) !important;
-  }
-
-  .cs-card {
-    height: 620px !important;
-    min-height: 620px !important;
-    max-height: 620px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 10vh auto 30vh auto !important;
-    padding: 48px !important;
-    border-radius: 24px !important;
-  }
-
-  .cs-card:last-child {
-    margin-bottom: 0 !important;
-  }
-
-  .cs-card-header {
-    gap: 24px !important;
-  }
-
-  .cs-card-title {
-    font-size: clamp(32px, 4.5vw, 56px) !important;
-    margin-bottom: 0 !important;
-  }
-
-  .cs-card-desc {
-    font-size: clamp(15px, 1.25vw, 18px) !important;
-    line-height: 1.5 !important;
-    max-height: none !important;
-    overflow: visible !important;
-    display: block !important;
-  }
-
-  .cs-clip {
-    width: 32px !important;
-  }
-
-  .cs-divider {
-    margin: 28px 0 !important;
-  }
-
-  .cs-body {
-    flex-direction: row !important;
-    align-items: stretch !important;
-    gap: 48px !important;
-    flex: 1 !important;
-  }
-
-  .cs-services {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-    overflow-x: visible !important;
-    gap: 12px 20px !important;
-    max-height: none !important;
-    padding-bottom: 0 !important;
-    scrollbar-width: auto;
-  }
-
-  .cs-services::-webkit-scrollbar {
-    display: revert;
-  }
-
-  .cs-services li {
-    flex-shrink: 1 !important;
-    font-size: 16px !important;
-    padding: 10px 14px !important;
-  }
-
-  .cs-visual {
-    flex: 0.8 !important;
-    width: auto !important;
-    height: 100% !important;
-    min-height: 260px !important;
-    max-height: 340px !important;
-    border-radius: 16px !important;
-  }
-
   /* Desktop Performance & Layout Enhancements */
   .frprotech-css-dots {
     animation: cssDotPulse 8s ease-in-out infinite alternate;
@@ -630,7 +440,7 @@ body {
   }
 
   /* Grid Reflows */
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 
 

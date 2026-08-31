@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from '../Common/Container';
-import SectionHeading from '../Common/SectionHeading';
 
 export default function ProcessSection() {
   const steps = [
@@ -29,12 +28,16 @@ export default function ProcessSection() {
   return (
     <section className="section">
       <Container>
-        <SectionHeading
-          badge="What We Do"
-          title="What We Do — Four Ways We Help You Win"
-          description="Everything we do falls under four connected pillars. You can start with one, or run all four together as a single growth engine."
-          align="center"
-        />
+        <div className="section-heading text-center">
+          <span className="section-badge">What We Do</span>
+          <h2 className="heading-2">
+            What We Do —{' '}
+            <span className="frprotech-gradient-text">Four Ways We Help You Win</span>
+          </h2>
+          <p className="text-lead" style={{ marginTop: '12px' }}>
+            Everything we do falls under four connected pillars. You can start with one, or run all four together as a single growth engine.
+          </p>
+        </div>
 
         <div className="grid grid-4">
           {steps.map((step, idx) => (
