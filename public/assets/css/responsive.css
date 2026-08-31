@@ -476,6 +476,25 @@ body {
   border-radius: 12px !important;
 }
 
+/* Performance & Base Mobile Enhancements */
+.frprotech-css-dots {
+  animation: none;
+  opacity: 0.3;
+}
+
+.work-marquee {
+  animation-duration: 25s;
+}
+
+.our-work-fullwidth-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+.frprotech-metrics-row {
+  justify-content: flex-start;
+}
+
 
 
 /* ==========================================
@@ -673,6 +692,20 @@ body {
     max-height: 340px !important;
     border-radius: 16px !important;
   }
+
+  /* Desktop Performance & Layout Enhancements */
+  .frprotech-css-dots {
+    animation: cssDotPulse 8s ease-in-out infinite alternate;
+    opacity: 0.6;
+  }
+
+  .work-marquee {
+    animation-duration: 40s;
+  }
+
+  .frprotech-metrics-row {
+    justify-content: center;
+  }
 }
 
 
@@ -771,35 +804,8 @@ body {
 }
 
 /* ==========================================
-   PERFORMANCE: MOBILE OPTIMISATIONS
+   11. TOUCH DEVICE ENHANCEMENTS
    ========================================== */
-
-/* Kill the dot-grid animation on mobile — it causes unnecessary paint work */
-@media (max-width: 768px) {
-  .frprotech-css-dots {
-    animation: none;
-    opacity: 0.3;
-  }
-
-  /* Slow down marquee on small screens to avoid paint jank */
-  .work-marquee {
-    animation-duration: 25s;
-  }
-
-  /* Below-fold sections: browser skips paint until near viewport.
-     .cs-section excluded: content-visibility:auto implies contain:layout,
-     which makes this element a containing block for its GSAP-pinned
-     (position:fixed) cards — breaks the pin/stack effect on mobile. */
-  .our-work-fullwidth-section {
-    content-visibility: auto;
-    contain-intrinsic-size: 0 600px;
-  }
-  .frprotech-metrics-row {
-    justify-content: start;
-  }
-}
-
-/* Disable marquee hover-pause on touch devices (hover doesn't apply, but belt-and-suspenders) */
 @media (hover: none) {
   .work-marquee:hover {
     animation-play-state: running;
