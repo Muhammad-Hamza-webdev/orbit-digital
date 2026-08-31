@@ -1029,7 +1029,7 @@ h1, h2, h3, h4, h5, h6 {
    ================================================ */
 .cs-section {
   position: relative;
-  background-color: #f6e5ff;
+  background-color: #ffffff;
   padding-bottom: 60vh;   /* scroll real-estate so last card can stick */
 }
 
