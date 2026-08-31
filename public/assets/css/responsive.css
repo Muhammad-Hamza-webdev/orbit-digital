@@ -660,9 +660,11 @@ body {
     animation-duration: 25s;
   }
 
-  /* Below-fold sections: browser skips paint until near viewport */
-  .our-work-fullwidth-section,
-  .cs-section {
+  /* Below-fold sections: browser skips paint until near viewport.
+     .cs-section excluded: content-visibility:auto implies contain:layout,
+     which makes this element a containing block for its GSAP-pinned
+     (position:fixed) cards — breaks the pin/stack effect on mobile. */
+  .our-work-fullwidth-section {
     content-visibility: auto;
     contain-intrinsic-size: 0 600px;
   }
