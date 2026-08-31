@@ -399,6 +399,7 @@ body {
   flex-wrap: nowrap;
   align-items: center;
   gap: 16px;
+  max-height: 70px !important;
   padding-bottom: 8px;
   scrollbar-width: none;
 }
@@ -631,6 +632,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
     overflow-x: visible !important;
     gap: 12px 20px !important;
+    max-height: none !important;
     padding-bottom: 0 !important;
     scrollbar-width: auto;
   }
