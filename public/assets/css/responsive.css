@@ -394,14 +394,13 @@ body {
 .cs-services {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  /* Make it a flex row so services scroll horizontally */
+  display: flex !important;  /* overrides component's display: grid */
   flex-direction: row;
   flex-wrap: nowrap;
-  /* Keep each item from shrinking so it stays readable */
   align-items: center;
   gap: 16px;
-  padding-bottom: 8px; /* room for scrollbar on iOS */
-  scrollbar-width: none; /* Firefox */
+  padding-bottom: 8px;
+  scrollbar-width: none;
 }
 
 .cs-services::-webkit-scrollbar {
