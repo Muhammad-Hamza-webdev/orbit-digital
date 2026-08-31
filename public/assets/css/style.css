@@ -1041,7 +1041,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Each card sits in normal flow with generous margin so scroll distance exists */
 .cs-card {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   height: 620px;
   margin: 10vh auto 30vh auto;
