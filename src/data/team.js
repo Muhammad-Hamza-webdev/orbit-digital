@@ -3,8 +3,8 @@ export const teamData = [
     id: "alex-mercer",
     name: "Alex Mercer",
     role: "Founder & Chief Architect",
-    bio: "Specializing in Next.js performance, scale, and high-converting agency architectures with over 12 years of industry leadership.",
-    avatar: "/assets/img/team/team-1.svg",
+    bio: "12+ years leading full-stack engineering and digital agency teams. Specializes in high-performance Next.js architectures, headless systems, and technical product strategy.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80",
     socials: {
       linkedin: "#",
       twitter: "#",
@@ -15,8 +15,8 @@ export const teamData = [
     id: "sophia-chen",
     name: "Sophia Chen",
     role: "Head of Design & UI/UX",
-    bio: "Crafting intuitive visual systems, fluid responsive layouts, and accessible interfaces that elevate enterprise digital products.",
-    avatar: "/assets/img/team/team-2.svg",
+    bio: "8+ years creating brand identities, design systems, and conversion-focused product interfaces that turn complex products into intuitive user experiences.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80",
     socials: {
       linkedin: "#",
       dribbble: "#",
@@ -26,9 +26,9 @@ export const teamData = [
   {
     id: "liam-gallagher",
     name: "Liam Gallagher",
-    role: "Senior Frontend Engineer",
-    bio: "Passionate about zero-framework CSS optimization, Core Web Vitals, and seamless cross-device interactive web applications.",
-    avatar: "/assets/img/team/team-3.svg",
+    role: "Lead Automation & Full-Stack Engineer",
+    bio: "Full-stack engineer and automation specialist with deep experience in AI-assisted workflows, API integrations, and custom React/Next.js applications.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=400&q=80",
     socials: {
       linkedin: "#",
       github: "#"
@@ -37,9 +37,9 @@ export const teamData = [
   {
     id: "maya-patel",
     name: "Maya Patel",
-    role: "Digital Strategy & Growth Lead",
-    bio: "Translating complex enterprise requirements into actionable product roadmaps and high-converting marketing engines.",
-    avatar: "/assets/img/team/team-4.svg",
+    role: "Performance Marketing & SEO Lead",
+    bio: "Data-driven growth strategist with over 7 years scaling organic search, multi-channel performance ad campaigns, and lead generation funnels.",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80",
     socials: {
       linkedin: "#",
       twitter: "#"

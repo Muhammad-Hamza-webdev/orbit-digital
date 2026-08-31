@@ -6,23 +6,23 @@ export default function ProcessSection() {
   const steps = [
     {
       number: '01',
-      title: 'Discovery & Architecture',
-      description: 'We audit legacy bottlenecks, identify core technical requirements, and define scalable Next.js architecture blueprints.'
+      title: '1. Develop',
+      description: 'We build the digital home your brand lives in — a WordPress site, a Shopify store, or a fully custom Next.js web app engineered for speed and built to scale as your business grows.'
     },
     {
       number: '02',
-      title: 'UI/UX & Fluid Systems',
-      description: 'We design high-converting visual systems, design tokens, and fluid layout rules that adapt seamlessly from 320px to 4K.'
+      title: '2. Automate',
+      description: 'We connect the tools you already use and remove the manual, repetitive work slowing your team down — from lead follow-ups to customer support — using AI automation and smart integrations.'
     },
     {
       number: '03',
-      title: 'Agile Engineering',
-      description: 'Our developers implement clean, modular, zero-dependency code with strict Core Web Vitals performance benchmarks.'
+      title: '3. Create',
+      description: 'We design the visuals your audience actually stops scrolling for — logos, brand identities, social content, and video edits that make your brand instantly recognizable.'
     },
     {
       number: '04',
-      title: 'Quality Assurance & Launch',
-      description: 'Rigorous cross-device testing across 15+ resolution points, security auditing, and continuous production deployment.'
+      title: '4. Grow',
+      description: 'We turn traffic into revenue with organic social growth, paid performance campaigns, and technical SEO — tracked against real numbers, not vanity metrics.'
     }
   ];
 
@@ -30,9 +30,9 @@ export default function ProcessSection() {
     <section className="section">
       <Container>
         <SectionHeading
-          badge="Our Delivery Process"
-          title="Engineered for Precision & Velocity"
-          description="How we take complex digital requirements and deliver production-ready web products."
+          badge="What We Do"
+          title="What We Do — Four Ways We Help You Win"
+          description="Everything we do falls under four connected pillars. You can start with one, or run all four together as a single growth engine."
           align="center"
         />
 
