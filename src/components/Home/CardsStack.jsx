@@ -4,11 +4,11 @@ import { useEffect, useRef } from 'react';
 import { cards } from '@/data/cards';
 
 const DESKTOP_PIN_TOPS = [100.75, 134.35, 167.95, 201.55, 236.15];
-const MOBILE_PIN_TOPS = [100.75, 114.35, 127.95, 141.55, 156.15];
+const MOBILE_PIN_TOPS = [70, 83.6, 97.2, 110.8, 125.4];
 
 const getPinTop = (index) => {
   if (typeof window !== 'undefined' && window.innerWidth < 768) {
-    return MOBILE_PIN_TOPS[index] ?? (100.75 + index * 13.6);
+    return MOBILE_PIN_TOPS[index] ?? (70 + index * 13.6);
   }
   return DESKTOP_PIN_TOPS[index] ?? (100.75 + index * 33.6);
 };
