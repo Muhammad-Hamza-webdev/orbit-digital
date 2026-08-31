@@ -16,6 +16,7 @@ export default function CardsStack() {
     import('gsap').then(({ default: gsap }) =>
       import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
         gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.config({ ignoreMobileResize: true });
 
         ctx = gsap.context(() => {
           const cardEls = gsap.utils.toArray('.cs-card');
@@ -31,6 +32,7 @@ export default function CardsStack() {
               pin: true,
               pinSpacing: false,
               invalidateOnRefresh: true,
+              anticipatePin: 1,
             });
 
             if (index < cardEls.length - 1) {
