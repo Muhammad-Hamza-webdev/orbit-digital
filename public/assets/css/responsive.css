@@ -415,7 +415,7 @@ body {
 
 /* cs-section & cs-card: mobile spacing (330px–767px) */
 .cs-section {
-  padding-bottom: 20px !important;
+  padding-bottom: clamp(220px, 32vh, 300px) !important;
 }
 
 .cs-card {
@@ -595,7 +595,7 @@ body {
 
   /* Restore .cs-section & .cs-card for desktop (768px up to 1920px+) — fixed 620px */
   .cs-section {
-    padding-bottom: 40px !important;
+    padding-bottom: clamp(260px, 30vh, 360px) !important;
   }
 
   .cs-card {
