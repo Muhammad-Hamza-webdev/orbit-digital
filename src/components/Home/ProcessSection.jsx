@@ -31,7 +31,7 @@ export default function ProcessSection() {
         <div className="section-heading text-center">
           <span className="section-badge">What We Do</span>
           <h2 className="heading-2">
-            What We Do —{' '}
+            What We Do {' '}
             <span className="frprotech-gradient-text">Four Ways We Help You Win</span>
           </h2>
           <p className="text-lead" style={{ marginTop: '12px' }}>
@@ -39,7 +39,7 @@ export default function ProcessSection() {
           </p>
         </div>
 
-        <div className="grid grid-4">
+        <div className="grid grid-2 sm-gap">
           {steps.map((step, idx) => (
             <div key={idx} className="card card-hover" style={{ position: 'relative' }}>
               <span style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--color-primary-light)', position: 'absolute', top: '20px', right: '24px' }}>

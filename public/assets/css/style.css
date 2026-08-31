@@ -352,6 +352,13 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.section-heading--wide {
+  max-width: 840px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .section-badge {
   display: inline-flex;
   align-items: center;
@@ -916,3 +923,158 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px 20px;
   border-radius: var(--radius-full);
 }
+
+/* ==========================================
+   TEAM CARD
+   ========================================== */
+
+.team-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: 0 24px 28px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(91, 95, 239, 0.12);
+}
+
+/* Gradient accent bar across the top */
+.team-card__bar {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  margin-bottom: 28px;
+  flex-shrink: 0;
+}
+
+/* Avatar with gradient ring */
+.team-card__avatar-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+.team-card__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid #ffffff;
+}
+
+.team-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.team-card__role {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.team-card__bio {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.team-card__socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.team-card__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  text-decoration: none;
+}
+
+.team-card__social-link:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+/* ==========================================
+   CTA BANNER CARD
+   ========================================== */
+
+.cta-banner-card {
+  padding: 60px 24px;
+  max-width: 900px;
+  margin-inline: auto;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #374151;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.cta-banner-card__title {
+  color: #ffffff;
+  margin-bottom: 16px;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.cta-banner-card__text {
+  color: #9ca3af;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: 32px;
+}
+
+/* ==========================================
+   SWIPER CUSTOM PAGINATION
+   ========================================== */
+
+.swiper-pagination-bullet {
+  width: 20px !important;
+  height: 8px;
+  border-radius: 10px !important;
+  background: var(--color-primary);
+  opacity: 0.35;
+  transition: width 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 40px !important;
+  border-radius: 10px !important;
+  background: var(--color-primary);
+  opacity: 1;
+}
+
+

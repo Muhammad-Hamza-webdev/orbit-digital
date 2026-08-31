@@ -296,6 +296,10 @@ body {
   grid-template-columns: 1fr;
 }
 
+.sm-gap{
+  gap: clamp(24px, 4vw, 18px); 
+}
+
 .grid-3 {
   display: grid;
   gap: clamp(20px, 3vw, 36px);
@@ -440,7 +444,7 @@ body {
   }
 
   /* Grid Reflows */
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
 }
 
 
@@ -479,6 +483,50 @@ body {
   }
 }
 
+
+/* ==========================================
+   ABOUT PAGE — SPLIT LAYOUT
+   ========================================== */
+
+/* Mobile-first: single column, content before image */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 3vw, 40px);
+  align-items: stretch;
+}
+
+/* On desktop the image placeholder comes second in DOM for Story,
+   so no reordering needed. For Mission (--reverse) we flip visually. */
+@media (min-width: 993px) {
+  .about-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Mission: image left, content right — achieved by reversing DOM order visually */
+  
+}
+
+/* Image placeholder */
+.about-img-placeholder {
+  min-height: 360px;
+  border-radius: var(--radius-lg, 16px);
+  border: 2px dashed var(--color-border, #e5e7eb);
+  background-color: var(--color-surface, #f9fafb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-img-placeholder__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #9ca3af);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
 
 /* ==========================================
    10. REDUCED MOTION ACCESSIBILITY
