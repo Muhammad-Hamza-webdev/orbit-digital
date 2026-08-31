@@ -532,9 +532,9 @@ body {
   /* Restore .cs-services to vertical column layout for 768px+ */
   .cs-services {
     overflow-x: visible;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: start;
     gap: 24px;
     padding-bottom: 0;
     scrollbar-width: auto;
