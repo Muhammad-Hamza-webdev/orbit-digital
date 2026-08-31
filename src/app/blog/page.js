@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import Container from '../../components/Common/Container';
-import SectionHeading from '../../components/Common/SectionHeading';
 import BlogCard from '../../components/Blog/BlogCard';
-import CtaSection from '../../components/Home/CtaSection';
 import { blogData } from '../../data/blog';
 
 export default function BlogPage() {
@@ -77,8 +75,6 @@ export default function BlogPage() {
           </div>
         </Container>
       </section>
-
-      <CtaSection />
     </>
   );
 }

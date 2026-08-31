@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../../components/Common/Container';
 import SectionHeading from '../../components/Common/SectionHeading';
-import CtaSection from '../../components/Home/CtaSection';
 import { teamData } from '../../data/team';
 
 export const metadata = {
@@ -102,8 +101,6 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
-
-      <CtaSection />
     </>
   );
 }

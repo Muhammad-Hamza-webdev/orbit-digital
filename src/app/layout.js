@@ -3,13 +3,21 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
 export const metadata = {
-  title: "Orbit Digital | Fluid Digital Product & Engineering Agency",
-  description: "Orbit Digital is a premier digital agency building high-performance Next.js web applications, responsive user experiences, and enterprise cloud solutions.",
-  keywords: ["Digital Agency", "Next.js Development", "Responsive Web Design", "UI/UX Architecture", "Cloud Engineering", "Orbit Digital"],
+  title: "Orbit Digital | Web Development, AI Automation & Digital Marketing Agency",
+  description: "Orbit Digital builds fast websites, automates workflows with AI, creates standout brand content, and grows your business with performance marketing and SEO — all under one roof.",
+  keywords: [
+    "web development agency",
+    "AI automation services",
+    "digital marketing agency",
+    "Shopify website development",
+    "custom Next.js websites",
+    "SEO services",
+    "performance marketing agency"
+  ],
   authors: [{ name: "Orbit Digital Team" }],
   openGraph: {
-    title: "Orbit Digital | Fluid Digital Product & Engineering Agency",
-    description: "High-performance web applications, responsive user interfaces, and enterprise cloud solutions.",
+    title: "Orbit Digital | Web Development, AI Automation & Digital Marketing Agency",
+    description: "Orbit Digital builds fast websites, automates workflows with AI, creates standout brand content, and grows your business with performance marketing and SEO — all under one roof.",
     url: "https://orbitdigital.app",
     siteName: "Orbit Digital",
     locale: "en_US",

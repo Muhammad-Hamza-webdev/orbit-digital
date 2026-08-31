@@ -32,15 +32,15 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-lead frprotech-hero-desc frprotech-fade-item fade-3">
-            We turn unclear, forgettable digital products into clear, credible ones with Next.js architecture, UI/UX design, SEO, and high-converting web applications that win trust and customers.
+            Orbit Digital helps brands develop fast websites, automate everyday workflows with AI, create scroll-stopping content, and grow revenue with performance marketing and SEO — all from one team, so nothing gets lost between agencies.
           </p>
 
           <div className="frprotech-cta-group frprotech-fade-item fade-4">
             <Button href="/contact" variant="primary" size="lg" className="frprotech-btn-pill">
-              Get Started ↗
+              Book a Free Consultation ↗
             </Button>
             <Button href="/services" variant="secondary" size="lg" className="frprotech-btn-pill">
-              View Services ↗
+              See Our Services ↗
             </Button>
           </div>
 

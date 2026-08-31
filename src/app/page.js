@@ -3,7 +3,6 @@ import OurWorkSection from "../components/Home/OurWorkSection";
 import CardsStack from "../components/Home/CardsStack";
 import ProcessSection from "../components/Home/ProcessSection";
 import TestimonialsSection from "../components/Home/TestimonialsSection";
-import CtaSection from "../components/Home/CtaSection";
 
 export default function Home() {
   return (
@@ -17,10 +16,9 @@ export default function Home() {
       {/* 3. Cards Stack Parallax Section */}
       <CardsStack />
 
-      {/* 4. Process, Testimonials & CTA */}
+      {/* 4. Process & Testimonials */}
       <ProcessSection />
       <TestimonialsSection />
-      <CtaSection />
     </>
   );
 }

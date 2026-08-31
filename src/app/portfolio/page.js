@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Container from '../../components/Common/Container';
 import SectionHeading from '../../components/Common/SectionHeading';
 import ProjectCard from '../../components/Portfolio/ProjectCard';
-import CtaSection from '../../components/Home/CtaSection';
 import { projectsData } from '../../data/projects';
 
 export default function PortfolioPage() {
@@ -57,8 +56,6 @@ export default function PortfolioPage() {
           </div>
         </Container>
       </section>
-
-      <CtaSection />
     </>
   );
 }

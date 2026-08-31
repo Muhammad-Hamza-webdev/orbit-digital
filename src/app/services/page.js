@@ -2,7 +2,6 @@ import React from 'react';
 import Container from '../../components/Common/Container';
 import SectionHeading from '../../components/Common/SectionHeading';
 import ServiceCard from '../../components/Services/ServiceCard';
-import CtaSection from '../../components/Home/CtaSection';
 import { servicesData } from '../../data/services';
 
 export const metadata = {
@@ -43,8 +42,6 @@ export default function ServicesPage() {
           </div>
         </Container>
       </section>
-
-      <CtaSection />
     </>
   );
 }
