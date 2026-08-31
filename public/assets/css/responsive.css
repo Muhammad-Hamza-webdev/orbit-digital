@@ -412,6 +412,60 @@ body {
   flex-shrink: 0;
 }
 
+/* cs-card: fixed 510px on mobile (330px–767px) */
+.cs-card {
+  height: 510px !important;
+  min-height: 510px !important;
+  max-height: 510px !important;
+  width: 94% !important;
+  max-width: 100% !important;
+  padding: 24px 20px !important;
+  border-radius: 18px !important;
+  box-sizing: border-box !important;
+}
+
+.cs-card-header {
+  gap: 12px !important;
+}
+
+.cs-card-title {
+  font-size: clamp(22px, 5.5vw, 28px) !important;
+  margin-bottom: 4px !important;
+}
+
+.cs-card-desc {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  max-height: 38px !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+}
+
+.cs-clip {
+  width: 24px !important;
+}
+
+.cs-divider {
+  margin: 14px 0 !important;
+}
+
+.cs-body {
+  flex-direction: column !important;
+  gap: 12px !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+}
+
+.cs-visual {
+  width: 100% !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  border-radius: 12px !important;
+}
+
 
 
 /* ==========================================
@@ -529,14 +583,55 @@ body {
     padding-top: revert !important;
   }
 
-  /* Restore .cs-services to vertical column layout for 768px+ */
+  /* Restore .cs-card for desktop (768px up to 1920px+) — fixed 620px */
+  .cs-card {
+    height: 620px !important;
+    min-height: 620px !important;
+    max-height: 620px !important;
+    width: 90% !important;
+    max-width: 1200px !important;
+    padding: 48px !important;
+    border-radius: 24px !important;
+  }
+
+  .cs-card-header {
+    gap: 24px !important;
+  }
+
+  .cs-card-title {
+    font-size: clamp(32px, 4.5vw, 56px) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cs-card-desc {
+    font-size: clamp(15px, 1.25vw, 18px) !important;
+    line-height: 1.5 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .cs-clip {
+    width: 32px !important;
+  }
+
+  .cs-divider {
+    margin: 28px 0 !important;
+  }
+
+  .cs-body {
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 48px !important;
+    flex: 1 !important;
+  }
+
   .cs-services {
-    overflow-x: visible;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
-    align-items: start;
-    gap: 24px;
-    padding-bottom: 0;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    overflow-x: visible !important;
+    gap: 12px 20px !important;
+    padding-bottom: 0 !important;
     scrollbar-width: auto;
   }
 
@@ -545,7 +640,18 @@ body {
   }
 
   .cs-services li {
-    flex-shrink: 1;
+    flex-shrink: 1 !important;
+    font-size: 16px !important;
+    padding: 10px 14px !important;
+  }
+
+  .cs-visual {
+    flex: 0.8 !important;
+    width: auto !important;
+    height: 100% !important;
+    min-height: 260px !important;
+    max-height: 340px !important;
+    border-radius: 16px !important;
   }
 }
 
