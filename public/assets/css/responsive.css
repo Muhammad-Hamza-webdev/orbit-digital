@@ -589,7 +589,7 @@ body {
     min-height: 620px !important;
     max-height: 620px !important;
     width: 100% !important;
-    /* max-width: 1200px !important; */
+    max-width: 1200px !important;
     padding: 48px !important;
     border-radius: 24px !important;
   }
