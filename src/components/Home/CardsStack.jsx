@@ -3,7 +3,16 @@
 import { useEffect, useRef } from 'react';
 import { cards } from '@/data/cards';
 
-const PIN_TOPS = cards.map((_, i) => 100 + i * 34);
+const DESKTOP_PIN_TOPS = [100.75, 134.35, 167.95, 201.55, 236.15];
+const MOBILE_PIN_TOPS = [100.75, 114.35, 127.95, 141.55, 156.15];
+
+const getPinTop = (index) => {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    return MOBILE_PIN_TOPS[index] ?? (100.75 + index * 13.6);
+  }
+  return DESKTOP_PIN_TOPS[index] ?? (100.75 + index * 33.6);
+};
+
 const SCALE_TARGETS = cards.map((_, i) => 1 - (cards.length - 1 - i) * 0.05);
 
 export default function CardsStack() {
@@ -22,11 +31,9 @@ export default function CardsStack() {
           const cardEls = gsap.utils.toArray('.cs-card');
 
           cardEls.forEach((card, index) => {
-            const pinTop = PIN_TOPS[index];
-
             ScrollTrigger.create({
               trigger: card,
-              start: `top ${pinTop}px`,
+              start: () => `top ${getPinTop(index)}px`,
               endTrigger: sectionRef.current,
               end: 'bottom bottom',
               pin: true,
@@ -36,14 +43,13 @@ export default function CardsStack() {
             });
 
             if (index < cardEls.length - 1) {
-              const nextPinTop = PIN_TOPS[index + 1];
               gsap.to(card, {
                 scale: SCALE_TARGETS[index],
                 ease: 'none',
                 scrollTrigger: {
                   trigger: cardEls[index + 1],
                   start: 'top 90%',
-                  end: `top ${nextPinTop}px`,
+                  end: () => `top ${getPinTop(index + 1)}px`,
                   scrub: true,
                   invalidateOnRefresh: true,
                 },

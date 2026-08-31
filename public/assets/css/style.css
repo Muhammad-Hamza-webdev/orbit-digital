@@ -1030,7 +1030,7 @@ h1, h2, h3, h4, h5, h6 {
 .cs-section {
   position: relative;
   background-color: #ffffff;
-  padding-bottom: 60vh;   /* scroll real-estate so last card can stick */
+  padding-bottom: 40px;
 }
 
 .cs-wrapper {
@@ -1055,6 +1055,10 @@ h1, h2, h3, h4, h5, h6 {
   transform-origin: top center;
   box-sizing: border-box;
   color: #111827;
+}
+
+.cs-card:last-child {
+  margin-bottom: 0;
 }
 
 /* ---- Header: big title + SVG clip float above divider ---- */

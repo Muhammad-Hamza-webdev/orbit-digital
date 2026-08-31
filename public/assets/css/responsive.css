@@ -413,16 +413,25 @@ body {
   flex-shrink: 0;
 }
 
-/* cs-card: fixed 510px on mobile (330px–767px) */
+/* cs-section & cs-card: mobile spacing (330px–767px) */
+.cs-section {
+  padding-bottom: 20px !important;
+}
+
 .cs-card {
   height: 510px !important;
   min-height: 510px !important;
   max-height: 510px !important;
   width: 100% !important;
   max-width: 100% !important;
+  margin: 6vh auto 20vh auto !important;
   padding: 24px 20px !important;
   border-radius: 18px !important;
   box-sizing: border-box !important;
+}
+
+.cs-card:last-child {
+  margin-bottom: 0 !important;
 }
 
 .cs-card-header {
@@ -584,15 +593,24 @@ body {
     padding-top: revert !important;
   }
 
-  /* Restore .cs-card for desktop (768px up to 1920px+) — fixed 620px */
+  /* Restore .cs-section & .cs-card for desktop (768px up to 1920px+) — fixed 620px */
+  .cs-section {
+    padding-bottom: 40px !important;
+  }
+
   .cs-card {
     height: 620px !important;
     min-height: 620px !important;
     max-height: 620px !important;
     width: 100% !important;
     max-width: 1200px !important;
+    margin: 10vh auto 30vh auto !important;
     padding: 48px !important;
     border-radius: 24px !important;
+  }
+
+  .cs-card:last-child {
+    margin-bottom: 0 !important;
   }
 
   .cs-card-header {
