@@ -1076,7 +1076,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .cs-card-title {
   font-size: clamp(32px, 4.5vw, 56px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-family: var(--font-family-base);

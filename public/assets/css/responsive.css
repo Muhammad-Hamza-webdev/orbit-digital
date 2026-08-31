@@ -376,6 +376,44 @@ body {
   margin-top: auto !important;
 }
 
+/* ---- .pin-spacer mobile fix (330px–767px) ----
+   GSAP sets inline height/padding on .pin-spacer based on card dimensions
+   at init time. On small screens those inline values are too large/wrong.
+   Force the spacer to not clip its pinned child. 768px+ restores via the
+   existing 768px block below. */
+.pin-spacer {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  /* Let the card's own margin drive spacing; don't let the spacer add more */
+  padding-top: 0 !important;
+}
+
+/* ---- .cs-services horizontal scroll below 768px ----
+   Base mobile rule — no new media query needed. */
+.cs-services {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Make it a flex row so services scroll horizontally */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* Keep each item from shrinking so it stays readable */
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 8px; /* room for scrollbar on iOS */
+  scrollbar-width: none; /* Firefox */
+}
+
+.cs-services::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Each service item must not shrink so horizontal scroll is triggered */
+.cs-services li {
+  flex-shrink: 0;
+}
+
+
 
 /* ==========================================
    2. 576px BREAKPOINT
@@ -483,6 +521,32 @@ body {
     height: 280px !important;
     max-height: none !important;
     border-radius: 1.25rem !important;
+  }
+
+  /* Restore .pin-spacer for desktop — let GSAP control it fully */
+  .pin-spacer {
+    max-width: revert !important;
+    overflow: revert !important;
+    padding-top: revert !important;
+  }
+
+  /* Restore .cs-services to vertical column layout for 768px+ */
+  .cs-services {
+    overflow-x: visible;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 0;
+    scrollbar-width: auto;
+  }
+
+  .cs-services::-webkit-scrollbar {
+    display: revert;
+  }
+
+  .cs-services li {
+    flex-shrink: 1;
   }
 }
 
@@ -602,6 +666,9 @@ body {
   .cs-section {
     content-visibility: auto;
     contain-intrinsic-size: 0 600px;
+  }
+  .frprotech-metrics-row {
+    justify-content: start;
   }
 }
 
