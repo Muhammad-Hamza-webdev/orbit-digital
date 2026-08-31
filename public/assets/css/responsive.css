@@ -503,8 +503,10 @@ body {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Mission: image left, content right — achieved by reversing DOM order visually */
-  
+  /* Mission on desktop: image on the left, content on the right */
+  .about-split--reverse .about-img-placeholder {
+    order: -1;
+  }
 }
 
 /* Image placeholder */
