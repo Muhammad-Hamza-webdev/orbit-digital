@@ -5,22 +5,31 @@ import ServiceCard from '../../components/Services/ServiceCard';
 import { servicesData } from '../../data/services';
 
 export const metadata = {
-  title: "Our Services | Orbit Digital",
-  description: "Explore Orbit Digital's full-stack digital product engineering, Next.js architecture, UI/UX design, and cloud solutions.",
+  title: "Our Services | Web Development, AI Automation, Design & Marketing — Orbit Digital",
+  description: "Explore Orbit Digital's services: WordPress & Shopify development, custom Next.js websites, AI automation, graphic design, video editing, social media, performance marketing, and SEO.",
+  openGraph: {
+    title: "Our Services | Web Development, AI Automation, Design & Marketing — Orbit Digital",
+    description: "Explore Orbit Digital's services: WordPress & Shopify development, custom Next.js websites, AI automation, graphic design, video editing, social media, performance marketing, and SEO.",
+    url: "https://orbitdigital.app/services",
+    siteName: "Orbit Digital",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function ServicesPage() {
   return (
     <>
+      {/* 1. Hero Section */}
       <section className="section section-bg-surface">
         <Container>
-          <div style={{ maxWidth: '800px', marginInline: 'auto', textAlign: 'center' }}>
-            <span className="section-badge">Capabilities</span>
-            <h1 className="heading-1" style={{ marginBlock: '16px 24px' }}>
-              Full-Stack Digital <span className="text-gradient">Engineering Services</span>
+          <div className="section-heading section-heading--wide text-center">
+            <span className="section-badge">Our Services</span>
+            <h1 className="heading-1">
+              Everything Your Brand Needs to <span className="text-gradient">Develop, Automate, Create, and Grow.</span>
             </h1>
             <p className="text-lead">
-              From initial architecture discovery to production cloud deployment, Orbit Digital delivers end-to-end engineering tailored for enterprise performance.
+              We group our services into four categories so you always know exactly where to start.
             </p>
           </div>
         </Container>

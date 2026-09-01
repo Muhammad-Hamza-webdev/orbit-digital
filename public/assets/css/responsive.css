@@ -50,6 +50,7 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   max-width: 960px;
+  backdrop-filter: blur(6px);
 }
 
 .header-desktop-pill.is-scrolled .header-pill__container {
