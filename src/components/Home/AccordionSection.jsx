@@ -21,7 +21,7 @@ export default function AccordionSection() {
           trigger: ".accordions",
           pin: true,
           start: "top 120px",
-          end: "+=750",
+          end: "+=70",
           scrub: 1,
           ease: "linear",
         },
@@ -51,7 +51,7 @@ export default function AccordionSection() {
           trigger: ".accordions",
           pin: true,
           start: "top top",
-          end: "+=550",
+          end: "+=70",
           scrub: 1,
           ease: "linear",
         },
@@ -143,7 +143,6 @@ export default function AccordionSection() {
             </div>
           </div>
         </div>
-        <div className="spacer"></div>
       </div>
     </div>
   );
