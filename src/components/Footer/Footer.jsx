@@ -12,9 +12,12 @@ export default function Footer() {
           
           {/* Column 1: Brand & Contact Info */}
           <div className="footer-col-brand">
-            <Link href="/" className="header-pill__logo" style={{ color: '#FFFFFF', marginBottom: '16px', display: 'inline-flex' }}>
-              <span className="header-pill__logo-badge">O</span>
-              <span style={{ color: '#FFFFFF' }}>Orbit<span className="text-gradient">Digital</span></span>
+            <Link href="/" className="footer-brand-link">
+              <img
+                src="/assets/img/logo/Logo.png"
+                alt="Orbit Digital"
+                className="footer-logo-img"
+              />
             </Link>
 
             <p className="footer-bio-text">

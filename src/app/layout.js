@@ -15,6 +15,11 @@ export const metadata = {
     "performance marketing agency"
   ],
   authors: [{ name: "Orbit Digital Team" }],
+  icons: {
+    icon: "/assets/img/logo/Favicon.png",
+    shortcut: "/assets/img/logo/Favicon.png",
+    apple: "/assets/img/logo/Favicon.png",
+  },
   openGraph: {
     title: "Orbit Digital | Web Development, AI Automation & Digital Marketing Agency",
     description: "Orbit Digital builds fast websites, automates workflows with AI, creates standout brand content, and grows your business with performance marketing and SEO — all under one roof.",

@@ -57,10 +57,11 @@ export default function Header() {
         <div className="header-pill__container">
           {/* Logo */}
           <Link href="/" className="header-pill__logo">
-            <span className="header-pill__logo-badge">O</span>
-            <span className="header-pill__logo-text">
-              Orbit<span className="text-gradient">Digital</span>
-            </span>
+            <img
+              src="/assets/img/logo/Logo.png"
+              alt="Orbit Digital"
+              className="header-logo-img"
+            />
           </Link>
 
           {/* Nav Links */}
@@ -88,10 +89,11 @@ export default function Header() {
         <div className="header-mobile-bar__inner">
           {/* Logo */}
           <Link href="/" className="header-pill__logo">
-            <span className="header-pill__logo-badge">O</span>
-            <span className="header-pill__logo-text">
-              Orbit<span className="text-gradient">Digital</span>
-            </span>
+            <img
+              src="/assets/img/logo/Logo.png"
+              alt="Orbit Digital"
+              className="header-logo-img"
+            />
           </Link>
 
           {/* Hamburger Menu Trigger Button */}
@@ -128,10 +130,11 @@ export default function Header() {
         {/* Mobile Drawer Top Bar with explicit Close Button */}
         <div className="mobile-drawer__header">
           <Link href="/" className="header-pill__logo" onClick={() => setIsMenuOpen(false)}>
-            <span className="header-pill__logo-badge">O</span>
-            <span className="header-pill__logo-text">
-              Orbit<span className="text-gradient">Digital</span>
-            </span>
+            <img
+              src="/assets/img/logo/Logo.png"
+              alt="Orbit Digital"
+              className="header-logo-img"
+            />
           </Link>
 
           {/* Explicit Close ('X') Button */}

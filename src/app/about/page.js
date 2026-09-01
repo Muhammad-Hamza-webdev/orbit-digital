@@ -96,7 +96,7 @@ export default function AboutPage() {
             align="center"
           />
 
-          <div className="grid grid-2 gap-24">
+          <div className="grid grid-2 sm-gap">
             <div className="card card-hover">
               <div className="feature-card__header">
                 <div className="feature-card__icon feature-card__icon--primary">
