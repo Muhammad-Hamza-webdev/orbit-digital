@@ -8,11 +8,14 @@ import Button from '../Common/Button';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close mobile menu on route navigation
+  // Close mobile menu and dropdowns on route navigation
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsServicesOpen(false);
   }, [pathname]);
 
   // Lock body scroll when mobile drawer is open
@@ -40,10 +43,21 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const serviceDropdownItems = [
+    { name: 'Develop', href: '/services#develop' },
+    { name: 'Automate', href: '/services#automate' },
+    { name: 'Create', href: '/services#create' },
+    { name: 'Grow', href: '/services#grow' },
+  ];
+
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
-    { name: 'Services', href: '/services' },
+    { 
+      name: 'Services', 
+      href: '/services',
+      subLinks: serviceDropdownItems,
+    },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Blog', href: '/blog' },
   ];
@@ -67,7 +81,60 @@ export default function Header() {
           {/* Nav Links */}
           <nav className="header-pill__nav" aria-label="Desktop Main Navigation">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+              
+              if (link.subLinks) {
+                return (
+                  <div
+                    key={link.href}
+                    className="header-pill__dropdown"
+                    onMouseEnter={() => setIsServicesOpen(true)}
+                    onMouseLeave={() => setIsServicesOpen(false)}
+                  >
+                    <Link
+                      href={link.href}
+                      className={`header-pill__link header-pill__dropdown-trigger ${isActive ? 'active' : ''}`}
+                      aria-expanded={isServicesOpen}
+                      aria-haspopup="true"
+                    >
+                      {link.name}
+                      <svg
+                        className={`header-dropdown-chevron ${isServicesOpen ? 'is-open' : ''}`}
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </Link>
+
+                    <div
+                      className={`header-pill__dropdown-menu ${isServicesOpen ? 'is-open' : ''}`}
+                      role="menu"
+                      aria-label={`${link.name} submenu`}
+                    >
+                      {link.subLinks.map((subLink) => (
+                        <Link
+                          key={subLink.name}
+                          href={subLink.href}
+                          className="header-pill__dropdown-item"
+                          role="menuitem"
+                          onClick={() => setIsServicesOpen(false)}
+                        >
+                          {subLink.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={link.href}
@@ -163,12 +230,66 @@ export default function Header() {
         <div className="mobile-drawer__content">
           <nav className="mobile-drawer__nav">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+
+              if (link.subLinks) {
+                return (
+                  <div key={link.href} className="mobile-drawer__dropdown-group">
+                    <div className="mobile-drawer__dropdown-row">
+                      <Link
+                        href={link.href}
+                        className={`mobile-drawer__link ${isActive ? 'active' : ''}`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.name}
+                      </Link>
+                      <button
+                        type="button"
+                        className="mobile-drawer__dropdown-toggle"
+                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                        aria-label={`Toggle ${link.name} submenu`}
+                        aria-expanded={isMobileServicesOpen}
+                      >
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className={`mobile-drawer__chevron ${isMobileServicesOpen ? 'is-open' : ''}`}
+                        >
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {isMobileServicesOpen && (
+                      <div className="mobile-drawer__subnav">
+                        {link.subLinks.map((subLink) => (
+                          <Link
+                            key={subLink.name}
+                            href={subLink.href}
+                            className="mobile-drawer__sublink"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subLink.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={`mobile-drawer__link ${isActive ? 'active' : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
@@ -177,6 +298,7 @@ export default function Header() {
             <Link
               href="/contact"
               className={`mobile-drawer__link ${pathname === '/contact' ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
             >
               Contact Us
             </Link>

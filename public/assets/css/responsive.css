@@ -111,6 +111,99 @@ body {
   background-color: rgba(91, 95, 239, 0.08);
 }
 
+/* Desktop Dropdown Menu */
+.header-pill__dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-pill__dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-dropdown-chevron {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header-pill__dropdown:hover .header-dropdown-chevron,
+.header-pill__dropdown:focus-within .header-dropdown-chevron,
+.header-dropdown-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.header-pill__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 170px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 
+    0 16px 36px 0 rgba(31, 38, 135, 0.12),
+    0 4px 12px 0 rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Hover bridge so moving cursor down into dropdown menu maintains hover state */
+.header-pill__dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
+.header-pill__dropdown:hover .header-pill__dropdown-menu,
+.header-pill__dropdown:focus-within .header-pill__dropdown-menu,
+.header-pill__dropdown-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.header-pill__dropdown-item {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+  display: block;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.header-pill__dropdown-item:hover,
+.header-pill__dropdown-item:focus {
+  background-color: rgba(91, 95, 239, 0.09);
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
 .header-pill__actions {
   display: flex;
   align-items: center;
@@ -302,6 +395,76 @@ body {
 .mobile-drawer__link:hover {
   color: var(--color-primary);
   background-color: var(--color-primary-light);
+}
+
+.mobile-drawer__dropdown-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-drawer__dropdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-drawer__dropdown-row .mobile-drawer__link {
+  flex: 1;
+}
+
+.mobile-drawer__dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: var(--color-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.mobile-drawer__dropdown-toggle:hover,
+.mobile-drawer__dropdown-toggle:focus {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.mobile-drawer__chevron {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-drawer__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.mobile-drawer__subnav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+  margin-left: 16px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(91, 95, 239, 0.18);
+}
+
+.mobile-drawer__sublink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.mobile-drawer__sublink:hover,
+.mobile-drawer__sublink:focus {
+  color: var(--color-primary);
+  background-color: rgba(91, 95, 239, 0.08);
+  padding-left: 16px;
 }
 
 /* Grid System Base (1 Column on Mobile) */
