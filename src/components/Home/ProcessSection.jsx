@@ -26,7 +26,7 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="section">
+    <section className="section" style={{ paddingBlock: "clamp(0px, 0px, 120px)" }}>
       <Container>
         <div className="section-heading text-center">
           <span className="section-badge">What We Do</span>
