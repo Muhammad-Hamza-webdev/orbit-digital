@@ -22,7 +22,7 @@ export default function PortfolioPage() {
           <div style={{ maxWidth: '800px', marginInline: 'auto', textAlign: 'center' }}>
             <span className="section-badge">Case Studies</span>
             <h1 className="heading-1" style={{ marginBlock: '16px 24px' }}>
-              Engineered Works & <span className="text-gradient">Digital Impact</span>
+              Engineered Works & <span className="frprotech-gradient-text">Digital Impact</span>
             </h1>
             <p className="text-lead">
               Discover how Orbit Digital helps forward-thinking companies build responsive, scalable, and high-converting web applications.

@@ -27,7 +27,7 @@ export default function AboutPage() {
           <div className="section-heading section-heading--wide text-center">
             <span className="section-badge">About Us</span>
             <h1 className="heading-1">
-              We Are <span className="text-gradient">Orbit Digital</span>.
+              We Are <span className="frprotech-gradient-text">Orbit Digital</span>.
             </h1>
             <p className="text-lead">
               A full-service team building fast websites, AI-powered automation, creative content, and growth marketing for ambitious brands.
@@ -91,7 +91,11 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             badge="Why Orbit Digital"
-            title="What Makes Us Different"
+            title={
+              <>
+                What Makes Us <span className="frprotech-gradient-text">Different</span>
+              </>
+            }
             description="Four core pillars that set our unified collaborative approach apart."
             align="center"
           />
@@ -153,7 +157,11 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             badge="Our Methodology"
-            title="How We Work"
+            title={
+              <>
+                How We <span className="frprotech-gradient-text">Work</span>
+              </>
+            }
             description="A streamlined process designed for transparency, speed, and continuous growth."
             align="center"
           />
@@ -207,7 +215,11 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             badge="Leadership & Expertise"
-            title="Meet the Team"
+            title={
+              <>
+                Meet the <span className="frprotech-gradient-text">Team</span>
+              </>
+            }
             description="Real strategists, engineers, and creators dedicated to your project."
             align="center"
           />
@@ -221,7 +233,8 @@ export default function AboutPage() {
         <Container>
           <div className="card cta-banner-card">
             <h2 className="heading-2 cta-banner-card__title">
-              Want a team that treats your project like their own? Let&apos;s talk.
+              Want a team that treats your project like their own?{' '}
+              <span className="frprotech-gradient-text">Let&apos;s talk.</span>
             </h2>
             <p className="cta-banner-card__text">
               Whether you need a custom website, intelligent workflow automation, or full-funnel digital marketing, we&apos;re here to help.

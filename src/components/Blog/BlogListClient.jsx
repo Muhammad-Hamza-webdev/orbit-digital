@@ -36,7 +36,7 @@ export default function BlogListClient({ posts }) {
             marginBottom: '60px',
             background: 'linear-gradient(135deg, var(--color-surface) 0%, #FFFFFF 100%)',
             border: '2px solid var(--color-card-border)',
-            borderRadius: '24px',
+            borderRadius: '20px',
             padding: 'clamp(24px, 4vw, 44px)',
             position: 'relative',
             overflow: 'hidden',
@@ -74,7 +74,7 @@ export default function BlogListClient({ posts }) {
             </div>
 
             {featuredPost.image && (
-              <div style={{ flex: '0.9', minWidth: '260px', height: '280px', borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
+              <div style={{ flex: '0.9', minWidth: '260px', height: '280px', borderRadius: '20px', overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
                 <img
                   src={featuredPost.image}
                   alt={featuredPost.title}

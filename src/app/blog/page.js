@@ -19,12 +19,12 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <>
-      <section className="section section-bg-surface" style={{ paddingBottom: 'clamp(40px, 6vw, 80px)' }}>
+      <section className="section section-bg-surface">
         <Container>
           <div style={{ maxWidth: '860px', marginInline: 'auto', textAlign: 'center' }}>
             <span className="section-badge">Agency Insights</span>
             <h1 className="heading-1" style={{ marginBlock: '16px 20px' }}>
-              Insights on Building, Automating, and Growing Online.
+              Insights on Building, Automating, and <span className="frprotech-gradient-text">Growing Online</span>.
             </h1>
             <p className="text-lead" style={{ maxWidth: '780px', marginInline: 'auto' }}>
               Practical insights on web development, AI automation, design, and digital marketing from the Orbit Digital team — written to help you make better decisions, faster.

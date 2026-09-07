@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }) {
   return (
     <>
       {/* Article Header & Breadcrumbs */}
-      <article className="section section-bg-surface" style={{ paddingBottom: 'clamp(40px, 5vw, 60px)' }}>
+      <article className="section section-bg-surface">
         <Container>
           <div style={{ maxWidth: '840px', marginInline: 'auto' }}>
             {/* Breadcrumb */}
@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }) {
       </article>
 
       {/* Main Article Body */}
-      <section className="section" style={{ paddingTop: 'clamp(40px, 6vw, 70px)' }}>
+      <section className="section">
         <Container>
           <div style={{ maxWidth: '840px', marginInline: 'auto' }}>
             {/* Intro Lead Callout Box */}
@@ -127,7 +127,7 @@ export default async function BlogPostPage({ params }) {
                 backgroundColor: 'var(--color-primary-light)',
                 borderLeft: '4px solid var(--color-primary)',
                 padding: '24px 28px',
-                borderRadius: '0 16px 16px 0',
+                borderRadius: '0 20px 20px 0',
                 marginBottom: '48px',
               }}
             >
@@ -178,7 +178,7 @@ export default async function BlogPostPage({ params }) {
                         style={{
                           textAlign: 'center',
                           padding: '20px 16px',
-                          borderRadius: '14px',
+                          borderRadius: '20px',
                           border: '1px solid var(--color-card-border)',
                           backgroundColor: 'var(--color-surface)',
                         }}
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }) {
                 {/* Table if present */}
                 {sec.table && (
                   <div style={{ overflowX: 'auto', marginBlock: '28px' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', borderRadius: '20px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
                       <thead>
                         <tr style={{ backgroundColor: 'var(--color-secondary)', color: '#FFFFFF', textAlign: 'left' }}>
                           {sec.table.headers.map((h, hIdx) => (
@@ -231,7 +231,7 @@ export default async function BlogPostPage({ params }) {
                 marginTop: '60px',
                 background: 'linear-gradient(135deg, var(--color-secondary) 0%, #1a162b 100%)',
                 color: '#FFFFFF',
-                borderRadius: '24px',
+                borderRadius: '20px',
                 padding: 'clamp(28px, 5vw, 48px)',
                 textAlign: 'center',
               }}
@@ -259,7 +259,9 @@ export default async function BlogPostPage({ params }) {
           <Container>
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
               <span className="section-badge">More Insights</span>
-              <h2 className="heading-2">Related Articles</h2>
+              <h2 className="heading-2">
+                Related <span className="frprotech-gradient-text">Articles</span>
+              </h2>
             </div>
             <div className="grid grid-3">
               {relatedPosts.map((rPost) => (

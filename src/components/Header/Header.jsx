@@ -320,15 +320,6 @@ export default function Header() {
               );
             })}
           </nav>
-
-          <div className="mobile-drawer__footer">
-            {/* <Button href="/contact" variant="primary" size="lg" fullWidth onClick={() => setIsMenuOpen(false)}>
-              Get Started ↗
-            </Button> */}
-            <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
-              theorbitdigitalpk@gmail.com • +92 301 5292380
-            </div>
-          </div>
         </div>
       </div>
     </>

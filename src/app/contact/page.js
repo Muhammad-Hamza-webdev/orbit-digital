@@ -19,7 +19,7 @@ export default function ContactPage() {
           <div style={{ maxWidth: '800px', marginInline: 'auto', textAlign: 'center' }}>
             <span className="section-badge">Get in Touch</span>
             <h1 className="heading-1" style={{ marginBlock: '16px 24px' }}>
-              Let's Build Your <span className="text-gradient">Next Project</span>.
+              Let's Build Your <span className="frprotech-gradient-text">Next Project</span>.
             </h1>
             <p className="text-lead">
               Tell us a bit about your business and what you're looking to develop, automate, create, or grow — we'll get back to you within one business day with next steps and, if it's a fit, a free consultation call.
@@ -36,7 +36,7 @@ export default function ContactPage() {
             <div>
               <span className="section-badge section-badge-accent">Direct Contact</span>
               <h2 className="heading-2" style={{ marginBlock: '16px 24px' }}>
-                We'd Love to Hear From You
+                We'd Love to <span className="frprotech-gradient-text">Hear From You</span>
               </h2>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.7', marginBottom: '32px' }}>
                 Whether you need a full digital product engineering team, a responsive UI overhaul, or specialized Next.js consulting, our senior team is ready.

@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import FloatingSocials from "../components/Common/FloatingSocials";
+import ScrollToTop from "../components/Common/ScrollToTop";
 
 export const metadata = {
   title: "Orbit Digital | Web Development, AI Automation & Digital Marketing Agency",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
         <Footer />
         <FloatingSocials />
+        <ScrollToTop />
       </body>
     </html>
   );

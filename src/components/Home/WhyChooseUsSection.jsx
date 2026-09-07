@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Container from '../Common/Container';
 import SectionHeading from '../Common/SectionHeading';
-import { Users, Code2, BarChart3, UserCheck, RotateCw, CheckCircle2 } from 'lucide-react';
+import { Users, Code2, BarChart3, UserCheck, CheckCircle2 } from 'lucide-react';
 
 const reasons = [
   {
@@ -55,7 +55,12 @@ export default function WhyChooseUsSection() {
       <Container>
         <SectionHeading
           badge="Why Orbit Digital"
-          title="Why Businesses Choose Orbit Digital"
+          title={
+            <>
+              Why Businesses Choose{' '}
+              <span className="frprotech-gradient-text">Orbit Digital</span>
+            </>
+          }
           description="We group our services into four connected pillars to replace disjointed vendors with a single, high-performing partner."
           align="center"
         />
@@ -92,27 +97,17 @@ export default function WhyChooseUsSection() {
 
                   {/* BACK OF CARD: Show Everything */}
                   <div className="flip-card__back">
-                    <div>
-                      <div className="flip-card__back-header">
-                        <span className="flip-card__back-badge">
-                          <CheckCircle2 size={13} />
-                          {item.highlight}
-                        </span>
-                        <span style={{ fontSize: '0.78rem', color: '#9ca3af', fontWeight: '700' }}>
-                          {item.number}
-                        </span>
-                      </div>
-                      <h4 className="flip-card__back-title">{item.title}</h4>
-                      <p className="flip-card__back-desc">{item.desc}</p>
-                    </div>
-
-                    <div className="flip-card__back-footer">
-                      <span>Orbit Digital Standard</span>
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: '#a5b4fc' }}>
-                        <RotateCw size={12} />
-                        Flip back
+                    <div className="flip-card__back-header">
+                      <span className="flip-card__back-badge">
+                        <CheckCircle2 size={13} />
+                        {item.highlight}
+                      </span>
+                      <span style={{ fontSize: '0.78rem', color: '#9ca3af', fontWeight: '700' }}>
+                        {item.number}
                       </span>
                     </div>
+                    <h4 className="flip-card__back-title">{item.title}</h4>
+                    <p className="flip-card__back-desc">{item.desc}</p>
                   </div>
                 </div>
               </div>

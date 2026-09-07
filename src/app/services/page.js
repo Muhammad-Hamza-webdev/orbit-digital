@@ -22,12 +22,12 @@ export default function ServicesPage() {
   return (
     <>
       {/* 1. Hero Section */}
-      <section className="section section-bg-surface" style={{ paddingBottom: 'clamp(40px, 6vw, 80px)' }}>
+      <section className="section section-bg-surface">
         <Container>
           <div className="section-heading section-heading--wide text-center">
             <span className="section-badge">Our Services</span>
             <h1 className="heading-1">
-              Everything Your Brand Needs to <span className="text-gradient">Develop, Automate, Create, and Grow.</span>
+              Everything Your Brand Needs to <span className="frprotech-gradient-text">Develop, Automate, Create, and Grow.</span>
             </h1>
             <p className="text-lead">
               We group our services into four categories so you always know exactly where to start.
@@ -64,7 +64,7 @@ export default function ServicesPage() {
         <Container>
           <div className="card cta-banner-card">
             <h2 className="heading-2 cta-banner-card__title">
-              Not Sure Which Service Fits Your Business?
+              Not Sure Which Service Fits Your <span className="frprotech-gradient-text">Business</span>?
             </h2>
             <p className="cta-banner-card__text">
               Tell us what&apos;s not working today — we&apos;ll recommend the right mix of Develop, Automate, Create, and Grow for your goals and budget.
