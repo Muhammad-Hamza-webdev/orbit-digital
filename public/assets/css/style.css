@@ -126,6 +126,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   width: 100%;
   max-width: 3840px;
@@ -138,6 +142,10 @@ html, body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.services-category-section {
+  scroll-margin-top: 100px;
 }
 
 img, svg, video {

@@ -12,11 +12,34 @@ export default function Header() {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close mobile menu and dropdowns on route navigation
+  // Close mobile menu and dropdowns on route navigation, and handle hash scroll
   useEffect(() => {
     setIsMenuOpen(false);
     setIsServicesOpen(false);
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.replace('#', '');
+      const el = document.getElementById(hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      }
+    }
   }, [pathname]);
+
+  const handleSubLinkClick = (href) => {
+    setIsServicesOpen(false);
+    setIsMenuOpen(false);
+    if (pathname === '/services') {
+      const hash = href.split('#')[1];
+      if (hash) {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
@@ -125,7 +148,7 @@ export default function Header() {
                           href={subLink.href}
                           className="header-pill__dropdown-item"
                           role="menuitem"
-                          onClick={() => setIsServicesOpen(false)}
+                          onClick={() => handleSubLinkClick(subLink.href)}
                         >
                           {subLink.name}
                         </Link>
@@ -273,7 +296,7 @@ export default function Header() {
                             key={subLink.name}
                             href={subLink.href}
                             className="mobile-drawer__sublink"
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={() => handleSubLinkClick(subLink.href)}
                           >
                             {subLink.name}
                           </Link>

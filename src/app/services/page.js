@@ -2,7 +2,8 @@ import React from 'react';
 import Container from '../../components/Common/Container';
 import SectionHeading from '../../components/Common/SectionHeading';
 import ServiceCard from '../../components/Services/ServiceCard';
-import { servicesData } from '../../data/services';
+import Button from '../../components/Common/Button';
+import { serviceCategories } from '../../data/services';
 
 export const metadata = {
   title: "Our Services | Web Development, AI Automation, Design & Marketing — Orbit Digital",
@@ -21,7 +22,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* 1. Hero Section */}
-      <section className="section section-bg-surface">
+      <section className="section section-bg-surface" style={{ paddingBottom: 'clamp(40px, 6vw, 80px)' }}>
         <Container>
           <div className="section-heading section-heading--wide text-center">
             <span className="section-badge">Our Services</span>
@@ -35,19 +36,42 @@ export default function ServicesPage() {
         </Container>
       </section>
 
+      {/* 2. Four Service Categories */}
+      {serviceCategories.map((category, index) => (
+        <section
+          key={category.id}
+          id={category.id}
+          className={`section services-category-section ${index % 2 === 1 ? 'section-bg-surface' : ''}`}
+        >
+          <Container>
+            <SectionHeading
+              badge={category.badge}
+              title={category.heading}
+              description={category.description}
+            />
+
+            <div className="grid grid-2" style={{ marginTop: '36px' }}>
+              {category.services.map((service, sIdx) => (
+                <ServiceCard key={sIdx} service={service} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      ))}
+
+      {/* 3. Closing CTA */}
       <section className="section">
         <Container>
-          <SectionHeading
-            badge="Solutions Portfolio"
-            title="Designed for Infinite Scale & Growth"
-            description="Explore our specialized services built using native CSS, modern Next.js App Router, and robust cloud APIs."
-            align="center"
-          />
-
-          <div className="grid grid-3">
-            {servicesData.map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
+          <div className="card cta-banner-card">
+            <h2 className="heading-2 cta-banner-card__title">
+              Not Sure Which Service Fits Your Business?
+            </h2>
+            <p className="cta-banner-card__text">
+              Tell us what&apos;s not working today — we&apos;ll recommend the right mix of Develop, Automate, Create, and Grow for your goals and budget.
+            </p>
+            <Button href="/contact" variant="accent" size="lg" className="frprotech-btn-pill">
+              Talk to Our Team ↗
+            </Button>
           </div>
         </Container>
       </section>
