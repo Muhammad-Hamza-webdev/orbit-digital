@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Container from '../Common/Container';
+import { siteData } from '../../data/siteData';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { company, socialLinks, footer } = siteData;
 
   return (
     <footer className="footer-frprotech">
@@ -14,35 +16,39 @@ export default function Footer() {
           <div className="footer-col-brand">
             <Link href="/" className="footer-brand-link">
               <img
-                src="/assets/img/logo/Logo.png"
-                alt="Orbit Digital"
+                src={company.logo}
+                alt={company.name}
                 className="footer-logo-img"
+                width="140"
+                height="36"
+                loading="lazy"
+                decoding="async"
               />
             </Link>
 
             <p className="footer-bio-text">
-              High-performance web architecture, UI/UX design, and Next.js applications that build trust and convert visitors into loyal clients.
+              {footer.bio}
             </p>
 
             {/* Rounded Contact Badges */}
             <div className="footer-contact-badges">
-              <a href="mailto:theorbitdigitalpk@gmail.com" className="footer-contact-badge">
+              <a href={`mailto:${company.email}`} className="footer-contact-badge">
                 <div className="footer-contact-icon">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect width="20" height="16" x="2" y="4" rx="2" />
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
                 </div>
-                <span>theorbitdigitalpk@gmail.com</span>
+                <span>{company.email}</span>
               </a>
 
-              <a href="tel:+923015292380" className="footer-contact-badge">
+              <a href={`tel:+${company.phoneRaw}`} className="footer-contact-badge">
                 <div className="footer-contact-icon">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </div>
-                <span>+92 301 5292380</span>
+                <span>{company.phone}</span>
               </a>
             </div>
           </div>
@@ -51,11 +57,11 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4 className="footer-col-heading">Services</h4>
             <ul className="footer-nav-list">
-              <li><Link href="/services">Website Development</Link></li>
-              <li><Link href="/services">UI UX Design</Link></li>
-              <li><Link href="/services">Brand Identity</Link></li>
-              <li><Link href="/services">Digital Strategy</Link></li>
-              <li><Link href="/services">SEO & Growth</Link></li>
+              {footer.servicesLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href}>{link.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -63,12 +69,11 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4 className="footer-col-heading">Company</h4>
             <ul className="footer-nav-list">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/portfolio">Portfolio</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/contact">Get Started</Link></li>
+              {footer.companyLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href}>{link.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -79,7 +84,7 @@ export default function Footer() {
             {/* Rounded Social Icon Squares */}
             <div className="footer-social-row">
               <a
-                href="https://wa.me/923015292380"
+                href={socialLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-btn footer-social-btn--whatsapp"
@@ -90,7 +95,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com/company/the-orbit-digital-pk/"
+                href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-btn footer-social-btn--linkedin"
@@ -101,7 +106,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/theorbit.digital?stkn=bTRzbjkxczdud3h4"
+                href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-btn footer-social-btn--instagram"
@@ -114,7 +119,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/share/1JmJxnxKfv/"
+                href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-btn footer-social-btn--facebook"
@@ -141,10 +146,11 @@ export default function Footer() {
 
         {/* Footer Bottom Bar */}
         <div className="footer-bottom-bar">
-          <p>© {currentYear} Orbit Digital. All rights reserved.</p>
+          <p>© {currentYear} {footer.copyright}</p>
           <div className="footer-legal-links">
-            <Link href="/contact">Privacy Policy</Link>
-            <Link href="/contact">Terms of Service</Link>
+            {footer.legalLinks.map((link) => (
+              <Link key={link.name} href={link.href}>{link.name}</Link>
+            ))}
           </div>
         </div>
       </Container>

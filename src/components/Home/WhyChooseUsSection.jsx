@@ -3,50 +3,19 @@
 import React, { useState } from 'react';
 import Container from '../Common/Container';
 import SectionHeading from '../Common/SectionHeading';
+import { siteData } from '../../data/siteData';
 import { Users, Code2, BarChart3, UserCheck, CheckCircle2 } from 'lucide-react';
 
-const reasons = [
-  {
-    icon: Users,
-    iconVariant: 'primary',
-    number: '01',
-    title: 'One Unified Team',
-    desc: 'One team for development, design, automation, and marketing — no handoffs, no miscommunication between vendors.',
-    highlight: 'Unified Strategy',
-  },
-  {
-    icon: Code2,
-    iconVariant: 'accent',
-    number: '02',
-    title: 'Modern Tech Stack',
-    desc: 'Modern tech stack: Next.js, Shopify, WordPress, and AI-powered tools built for speed and Core Web Vitals.',
-    highlight: '95+ PageSpeed',
-  },
-  {
-    icon: BarChart3,
-    iconVariant: 'primary',
-    number: '03',
-    title: 'Transparent Reporting',
-    desc: "Transparent reporting — you see exactly what's working, and what we're changing next.",
-    highlight: 'Real-Time ROI',
-  },
-  {
-    icon: UserCheck,
-    iconVariant: 'accent',
-    number: '04',
-    title: 'Direct Expert Access',
-    desc: 'Direct access to the people doing the work, not a rotating account manager.',
-    highlight: 'Dedicated Team',
-  },
-];
+const iconMap = { Users, Code2, BarChart3, UserCheck };
 
 export default function WhyChooseUsSection() {
   const [flippedCards, setFlippedCards] = useState({});
+  const reasons = siteData.home.whyChooseUs;
 
-  const toggleFlip = (idx) => {
+  const toggleFlip = (id) => {
     setFlippedCards((prev) => ({
       ...prev,
-      [idx]: !prev[idx],
+      [id]: !prev[id],
     }));
   };
 
@@ -67,21 +36,21 @@ export default function WhyChooseUsSection() {
 
         {/* 4 Cards in 1 Row on Desktop */}
         <div className="why-choose-grid">
-          {reasons.map((item, idx) => {
-            const IconComponent = item.icon;
-            const isFlipped = !!flippedCards[idx];
+          {reasons.map((item) => {
+            const IconComponent = iconMap[item.iconName] || Users;
+            const isFlipped = !!flippedCards[item.number];
 
             return (
               <div
-                key={idx}
+                key={item.number}
                 className={`flip-card ${isFlipped ? 'is-flipped' : ''}`}
-                onClick={() => toggleFlip(idx)}
+                onClick={() => toggleFlip(item.number)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    toggleFlip(idx);
+                    toggleFlip(item.number);
                   }
                 }}
                 aria-label={`${item.title} card. Click to flip for details.`}

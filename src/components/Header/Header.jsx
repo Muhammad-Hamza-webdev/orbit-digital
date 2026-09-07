@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Button from '../Common/Button';
+import { siteData } from '../../data/siteData';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,10 +12,17 @@ export default function Header() {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close mobile menu and dropdowns on route navigation, and handle hash scroll
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  // Close mobile menu and dropdowns during render when pathname changes
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setIsMenuOpen(false);
     setIsServicesOpen(false);
+  }
+
+  // Handle hash scroll on route navigation
+  useEffect(() => {
     if (typeof window !== 'undefined' && window.location.hash) {
       const hash = window.location.hash.replace('#', '');
       const el = document.getElementById(hash);
@@ -66,25 +73,8 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const serviceDropdownItems = [
-    { name: 'Develop', href: '/services#develop' },
-    { name: 'Automate', href: '/services#automate' },
-    { name: 'Create', href: '/services#create' },
-    { name: 'Grow', href: '/services#grow' },
-  ];
-
-  const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-    { 
-      name: 'Services', 
-      href: '/services',
-      subLinks: serviceDropdownItems,
-    },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact Us', href: '/contact' },
-  ];
+  const navLinks = siteData.navigation.main;
+  const logoUrl = siteData.company.logo;
 
   return (
     <>
@@ -96,7 +86,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="header-pill__logo">
             <img
-              src="/assets/img/logo/Logo.png"
+              src={logoUrl}
               alt="Orbit Digital"
               className="header-logo-img"
             />
@@ -181,7 +171,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="header-pill__logo">
             <img
-              src="/assets/img/logo/Logo.png"
+              src={logoUrl}
               alt="Orbit Digital"
               className="header-logo-img"
             />
@@ -222,7 +212,7 @@ export default function Header() {
         <div className="mobile-drawer__header">
           <Link href="/" className="header-pill__logo" onClick={() => setIsMenuOpen(false)}>
             <img
-              src="/assets/img/logo/Logo.png"
+              src={logoUrl}
               alt="Orbit Digital"
               className="header-logo-img"
             />

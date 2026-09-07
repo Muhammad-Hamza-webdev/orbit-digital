@@ -6,13 +6,16 @@ export default function BlogCard({ post }) {
     <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex' }}>
       <div className="card card-hover" style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'space-between' }}>
         <div>
-          <div style={{ height: '200px', borderRadius: 'var(--radius-md)', overflow: 'hidden', position: 'relative', marginBottom: '20px', background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-primary-light) 100%)' }}>
+          <div style={{ height: '200px', borderRadius: '20px', overflow: 'hidden', position: 'relative', marginBottom: '20px', background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-primary-light) 100%)' }}>
             {post.image && (
               <img
                 src={post.image}
                 alt={post.title}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                width="600"
+                height="400"
                 loading="lazy"
+                decoding="async"
               />
             )}
             <span className="badge" style={{ position: 'absolute', top: '14px', left: '14px', backgroundColor: 'var(--color-primary)', color: '#FFFFFF', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}>
@@ -36,7 +39,7 @@ export default function BlogCard({ post }) {
 
           {post.targetKeyword && (
             <div style={{ marginBottom: '20px' }}>
-              <span style={{ fontSize: '0.78rem', padding: '3px 10px', borderRadius: 'var(--radius-full)', backgroundColor: 'var(--color-primary-light)', color: 'var(--color-primary-dark)', fontWeight: '600' }}>
+              <span style={{ fontSize: '0.78rem', padding: '3px 10px', borderRadius: '20px', backgroundColor: 'var(--color-primary-light)', color: 'var(--color-primary-dark)', fontWeight: '600' }}>
                 Keyword: {post.targetKeyword}
               </span>
             </div>

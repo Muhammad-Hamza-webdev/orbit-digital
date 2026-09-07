@@ -5,7 +5,7 @@ export default function ProjectCard({ project }) {
     <div className="card card-hover" style={{ overflow: 'hidden', padding: '0', display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* Portfolio Card Banner Graphic */}
       <div style={{ height: '220px', background: 'linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', padding: '24px' }}>
-        <div style={{ padding: '12px 20px', backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)', textAlign: 'center' }}>
+        <div style={{ padding: '12px 20px', backgroundColor: '#FFFFFF', borderRadius: '20px', boxShadow: 'var(--shadow-md)', textAlign: 'center' }}>
           <span className="badge" style={{ backgroundColor: 'var(--color-primary)', color: '#FFFFFF', marginBottom: '6px' }}>
             {project.category}
           </span>
@@ -31,8 +31,8 @@ export default function ProjectCard({ project }) {
 
         <div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
-            {project.technologies.map((tech, idx) => (
-              <span key={idx} className="badge">
+            {project.technologies.map((tech) => (
+              <span key={tech} className="badge">
                 {tech}
               </span>
             ))}

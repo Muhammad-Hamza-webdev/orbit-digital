@@ -2,8 +2,8 @@ import React from 'react';
 import Container from '../../components/Common/Container';
 import SectionHeading from '../../components/Common/SectionHeading';
 import ServiceCard from '../../components/Services/ServiceCard';
-import Button from '../../components/Common/Button';
-import { serviceCategories } from '../../data/services';
+import CTASection from '../../components/Common/CTASection';
+import { siteData } from '../../data/siteData';
 
 export const metadata = {
   title: "Our Services | Web Development, AI Automation, Design & Marketing — Orbit Digital",
@@ -19,25 +19,28 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
+  const { hero, categories, cta } = siteData.services;
+
   return (
     <>
       {/* 1. Hero Section */}
       <section className="section section-bg-surface">
         <Container>
           <div className="section-heading section-heading--wide text-center">
-            <span className="section-badge">Our Services</span>
+            <span className="section-badge">{hero.badge}</span>
             <h1 className="heading-1">
-              Everything Your Brand Needs to <span className="frprotech-gradient-text">Develop, Automate, Create, and Grow.</span>
+              {hero.titlePart}
+              <span className="frprotech-gradient-text">{hero.highlight}</span>
             </h1>
             <p className="text-lead">
-              We group our services into four categories so you always know exactly where to start.
+              {hero.description}
             </p>
           </div>
         </Container>
       </section>
 
       {/* 2. Four Service Categories */}
-      {serviceCategories.map((category, index) => (
+      {categories.map((category, index) => (
         <section
           key={category.id}
           id={category.id}
@@ -51,8 +54,8 @@ export default function ServicesPage() {
             />
 
             <div className="grid grid-2" style={{ marginTop: '36px' }}>
-              {category.services.map((service, sIdx) => (
-                <ServiceCard key={sIdx} service={service} />
+              {category.services.map((service) => (
+                <ServiceCard key={service.slug} service={service} />
               ))}
             </div>
           </Container>
@@ -60,21 +63,16 @@ export default function ServicesPage() {
       ))}
 
       {/* 3. Closing CTA */}
-      <section className="section">
-        <Container>
-          <div className="card cta-banner-card">
-            <h2 className="heading-2 cta-banner-card__title">
-              Not Sure Which Service Fits Your <span className="frprotech-gradient-text">Business</span>?
-            </h2>
-            <p className="cta-banner-card__text">
-              Tell us what&apos;s not working today — we&apos;ll recommend the right mix of Develop, Automate, Create, and Grow for your goals and budget.
-            </p>
-            <Button href="/contact" variant="accent" size="lg" className="frprotech-btn-pill">
-              Talk to Our Team ↗
-            </Button>
-          </div>
-        </Container>
-      </section>
+      <CTASection
+        titlePart={cta.titlePart}
+        titleHighlight={cta.titleHighlight}
+        titleQuestion={cta.titleQuestion}
+        description={cta.description}
+        buttonText={cta.buttonText}
+        buttonHref={cta.buttonHref}
+        buttonVariant={cta.buttonVariant}
+        bgSurface={cta.bgSurface}
+      />
     </>
   );
 }

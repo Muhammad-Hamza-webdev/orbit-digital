@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Container from '../../../components/Common/Container';
 import BlogCard from '../../../components/Blog/BlogCard';
-import { blogData } from '../../../data/blog';
+import { siteData } from '../../../data/siteData';
+
+const blogData = siteData.blog.posts;
 
 export async function generateStaticParams() {
   return blogData.map((post) => ({
@@ -76,7 +78,7 @@ export default async function BlogPostPage({ params }) {
                 {post.category}
               </span>
               {post.targetKeyword && (
-                <span style={{ fontSize: '0.8rem', padding: '4px 12px', borderRadius: 'var(--radius-full)', backgroundColor: 'var(--color-primary-light)', color: 'var(--color-primary-dark)', fontWeight: '600' }}>
+                <span style={{ fontSize: '0.8rem', padding: '4px 12px', borderRadius: '20px', backgroundColor: 'var(--color-primary-light)', color: 'var(--color-primary-dark)', fontWeight: '600' }}>
                   Target Keyword: {post.targetKeyword}
                 </span>
               )}
@@ -110,6 +112,10 @@ export default async function BlogPostPage({ params }) {
                   src={post.image}
                   alt={post.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  width="1200"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             )}

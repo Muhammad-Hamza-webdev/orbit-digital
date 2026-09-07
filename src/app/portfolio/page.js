@@ -1,31 +1,36 @@
-"use client";
-
-import React, { useState } from 'react';
+import React from 'react';
 import Container from '../../components/Common/Container';
-import SectionHeading from '../../components/Common/SectionHeading';
-import ProjectCard from '../../components/Portfolio/ProjectCard';
-import { projectsData } from '../../data/projects';
+import PortfolioListClient from '../../components/Portfolio/PortfolioListClient';
+import { siteData } from '../../data/siteData';
+
+export const metadata = {
+  title: "Portfolio | Digital Case Studies & Web Architecture — Orbit Digital",
+  description: "Explore Orbit Digital's portfolio of web development, UI/UX design, cloud platforms, and brand systems for fast-growing businesses.",
+  openGraph: {
+    title: "Portfolio | Digital Case Studies & Web Architecture — Orbit Digital",
+    description: "Explore Orbit Digital's portfolio of web development, UI/UX design, cloud platforms, and brand systems for fast-growing businesses.",
+    url: "https://orbitdigital.app/portfolio",
+    siteName: "Orbit Digital",
+    locale: "en_US",
+    type: "website",
+  },
+};
 
 export default function PortfolioPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const categories = ['All', 'Web Development', 'UI/UX Design', 'Cloud Solutions', 'Branding'];
-
-  const filteredProjects = selectedCategory === 'All'
-    ? projectsData
-    : projectsData.filter((p) => p.category === selectedCategory);
+  const { hero, categories, projects } = siteData.portfolio;
 
   return (
     <>
       <section className="section section-bg-surface">
         <Container>
           <div style={{ maxWidth: '800px', marginInline: 'auto', textAlign: 'center' }}>
-            <span className="section-badge">Case Studies</span>
+            <span className="section-badge">{hero.badge}</span>
             <h1 className="heading-1" style={{ marginBlock: '16px 24px' }}>
-              Engineered Works & <span className="frprotech-gradient-text">Digital Impact</span>
+              {hero.titlePart}
+              <span className="frprotech-gradient-text">{hero.highlight}</span>
             </h1>
             <p className="text-lead">
-              Discover how Orbit Digital helps forward-thinking companies build responsive, scalable, and high-converting web applications.
+              {hero.description}
             </p>
           </div>
         </Container>
@@ -33,27 +38,7 @@ export default function PortfolioPage() {
 
       <section className="section">
         <Container>
-          {/* Category Filter Tabs */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '48px' }}>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`btn ${selectedCategory === cat ? 'btn-primary' : 'btn-secondary'} btn-sm`}
-                style={{ borderRadius: 'var(--radius-full)' }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Projects Grid */}
-          <div className="grid grid-3">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          <PortfolioListClient categories={categories} projects={projects} />
         </Container>
       </section>
     </>

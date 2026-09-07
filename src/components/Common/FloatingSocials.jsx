@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X } from 'lucide-react';
+import { siteData } from '../../data/siteData';
 
 const socialLinks = [
   {
     name: 'WhatsApp',
-    href: 'https://wa.me/923015292380',
+    href: siteData.socialLinks.whatsapp,
     ariaLabel: 'Contact Orbit Digital on WhatsApp',
     modifier: 'whatsapp',
     icon: (
@@ -17,7 +18,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/the-orbit-digital-pk/',
+    href: siteData.socialLinks.linkedin,
     ariaLabel: 'Open Orbit Digital on LinkedIn',
     modifier: 'linkedin',
     icon: (
@@ -28,7 +29,7 @@ const socialLinks = [
   },
   {
     name: 'Facebook',
-    href: 'https://www.facebook.com/share/1JmJxnxKfv/',
+    href: siteData.socialLinks.facebook,
     ariaLabel: 'Open Orbit Digital on Facebook',
     modifier: 'facebook',
     icon: (
@@ -39,7 +40,7 @@ const socialLinks = [
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/theorbit.digital?stkn=bTRzbjkxczdud3h4',
+    href: siteData.socialLinks.instagram,
     ariaLabel: 'Open Orbit Digital on Instagram',
     modifier: 'instagram',
     icon: (

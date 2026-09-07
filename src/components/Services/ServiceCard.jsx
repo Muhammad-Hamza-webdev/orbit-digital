@@ -21,8 +21,8 @@ export default function ServiceCard({ service }) {
 
         {service.deliverables && service.deliverables.length > 0 && (
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
-            {service.deliverables.map((item, idx) => (
-              <li key={idx} style={{ fontSize: '0.9rem', color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {service.deliverables.map((item) => (
+              <li key={item} style={{ fontSize: '0.9rem', color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>✓</span> {item}
               </li>
             ))}

@@ -1,10 +1,13 @@
 import React from 'react';
 import Container from '../Common/Container';
 import Button from '../Common/Button';
+import { siteData } from '../../data/siteData';
 
 // Static server component — no JS, no hydration cost, instant FCP/LCP.
 // The animated gradient text and the dot background are pure CSS.
 export default function HeroSection() {
+  const { hero } = siteData.home;
+
   return (
     <section className="section frprotech-hero-section">
       {/* Background: pure CSS dot grid, no JS nodes */}
@@ -23,24 +26,28 @@ export default function HeroSection() {
           <div className="frprotech-fade-item fade-1">
             <span className="frprotech-top-badge">
               <span className="frprotech-badge-star">★</span>
-              <span>Top Rated Product &amp; Engineering Agency</span>
+              <span>{hero.badge}</span>
             </span>
           </div>
 
           <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
-            If People <span className="frprotech-gradient-text">Don&apos;t Understand</span> Your Product, They <span className="frprotech-gradient-text">Won&apos;t Trust</span> It.
+            {hero.titlePart1}
+            <span className="frprotech-gradient-text">{hero.titleHighlight1}</span>
+            {hero.titlePart2}
+            <span className="frprotech-gradient-text">{hero.titleHighlight2}</span>
+            {hero.titlePart3}
           </h1>
 
           <p className="text-lead frprotech-hero-desc frprotech-fade-item fade-3">
-            Orbit Digital helps brands develop fast websites, automate everyday workflows with AI, create scroll-stopping content, and grow revenue with performance marketing and SEO — all from one team, so nothing gets lost between agencies.
+            {hero.description}
           </p>
 
           <div className="frprotech-cta-group frprotech-fade-item fade-4">
-            <Button href="/contact" variant="primary" size="lg" className="frprotech-btn-pill">
-              Book a Free Consultation ↗
+            <Button href={hero.primaryCta.href} variant="primary" size="lg" className="frprotech-btn-pill">
+              {hero.primaryCta.text}
             </Button>
-            <Button href="/services" variant="secondary" size="lg" className="frprotech-btn-pill">
-              See Our Services ↗
+            <Button href={hero.secondaryCta.href} variant="secondary" size="lg" className="frprotech-btn-pill">
+              {hero.secondaryCta.text}
             </Button>
           </div>
 
@@ -52,7 +59,7 @@ export default function HeroSection() {
                   <rect width="20" height="14" x="2" y="6" rx="2" />
                 </svg>
               </div>
-              <span>3,000+ Projects Completed</span>
+              <span>{hero.metrics[0].label}</span>
             </div>
 
             <div className="frprotech-metric-card">
@@ -61,7 +68,7 @@ export default function HeroSection() {
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                 </svg>
               </div>
-              <span>2,000+ 5-Star Reviews</span>
+              <span>{hero.metrics[1].label}</span>
             </div>
 
             <div className="frprotech-metric-card">
@@ -71,7 +78,7 @@ export default function HeroSection() {
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
-              <span>10 Years Experience</span>
+              <span>{hero.metrics[2].label}</span>
             </div>
           </div>
 

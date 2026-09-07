@@ -28,7 +28,10 @@ export default function TeamSlider() {
           src={member.image}
           alt={member.name}
           className="team-card__avatar"
+          width="400"
+          height="400"
           loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="team-card__body">

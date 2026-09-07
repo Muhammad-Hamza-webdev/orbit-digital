@@ -9,7 +9,6 @@ export default function ContactForm() {
     email: '',
     phone: '',
     service: 'Web Development',
-    budget: '',
     message: ''
   });
 
@@ -33,7 +32,7 @@ export default function ContactForm() {
     width: '100%',
     height: '48px',
     padding: '12px 16px',
-    borderRadius: 'var(--radius-sm)',
+    borderRadius: '20px',
     border: '1px solid var(--color-border)',
     backgroundColor: 'var(--color-surface)',
     boxSizing: 'border-box',
@@ -50,7 +49,7 @@ export default function ContactForm() {
       </p>
 
       {status.submitted ? (
-        <div style={{ padding: '24px', backgroundColor: '#DCFCE7', borderRadius: 'var(--radius-md)', border: '1px solid #86EFAC', color: '#166534' }}>
+        <div style={{ padding: '24px', backgroundColor: '#DCFCE7', borderRadius: '20px', border: '1px solid #86EFAC', color: '#166534' }}>
           <h4 style={{ fontWeight: '800', marginBottom: '8px', fontSize: '1.1rem' }}>Message Received!</h4>
           <p>{status.message}</p>
         </div>
@@ -108,48 +107,28 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="budget" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
-                Estimated Budget
+              <label htmlFor="service" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
+                Which service are you interested in? *
               </label>
               <select
-                id="budget"
-                name="budget"
-                value={formData.budget}
+                id="service"
+                name="service"
+                required
+                value={formData.service}
                 onChange={handleChange}
                 style={inputStyle}
               >
-                <option value="">Select Estimated Budget</option>
-                <option value="<$5k">Under $5,000</option>
-                <option value="$5k - $10k">$5,000 – $10,000</option>
-                <option value="$10k - $25k">$10,000 – $25,000</option>
-                <option value="$25k - $50k">$25,000 – $50,000</option>
-                <option value="$50k+">$50,000+</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Shopify/WordPress">Shopify/WordPress</option>
+                <option value="AI Automation">AI Automation</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Performance Marketing">Performance Marketing</option>
+                <option value="SEO">SEO</option>
+                <option value="Not sure yet">Not sure yet</option>
               </select>
             </div>
-          </div>
-
-          <div>
-            <label htmlFor="service" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
-              Which service are you interested in? *
-            </label>
-            <select
-              id="service"
-              name="service"
-              required
-              value={formData.service}
-              onChange={handleChange}
-              style={inputStyle}
-            >
-              <option value="Web Development">Web Development</option>
-              <option value="Shopify/WordPress">Shopify/WordPress</option>
-              <option value="AI Automation">AI Automation</option>
-              <option value="Graphic Design">Graphic Design</option>
-              <option value="Video Editing">Video Editing</option>
-              <option value="Social Media">Social Media</option>
-              <option value="Performance Marketing">Performance Marketing</option>
-              <option value="SEO">SEO</option>
-              <option value="Not sure yet">Not sure yet</option>
-            </select>
           </div>
 
           <div>
@@ -164,7 +143,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               placeholder="Tell us a bit about your business and what you're looking to develop, automate, create, or grow..."
-              style={{ width: '100%', padding: '12px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)', resize: 'vertical' }}
+              style={{ width: '100%', padding: '12px 16px', borderRadius: '20px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)', resize: 'vertical' }}
             />
           </div>
 

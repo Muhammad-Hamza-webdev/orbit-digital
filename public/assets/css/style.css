@@ -95,7 +95,7 @@
   --space-2xl: 6rem;    /* 96px */
 
   /* Border Radii */
-  --radius-sm: 8px;
+  --radius-sm: 20px;
   --radius-md: 20px;
   --radius-lg: 20px;
   --radius-xl: 20px;
@@ -191,7 +191,7 @@ ul, ol {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   border: 2px solid transparent;
   cursor: pointer;
   transition: var(--transition-normal);
@@ -257,7 +257,7 @@ ul, ol {
 .btn-lg {
   padding: 18px 36px;
   font-size: 1.125rem;
-  border-radius: var(--radius-lg);
+  border-radius: 20px;
 }
 
 .btn-full {
@@ -403,7 +403,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border-radius: var(--radius-full);
+  border-radius: 20px;
   margin-bottom: 16px;
 }
 
@@ -434,7 +434,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 4px 12px;
   font-size: 0.75rem;
   font-weight: 600;
-  border-radius: var(--radius-full);
+  border-radius: 20px;
   background-color: var(--color-surface);
   color: var(--color-text-muted);
 }
@@ -571,7 +571,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 20px;
   background-color: rgba(91, 95, 239, 0.05);
   border: 1px solid rgba(91, 95, 239, 0.2);
-  border-radius: var(--radius-full);
+  border-radius: 20px;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-secondary);
@@ -624,7 +624,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .frprotech-btn-pill {
-  border-radius: var(--radius-full) !important;
+  border-radius: 20px !important;
   padding: 16px 36px !important;
   font-size: 1rem !important;
 }
@@ -702,7 +702,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px 16px;
   background-color: #1F1F1F;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   color: #E5E7EB;
   text-decoration: none;
   font-size: 0.875rem;
@@ -761,7 +761,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer-social-btn {
   width: 38px;
   height: 38px;
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -824,7 +824,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF;
   font-size: 0.9rem;
   font-weight: 600;
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(91, 95, 239, 0.25);
   transition: var(--transition-normal);
@@ -1001,7 +1001,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF;
   background: rgba(255, 255, 255, 0.22);
   padding: 10px 20px;
-  border-radius: var(--radius-full);
+  border-radius: 20px;
 }
 
 /* ==========================================
@@ -1144,7 +1144,7 @@ h1, h2, h3, h4, h5, h6 {
 .swiper-pagination-bullet {
   width: 20px !important;
   height: 8px;
-  border-radius: 10px !important;
+  border-radius: 20px !important;
   background: var(--color-primary);
   opacity: 0.35;
   transition: width 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
@@ -1152,7 +1152,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .swiper-pagination-bullet-active {
   width: 40px !important;
-  border-radius: 10px !important;
+  border-radius: 20px !important;
   background: var(--color-primary);
   opacity: 1;
 }
@@ -1196,7 +1196,7 @@ h1, h2, h3, h4, h5, h6 {
 .feature-card__icon {
   width: 42px;
   height: 42px;
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1281,6 +1281,12 @@ h1, h2, h3, h4, h5, h6 {
   }
   .team-desktop-grid {
     display: grid !important;
+  }
+}
+
+@media (min-width: 551px) and (max-width: 767px) {
+  .team-desktop-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
@@ -1412,7 +1418,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   padding: 6px 14px;
-  border-radius: var(--radius-full);
+  border-radius: 20px;
 }
 
 .cs-stack-card__visual {
@@ -1430,7 +1436,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 17px;
+  border-radius: 20px;
 }
 
 @media (max-width: 768px) {
@@ -1489,7 +1495,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .cs-stack-card__img {
-    border-radius: 17px;
+    border-radius: 20px;
   }
 }
 
@@ -1538,7 +1544,7 @@ h1, h2, h3, h4, h5, h6 {
 .floating-socials__toggle {
   width: 52px;
   height: 52px;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   background: var(--color-primary);
   color: #FFFFFF;
   border: none;
@@ -1611,7 +1617,7 @@ h1, h2, h3, h4, h5, h6 {
 .floating-socials__item {
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   background: #FFFFFF;
   color: var(--color-secondary);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -1707,7 +1713,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.75rem;
   font-weight: 600;
   padding: 5px 10px;
-  border-radius: var(--radius-sm);
+  border-radius: 20px;
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
@@ -1887,7 +1893,7 @@ h1, h2, h3, h4, h5, h6 {
 .flip-card__front-icon {
   width: 68px;
   height: 68px;
-  border-radius: 18px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1943,7 +1949,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.76rem;
   font-weight: 700;
   padding: 4px 12px;
-  border-radius: var(--radius-full);
+  border-radius: 20px;
   background: rgba(91, 95, 239, 0.2);
   color: #c7d2fe;
   border: 1px solid rgba(165, 180, 252, 0.3);

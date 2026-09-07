@@ -79,6 +79,10 @@ export default function BlogListClient({ posts }) {
                   src={featuredPost.image}
                   alt={featuredPost.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             )}
@@ -98,7 +102,7 @@ export default function BlogListClient({ posts }) {
                 onClick={() => setSelectedCategory(cat)}
                 style={{
                   padding: '8px 20px',
-                  borderRadius: 'var(--radius-full)',
+                  borderRadius: '20px',
                   border: isActive ? '1px solid var(--color-primary)' : '1px solid var(--color-border)',
                   backgroundColor: isActive ? 'var(--color-primary)' : 'var(--color-surface)',
                   color: isActive ? '#FFFFFF' : 'var(--color-text)',
@@ -124,7 +128,7 @@ export default function BlogListClient({ posts }) {
             style={{
               width: '100%',
               padding: '14px 22px',
-              borderRadius: 'var(--radius-full)',
+              borderRadius: '20px',
               border: '1px solid var(--color-border)',
               backgroundColor: 'var(--color-surface)',
               fontSize: '0.95rem',
