@@ -739,62 +739,53 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  background-color: #1F1F1F;
+  color: #9CA3AF;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: transform var(--transition-fast), filter var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  transition: transform var(--transition-fast), filter var(--transition-fast), box-shadow var(--transition-fast), background 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 .footer-social-btn svg {
   display: block;
-}
-
-.footer-social-btn--whatsapp {
-  background-color: #25D366;
-  border-color: #25D366;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.28);
+  transition: color 0.25s ease, stroke 0.25s ease;
 }
 
 .footer-social-btn--whatsapp:hover {
+  background-color: #25D366;
+  border-color: #25D366;
+  color: #FFFFFF;
   transform: translateY(-3px) scale(1.08);
-  filter: brightness(1.12);
-  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.48);
-}
-
-.footer-social-btn--linkedin {
-  background-color: #0A66C2;
-  border-color: #0A66C2;
-  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.28);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
 }
 
 .footer-social-btn--linkedin:hover {
+  background-color: #0A66C2;
+  border-color: #0A66C2;
+  color: #FFFFFF;
   transform: translateY(-3px) scale(1.08);
-  filter: brightness(1.12);
-  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.48);
-}
-
-.footer-social-btn--instagram {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  border-color: transparent;
-  box-shadow: 0 4px 12px rgba(214, 36, 159, 0.28);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.45);
 }
 
 .footer-social-btn--instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  border-color: transparent;
+  color: #FFFFFF;
   transform: translateY(-3px) scale(1.08);
-  filter: brightness(1.12);
-  box-shadow: 0 6px 18px rgba(214, 36, 159, 0.48);
-}
-
-.footer-social-btn--facebook {
-  background-color: #1877F2;
-  border-color: #1877F2;
-  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.28);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 18px rgba(214, 36, 159, 0.45);
 }
 
 .footer-social-btn--facebook:hover {
+  background-color: #1877F2;
+  border-color: #1877F2;
+  color: #FFFFFF;
   transform: translateY(-3px) scale(1.08);
-  filter: brightness(1.12);
-  box-shadow: 0 6px 18px rgba(24, 119, 242, 0.48);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 18px rgba(24, 119, 242, 0.45);
 }
 
 .footer-cta-btn {
@@ -1785,4 +1776,185 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
+
+/* ==========================================
+   WHY CHOOSE US 3D FLIP CARDS
+   ========================================== */
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .why-choose-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.flip-card {
+  perspective: 1000px;
+  min-height: 290px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flip-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 290px;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card__inner,
+.flip-card:focus-within .flip-card__inner,
+.flip-card.is-flipped .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card__front,
+.flip-card__back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.flip-card__front {
+  background: var(--color-card-bg, #ffffff);
+  border: 1px solid var(--color-card-border, #e5e7eb);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transform: rotateY(0deg);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.flip-card:hover .flip-card__front {
+  box-shadow: 0 14px 35px rgba(91, 95, 239, 0.12);
+  border-color: rgba(91, 95, 239, 0.35);
+}
+
+.flip-card__front-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.flip-card:hover .flip-card__front-icon {
+  transform: scale(1.08);
+}
+
+.flip-card__front-title {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  line-height: 1.35;
+}
+
+.flip-card__back {
+  background: linear-gradient(145deg, #111827 0%, #1c2136 100%);
+  color: #ffffff;
+  border: 1px solid #374151;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  transform: rotateY(180deg);
+  justify-content: space-between;
+  text-align: left;
+  position: relative;
+}
+
+.flip-card__back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.flip-card__back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.flip-card__back-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(91, 95, 239, 0.2);
+  color: #c7d2fe;
+  border: 1px solid rgba(165, 180, 252, 0.3);
+}
+
+.flip-card__back-title {
+  color: #ffffff;
+  font-size: 1.12rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.flip-card__back-desc {
+  color: #d1d5db;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.flip-card__back-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+  .flip-card {
+    min-height: 260px;
+  }
+  .flip-card__inner {
+    min-height: 260px;
+  }
+  .flip-card__front,
+  .flip-card__back {
+    padding: 24px 20px;
+  }
+}
+
+
 

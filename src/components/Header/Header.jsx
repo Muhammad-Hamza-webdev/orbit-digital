@@ -83,6 +83,7 @@ export default function Header() {
     },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Blog', href: '/blog' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
@@ -318,13 +319,6 @@ export default function Header() {
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
-              className={`mobile-drawer__link ${pathname === '/contact' ? 'active' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact Us
-            </Link>
           </nav>
 
           <div className="mobile-drawer__footer">
