@@ -12,7 +12,9 @@ export default function ScrollToTop() {
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       if (scrollHeight > 0) {
         const scrollPercentage = (scrollTop / scrollHeight) * 100;
-        setIsVisible(scrollPercentage >= 20);
+        const isMobile = window.innerWidth < 768;
+        const threshold = isMobile ? 5 : 10;
+        setIsVisible(scrollPercentage >= threshold);
       }
     };
 
