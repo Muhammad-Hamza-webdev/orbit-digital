@@ -332,7 +332,7 @@ export default function Header() {
               Get Started ↗
             </Button> */}
             <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
-              hello@orbitdigital.com • +1 (800) 555-0199
+              theorbitdigitalpk@gmail.com • +92 301 5292380
             </div>
           </div>
         </div>

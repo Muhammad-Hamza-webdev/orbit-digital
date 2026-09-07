@@ -3,6 +3,8 @@ import OurWorkSection from "../components/Home/OurWorkSection";
 import AccordionSection from "../components/Home/AccordionSection";
 import ProcessSection from "../components/Home/ProcessSection";
 import TestimonialsSection from "../components/Home/TestimonialsSection";
+import WhyChooseUsSection from "../components/Home/WhyChooseUsSection";
+import ClosingCTA from "../components/Home/ClosingCTA";
 
 export default function Home() {
   return (
@@ -19,6 +21,12 @@ export default function Home() {
       {/* 4. Process & Testimonials */}
       <ProcessSection />
       <TestimonialsSection />
+
+      {/* 5. Why Businesses Choose Orbit Digital */}
+      <WhyChooseUsSection />
+
+      {/* 6. Closing CTA */}
+      <ClosingCTA />
     </>
   );
 }

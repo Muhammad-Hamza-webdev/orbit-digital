@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import FloatingSocials from "../components/Common/FloatingSocials";
 
 export const metadata = {
   title: "Orbit Digital | Web Development, AI Automation & Digital Marketing Agency",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <Footer />
+        <FloatingSocials />
       </body>
     </html>
   );

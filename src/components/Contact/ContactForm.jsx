@@ -8,8 +8,8 @@ export default function ContactForm() {
     name: '',
     email: '',
     phone: '',
-    service: 'web-development',
-    budget: '$10k - $25k',
+    service: 'Web Development',
+    budget: '',
     message: ''
   });
 
@@ -25,8 +25,19 @@ export default function ContactForm() {
     // Front-end state handling demonstration as per spec section 31
     setStatus({
       submitted: true,
-      message: "Thank you for reaching out! Orbit Digital's team will contact you within 24 hours."
+      message: "Thank you for reaching out! Orbit Digital's team will contact you within one business day."
     });
+  };
+
+  const inputStyle = {
+    width: '100%',
+    height: '48px',
+    padding: '12px 16px',
+    borderRadius: 'var(--radius-sm)',
+    border: '1px solid var(--color-border)',
+    backgroundColor: 'var(--color-surface)',
+    boxSizing: 'border-box',
+    fontSize: '0.95rem'
   };
 
   return (
@@ -58,7 +69,7 @@ export default function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Elena Rostova"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)' }}
+                style={inputStyle}
               />
             </div>
 
@@ -74,7 +85,7 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="elena@company.com"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)' }}
+                style={inputStyle}
               />
             </div>
           </div>
@@ -82,61 +93,68 @@ export default function ContactForm() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
             <div>
               <label htmlFor="phone" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
-                Phone / WhatsApp
+                Phone / WhatsApp Number *
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
+                required
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+1 (555) 000-0000"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)' }}
+                placeholder="+92 301 5292380"
+                style={inputStyle}
               />
             </div>
 
             <div>
-              <label htmlFor="service" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
-                Primary Service Required
+              <label htmlFor="budget" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
+                Estimated Budget
               </label>
               <select
-                id="service"
-                name="service"
-                value={formData.service}
+                id="budget"
+                name="budget"
+                value={formData.budget}
                 onChange={handleChange}
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)' }}
+                style={inputStyle}
               >
-                <option value="web-development">Web Development & Architecture</option>
-                <option value="ui-ux-design">UI/UX Product Design</option>
-                <option value="digital-strategy">Digital Product Strategy</option>
-                <option value="cloud-mobile">Cloud Solutions & Mobile Apps</option>
-                <option value="brand-identity">Brand Identity & Motion</option>
-                <option value="growth-seo">SEO & Growth Engineering</option>
+                <option value="">Select Estimated Budget</option>
+                <option value="<$5k">Under $5,000</option>
+                <option value="$5k - $10k">$5,000 – $10,000</option>
+                <option value="$10k - $25k">$10,000 – $25,000</option>
+                <option value="$25k - $50k">$25,000 – $50,000</option>
+                <option value="$50k+">$50,000+</option>
               </select>
             </div>
           </div>
 
           <div>
-            <label htmlFor="budget" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
-              Project Budget Range
+            <label htmlFor="service" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
+              Which service are you interested in? *
             </label>
             <select
-              id="budget"
-              name="budget"
-              value={formData.budget}
+              id="service"
+              name="service"
+              required
+              value={formData.service}
               onChange={handleChange}
-              style={{ width: '100%', padding: '12px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)' }}
+              style={inputStyle}
             >
-              <option value="<$10k">Under $10,000</option>
-              <option value="$10k - $25k">$10,000 - $25,000</option>
-              <option value="$25k - $50k">$25,000 - $50,000</option>
-              <option value="$50k+">$50,000+</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Shopify/WordPress">Shopify/WordPress</option>
+              <option value="AI Automation">AI Automation</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Video Editing">Video Editing</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Performance Marketing">Performance Marketing</option>
+              <option value="SEO">SEO</option>
+              <option value="Not sure yet">Not sure yet</option>
             </select>
           </div>
 
           <div>
             <label htmlFor="message" style={{ display: 'block', fontWeight: '600', marginBottom: '8px', fontSize: '0.9rem' }}>
-              Project Summary & Goals *
+              Project Details / Message *
             </label>
             <textarea
               id="message"
@@ -145,13 +163,13 @@ export default function ContactForm() {
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              placeholder="Describe your project, goals, key features, and timeline..."
+              placeholder="Tell us a bit about your business and what you're looking to develop, automate, create, or grow..."
               style={{ width: '100%', padding: '12px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)', resize: 'vertical' }}
             />
           </div>
 
           <Button type="submit" variant="primary" size="lg" fullWidth>
-            Submit Inquiry
+            Send My Project Details
           </Button>
         </form>
       )}
