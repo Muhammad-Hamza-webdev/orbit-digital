@@ -516,6 +516,148 @@ body {
   justify-content: flex-start;
 }
 
+/* Section Spacing Base (Mobile Defaults) */
+.section {
+  padding: 40px 10px;
+}
+
+.padding-top-zero {
+  padding: 0 10px 40px 10px;
+  margin-top: -120px;
+}
+
+.frprotech-hero-section {
+  padding: 40px 10px;
+  min-height: auto;
+}
+
+/* Stacking Cards Section (Mobile Default) */
+.cs-stack-section {
+  padding-top: 24px;
+  padding-bottom: 0;
+}
+
+.cs-stack-wrapper {
+  padding-inline: 14px;
+}
+
+.cs-stack-card {
+  top: calc(75px + var(--card-index, 0) * 18px);
+  margin-bottom: 30vh;
+}
+
+.cs-stack-card__inner {
+  flex-direction: column;
+  padding: 20px 18px 22px;
+  gap: 14px;
+  min-height: auto;
+}
+
+.cs-stack-card__header {
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cs-stack-card__num {
+  font-size: clamp(56px, 16vw, 80px);
+  top: -10px;
+  left: 16px;
+}
+
+.cs-stack-card__title {
+  font-size: 1.25rem;
+}
+
+.cs-stack-card__desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.cs-stack-card__pill {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+}
+
+.cs-stack-card__visual {
+  width: 100%;
+  height: 150px;
+}
+
+/* Floating Socials (Mobile Default) */
+.floating-socials {
+  left: 16px;
+  bottom: 20px;
+  gap: 10px;
+}
+
+.floating-socials__toggle {
+  width: 48px;
+  height: 48px;
+}
+
+.floating-socials__item {
+  width: 42px;
+  height: 42px;
+}
+
+.floating-socials__tooltip {
+  display: none;
+}
+
+/* Scroll To Top (Mobile Default) */
+.scroll-to-top {
+  right: 20px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+}
+
+/* Why Choose Us Grid (Mobile Default) */
+.why-choose-grid {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Flip Card (Mobile Default) */
+.flip-card,
+.flip-card__inner {
+  min-height: 260px;
+}
+
+.flip-card__front,
+.flip-card__back {
+  padding: 24px 20px;
+}
+
+/* About Page — Split Layout (Mobile Default) */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 3vw, 40px);
+  align-items: stretch;
+}
+
+.about-img-placeholder {
+  min-height: 360px;
+  border-radius: 20px;
+  border: 2px dashed var(--color-border, #e5e7eb);
+  background-color: var(--color-surface, #f9fafb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-img-placeholder__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #9ca3af);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
 
 
 /* ==========================================
@@ -528,9 +670,51 @@ body {
     max-width: 540px;
   }
 
+  /* Section Spacing */
+  .padding-top-zero {
+    margin-top: 0;
+  }
+
   /* Footer */
   .footer-main-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  /* Team Section */
+  .team-mobile-slider {
+    display: none !important;
+  }
+  .team-desktop-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Floating Socials */
+  .floating-socials {
+    left: 20px;
+    bottom: 30px;
+    gap: 12px;
+  }
+
+  .floating-socials__toggle {
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating-socials__item {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-socials__tooltip {
+    display: block;
+  }
+
+  /* Scroll To Top */
+  .scroll-to-top {
+    bottom: 30px;
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -543,6 +727,12 @@ body {
   /* Grid Reflows */
   .grid-2 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Why Choose Us Grid */
+  .why-choose-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
 
 
@@ -576,6 +766,30 @@ body {
     display: none;
   }
 
+  /* Section Spacing */
+  .section {
+    padding: 60px 10px;
+  }
+
+  .padding-top-zero {
+    padding: 0 0 80px 0;
+  }
+
+  .frprotech-hero-section {
+    padding: 60px 10px;
+  }
+
+  /* Flip Card */
+  .flip-card,
+  .flip-card__inner {
+    min-height: 290px;
+  }
+
+  .flip-card__front,
+  .flip-card__back {
+    padding: 32px 24px;
+  }
+
   /* Desktop Performance & Layout Enhancements */
   .frprotech-css-dots {
     animation: cssDotPulse 8s ease-in-out infinite alternate;
@@ -593,7 +807,68 @@ body {
 
 
 /* ==========================================
-   5. 992px BREAKPOINT
+   5. 800px BREAKPOINT
+   ========================================== */
+
+@media (min-width: 800px) {
+  /* Stacking Cards Section */
+  .cs-stack-section {
+    padding-top: clamp(40px, 6vw, 80px);
+    padding-bottom: clamp(60px, 0px, 140px);
+  }
+
+  .cs-stack-wrapper {
+    padding-inline: 20px;
+  }
+
+  .cs-stack-card {
+    top: calc(90px + var(--card-index, 0) * 26px);
+    margin-bottom: 20vh;
+  }
+
+  .cs-stack-card__inner {
+    flex-direction: row;
+    padding: 40px 48px;
+    gap: 36px;
+    min-height: 380px;
+  }
+
+  .cs-stack-card__header {
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .cs-stack-card__num {
+    font-size: clamp(80px, 9vw, 130px);
+    top: -18px;
+    left: 24px;
+  }
+
+  .cs-stack-card__title {
+    font-size: clamp(24px, 2.5vw, 36px);
+  }
+
+  .cs-stack-card__desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .cs-stack-card__pill {
+    font-size: 0.82rem;
+    padding: 6px 14px;
+  }
+
+  .cs-stack-card__visual {
+    width: auto;
+    flex: 0.9;
+    height: 280px;
+  }
+}
+
+
+/* ==========================================
+   6. 992px BREAKPOINT
    ========================================== */
 
 @media (min-width: 992px) {
@@ -606,15 +881,41 @@ body {
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
   .grid-4 { grid-template-columns: repeat(3, 1fr); }
 
+  /* Section Spacing */
+  .section {
+    padding: 80px 0;
+  }
+
+  .frprotech-hero-section {
+    padding: 80px 0;
+    min-height: 80vh;
+  }
+
+  /* Why Choose Us Grid */
+  .why-choose-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
   /* Footer */
   .footer-main-grid {
     grid-template-columns: 2.2fr 1fr 1fr 1.4fr;
+  }
+
+  /* About Page Split Layout */
+  .about-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Mission on desktop: image on the left, content on the right */
+  .about-split--reverse .about-img-placeholder {
+    order: -1;
   }
 }
 
 
 /* ==========================================
-   6. 1200px BREAKPOINT
+   7. 1200px BREAKPOINT
    ========================================== */
 
 @media (min-width: 1200px) {
@@ -625,11 +926,16 @@ body {
 
   /* Grid Reflows */
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* Team Section */
+  .team-desktop-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
 }
 
 
 /* ==========================================
-   7. 1440px BREAKPOINT
+   8. 1440px BREAKPOINT
    ========================================== */
 
 @media (min-width: 1440px) {
@@ -641,7 +947,7 @@ body {
 
 
 /* ==========================================
-   8. 2560px BREAKPOINT
+   9. 2560px BREAKPOINT
    ========================================== */
 
 @media (min-width: 2560px) {
@@ -653,7 +959,7 @@ body {
 
 
 /* ==========================================
-   9. 3840px BREAKPOINT
+   10. 3840px BREAKPOINT
    ========================================== */
 
 @media (min-width: 3840px) {
@@ -665,53 +971,7 @@ body {
 
 
 /* ==========================================
-   ABOUT PAGE — SPLIT LAYOUT
-   ========================================== */
-
-/* Mobile-first: single column, content before image */
-.about-split {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(24px, 3vw, 40px);
-  align-items: stretch;
-}
-
-/* On desktop the image placeholder comes second in DOM for Story,
-   so no reordering needed. For Mission (--reverse) we flip visually. */
-@media (min-width: 993px) {
-  .about-split {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* Mission on desktop: image on the left, content on the right */
-  .about-split--reverse .about-img-placeholder {
-    order: -1;
-  }
-}
-
-/* Image placeholder */
-.about-img-placeholder {
-  min-height: 360px;
-  border-radius: 20px;
-  border: 2px dashed var(--color-border, #e5e7eb);
-  background-color: var(--color-surface, #f9fafb);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.about-img-placeholder__label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-text-muted, #9ca3af);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* ==========================================
-   10. REDUCED MOTION ACCESSIBILITY
+   11. ACCESSIBILITY & INTERACTIONS
    ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -723,11 +983,61 @@ body {
   }
 }
 
-/* ==========================================
-   11. TOUCH DEVICE ENHANCEMENTS
-   ========================================== */
 @media (hover: none) {
   .work-marquee:hover {
     animation-play-state: running;
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  /* Floating Socials Desktop Hover Enhancement */
+  .floating-socials:hover .floating-socials__menu,
+  .floating-socials:focus-within .floating-socials__menu {
+    pointer-events: auto;
+  }
+
+  .floating-socials:hover .floating-socials__item,
+  .floating-socials:focus-within .floating-socials__item {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .floating-socials:hover .floating-socials__item:nth-child(1),
+  .floating-socials:focus-within .floating-socials__item:nth-child(1) {
+    transition-delay: 0.03s;
+  }
+  .floating-socials:hover .floating-socials__item:nth-child(2),
+  .floating-socials:focus-within .floating-socials__item:nth-child(2) {
+    transition-delay: 0.06s;
+  }
+  .floating-socials:hover .floating-socials__item:nth-child(3),
+  .floating-socials:focus-within .floating-socials__item:nth-child(3) {
+    transition-delay: 0.09s;
+  }
+  .floating-socials:hover .floating-socials__item:nth-child(4),
+  .floating-socials:focus-within .floating-socials__item:nth-child(4) {
+    transition-delay: 0.12s;
+  }
+
+  .floating-socials:hover .floating-socials__toggle-icon--share,
+  .floating-socials:focus-within .floating-socials__toggle-icon--share {
+    transform: rotate(90deg) scale(0);
+    opacity: 0;
+    position: absolute;
+  }
+
+  .floating-socials:hover .floating-socials__toggle-icon--close,
+  .floating-socials:focus-within .floating-socials__toggle-icon--close {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+    position: static;
+  }
+
+  .floating-socials__item:hover .floating-socials__tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+

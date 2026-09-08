@@ -6,7 +6,7 @@ export default function ProcessSection() {
   const { badge, title, highlight, description, steps } = siteData.home.process;
 
   return (
-    <section className="section">
+    <section className="section padding-top-zero">
       <Container>
         <div className="section-heading text-center">
           <span className="section-badge">{badge}</span>
