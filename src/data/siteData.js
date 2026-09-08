@@ -15,7 +15,7 @@ export const siteData = {
     address: "Islamabad, Pakistan",
     responseTime: "Within 1 business day",
     logo: "/assets/img/logo/Logo.webp",
-    favicon: "/assets/img/logo/Favicon.png",
+    favicon: "/assets/img/logo/favicon.png",
     websiteUrl: "https://orbitdigital.app",
   },
 

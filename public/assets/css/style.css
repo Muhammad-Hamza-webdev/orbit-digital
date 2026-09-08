@@ -203,26 +203,39 @@ ul, ol {
   color: #FFFFFF;
   border-color: var(--color-primary);
   box-shadow: 0 4px 14px rgba(91, 95, 239, 0.25);
+  transition: all 0.3s ease;
 }
 
+/* Primary becomes Secondary on hover */
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: none;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-primary);
 }
 
 /* Button 2: Secondary */
 .btn-secondary {
   background-color: transparent;
-  color: var(--color-secondary);
-  border-color: var(--color-border);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: none;
+  transition: all 0.3s ease;
 }
 
+/* Secondary becomes Primary on hover */
 .btn-secondary:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-secondary);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(91, 95, 239, 0.25);
   transform: translateY(-2px);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 /* Button 3: Accent */

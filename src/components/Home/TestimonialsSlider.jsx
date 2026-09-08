@@ -5,9 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { testimonialsData } from "../../data/testimonials";
+import { siteData } from "../../data/siteData";
 
 export default function TestimonialsSlider() {
+  const testimonialsData = siteData.home.testimonials;
   return (
     <Swiper
       modules={[Pagination, Autoplay, A11y]}

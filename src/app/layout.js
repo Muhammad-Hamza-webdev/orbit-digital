@@ -47,9 +47,9 @@ export const metadata = {
   ],
   authors: [{ name: "Orbit Digital Team" }],
   icons: {
-    icon: "/assets/img/logo/Favicon.png",
-    shortcut: "/assets/img/logo/Favicon.png",
-    apple: "/assets/img/logo/Favicon.png",
+    icon: "/assets/img/logo/favicon.png",
+    shortcut: "/assets/img/logo/favicon.png",
+    apple: "/assets/img/logo/favicon.png",
   },
   openGraph: {
     title: "Orbit Digital | Web Development, AI Automation & Digital Marketing Agency",

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { teamData } from '../../data/team';
+import { siteData } from '../../data/siteData';
 
 // Inline brand SVGs
 const LinkedinIcon = ({ size = 16 }) => (
@@ -20,6 +20,7 @@ const TwitterIcon = ({ size = 16 }) => (
 );
 
 export default function TeamSlider() {
+  const teamData = siteData.about.team;
   const renderCard = (member) => (
     <div key={member.id} className="team-card">
       <div className="team-card__bar" />
