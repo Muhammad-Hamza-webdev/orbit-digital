@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import FloatingSocials from "../components/Common/FloatingSocials";
 import ScrollToTop from "../components/Common/ScrollToTop";
+import CustomCursor from "../components/Common/CustomCursor";
 
 export const metadata = {
   title: "Orbit Digital | Web Development, AI Automation & Digital Marketing Agency",
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <FloatingSocials />
         <ScrollToTop />
+        <CustomCursor />
       </body>
     </html>
   );

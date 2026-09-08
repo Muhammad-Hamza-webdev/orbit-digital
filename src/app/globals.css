@@ -1,3 +1,7 @@
+/* Import Cuberto Mouse Follower Stylesheet */
+@import "mouse-follower/dist/mouse-follower.min.css";
+
 /* Import Primary CSS Stylesheets from public/assets/css */
 @import "../../public/assets/css/style.css";
 @import "../../public/assets/css/responsive.css";
+

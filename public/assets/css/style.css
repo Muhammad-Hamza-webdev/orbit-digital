@@ -457,52 +457,104 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 40%, #ffffff 100%);
 }
 
-.frprotech-hero-dots-container {
+/* ---- Signal Path: circuit lines draw in once, then a continuous stream of pulses travels them forever ---- */
+.signal-svg {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-/* Pure CSS dot grid — replaces 60 animated JS nodes.
-   Zero JS, zero compositor layers, zero TBT contribution. */
-.frprotech-css-dots {
-  background-image: radial-gradient(circle, rgba(91, 95, 239, 0.35) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.6;
-  animation: cssDotPulse 8s ease-in-out infinite alternate;
+.signal-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  opacity: 0.35;
+  animation: drawPath 1800ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-@keyframes cssDotPulse {
-  0%   { opacity: 0.4; }
-  100% { opacity: 0.7; }
+.path-a { stroke: var(--color-primary); stroke-dasharray: 460; stroke-dashoffset: 460; animation-delay: 0ms; }
+.path-b { stroke: var(--color-accent);  stroke-dasharray: 480; stroke-dashoffset: 480; animation-delay: 150ms; }
+.path-c { stroke: var(--color-primary); stroke-dasharray: 240; stroke-dashoffset: 240; animation-delay: 300ms; }
+.path-d { stroke: var(--color-accent);  stroke-dasharray: 280; stroke-dashoffset: 280; animation-delay: 450ms; }
+
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
 }
 
-.frprotech-orb {
+.signal-node {
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: nodePop 420ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.node-a1 { animation-delay: 1750ms; }
+.node-a2 { animation-delay: 1750ms; }
+.node-b1 { animation-delay: 1900ms; }
+.node-b2 { animation-delay: 1900ms; }
+.node-c1 { animation-delay: 2050ms; }
+.node-d1 { animation-delay: 2200ms; }
+
+@keyframes nodePop {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Never stops: each path carries 2 staggered pulses looping forever, offset so it reads as a steady flow */
+.signal-pulse {
+  opacity: 0;
+}
+
+.glow-primary-pulse {
+  filter: drop-shadow(0 0 3px var(--color-primary));
+}
+
+.glow-accent-pulse {
+  filter: drop-shadow(0 0 3px var(--color-accent));
+}
+
+.pulse-a1 { offset-path: path("M 80 500 L 80 320 L 220 320 L 220 180"); animation: travel 9s linear infinite 1800ms, pulseIn 400ms ease 1800ms forwards; }
+.pulse-a2 { offset-path: path("M 80 500 L 80 320 L 220 320 L 220 180"); animation: travel 9s linear infinite 6300ms, pulseIn 400ms ease 6300ms forwards; }
+.pulse-b1 { offset-path: path("M 1120 500 L 1120 300 L 980 300 L 980 160"); animation: travel 10s linear infinite 1950ms, pulseIn 400ms ease 1950ms forwards; }
+.pulse-b2 { offset-path: path("M 1120 500 L 1120 300 L 980 300 L 980 160"); animation: travel 10s linear infinite 6950ms, pulseIn 400ms ease 6950ms forwards; }
+.pulse-c1 { offset-path: path("M 300 60 L 500 60 L 500 20"); animation: travel 7s linear infinite 2100ms, pulseIn 400ms ease 2100ms forwards; }
+.pulse-d1 { offset-path: path("M 150 500 L 350 500 L 350 420"); animation: travel 8s linear infinite 2250ms, pulseIn 400ms ease 2250ms forwards; }
+
+@keyframes travel {
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
+}
+
+@keyframes pulseIn {
+  to { opacity: 0.9; }
+}
+
+/* Cursor-follow glow — lags gently behind the pointer while it's inside the hero */
+.cursor-glow {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 280px;
+  margin-left: -140px;
+  margin-top: -140px;
   border-radius: 50%;
+  background: radial-gradient(circle, rgba(91, 95, 239, 0.20) 0%, rgba(6, 182, 212, 0.10) 45%, transparent 72%);
+  filter: blur(10px);
+  opacity: 0;
+  transform: translate3d(-999px, -999px, 0);
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease;
+  will-change: transform;
   pointer-events: none;
-}
-
-.orb-left {
-  top: 20%;
-  left: 15%;
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-primary);
-}
-
-.orb-right {
-  top: 35%;
-  right: 12%;
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-accent);
 }
 
 .frprotech-hero-vignette {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 60% 50% at 50% 40%, transparent 0%, rgba(255, 255, 255, 0.6) 80%);
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, transparent 0%, rgba(255, 255, 255, 0.7) 78%);
 }
 
 .frprotech-hero-content {
@@ -520,7 +572,7 @@ h1, h2, h3, h4, h5, h6 {
    The animation only plays ONCE on load; it never hides content. */
 .frprotech-fade-item {
   opacity: 0;
-  animation: heroFadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: heroFadeUp 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* When is-animated is present (always, since we set it server-side), play the animation */
@@ -529,15 +581,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(16px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .fade-1 { animation-delay: 0ms; }
-.fade-2 { animation-delay: 80ms; }
-.fade-3 { animation-delay: 160ms; }
-.fade-4 { animation-delay: 240ms; }
-.fade-5 { animation-delay: 320ms; }
+.fade-2 { animation-delay: 90ms; }
+.fade-3 { animation-delay: 180ms; }
+.fade-4 { animation-delay: 270ms; }
+.fade-5 { animation-delay: 360ms; }
 
 .frprotech-top-badge {
   display: inline-flex;
@@ -568,16 +620,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .frprotech-gradient-text {
   background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary), var(--color-accent));
-  background-size: 200% 100%;
+  background-size: 300% 100%;
+  background-position: 100% 50%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: frGradientWave 6s linear infinite;
+  animation: frGradientSweep 1.6s cubic-bezier(0.16, 1, 0.3, 1) 180ms forwards;
 }
 
-@keyframes frGradientWave {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@keyframes frGradientSweep {
+  from { background-position: 100% 50%; }
+  to   { background-position: 0% 50%; }
 }
 
 .frprotech-hero-desc {
@@ -1838,6 +1891,79 @@ padding-bottom: clamp(0, 0px, 140px);
   outline: 3px solid var(--color-accent);
   outline-offset: 3px;
 }
+
+/* ==========================================
+   CUBERTO MOUSE FOLLOWER - THEME INTEGRATION
+   ========================================== */
+.mf-cursor {
+  z-index: 10000 !important;
+  color: var(--color-primary, #5B5FEF);
+}
+
+/* High-contrast exclusion blend over light, dark, and colored backgrounds */
+.mf-cursor:not(.-text):not(.-media):not(.-opaque):not(.-icon) {
+  mix-blend-mode: exclusion;
+}
+
+.mf-cursor:not(.-text):not(.-media):not(.-opaque):not(.-icon):before {
+  background: #ffffff;
+}
+
+/* Interactive hover state: expands small follower dot into a big circle over links and buttons */
+.mf-cursor.-pointer:before {
+  transform: scale(0.75);
+  opacity: 0.85;
+}
+
+/* Tactile click state */
+.mf-cursor.-active:before,
+.mf-cursor.-pointer.-active:before {
+  transform: scale(0.55);
+  transition-duration: 0.15s;
+}
+
+/* Expanded Text Badge (View / Read / Explore) */
+.mf-cursor.-text {
+  mix-blend-mode: normal !important;
+}
+
+.mf-cursor.-text:before {
+  background: #000000;
+  opacity: 0.96;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+}
+
+.mf-cursor-text {
+  font-family: var(--font-heading), 'Gilroy', -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Hide native pointer when custom text cursor badge is active */
+@media (hover: hover) and (pointer: fine) {
+  [data-cursor-text] {
+    cursor: none !important;
+  }
+  [data-cursor-text] a,
+  [data-cursor-text] button,
+  [data-cursor-text] img {
+    cursor: none !important;
+  }
+}
+
+/* Mobile & Touch Device Safeguard: Completely disabled on touch screens */
+@media (hover: none) or (pointer: coarse) {
+  .mf-cursor {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
 
 
 

@@ -498,10 +498,6 @@ body {
 
 
 /* Performance & Base Mobile Enhancements */
-.frprotech-css-dots {
-  animation: none;
-  opacity: 0.3;
-}
 
 .work-marquee {
   animation-duration: 25s;
@@ -790,11 +786,6 @@ body {
     padding: 32px 24px;
   }
 
-  /* Desktop Performance & Layout Enhancements */
-  .frprotech-css-dots {
-    animation: cssDotPulse 8s ease-in-out infinite alternate;
-    opacity: 0.6;
-  }
 
   .work-marquee {
     animation-duration: 40s;
@@ -980,6 +971,31 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .frprotech-fade-item,
+  .frprotech-gradient-text {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background-position: 0% 50% !important;
+  }
+
+  .signal-path {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 0.35 !important;
+  }
+
+  .signal-node {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+
+  .signal-pulse,
+  .cursor-glow {
+    display: none !important;
   }
 }
 

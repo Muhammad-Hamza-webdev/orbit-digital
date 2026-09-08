@@ -1,27 +1,95 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef } from 'react';
 import Container from '../Common/Container';
 import Button from '../Common/Button';
 import { siteData } from '../../data/siteData';
 
-// Static server component — no JS, no hydration cost, instant FCP/LCP.
-// The animated gradient text and the dot background are pure CSS.
 export default function HeroSection() {
   const { hero } = siteData.home;
+  const heroRef = useRef(null);
+  const glowRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (reduceMotion || !hasFinePointer) return;
+
+    const heroSection = heroRef.current;
+    const cursorGlow = glowRef.current;
+    if (!heroSection || !cursorGlow) return;
+
+    let raf = null;
+
+    const handleMouseMove = (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        if (cursorGlow) {
+          cursorGlow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }
+        raf = null;
+      });
+    };
+
+    const handleMouseEnter = () => {
+      if (cursorGlow) cursorGlow.style.opacity = '1';
+    };
+
+    const handleMouseLeave = () => {
+      if (cursorGlow) cursorGlow.style.opacity = '0';
+    };
+
+    heroSection.addEventListener('mousemove', handleMouseMove);
+    heroSection.addEventListener('mouseenter', handleMouseEnter);
+    heroSection.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      heroSection.removeEventListener('mousemove', handleMouseMove);
+      heroSection.removeEventListener('mouseenter', handleMouseEnter);
+      heroSection.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   return (
-    <section className="section frprotech-hero-section">
-      {/* Background: pure CSS dot grid, no JS nodes */}
+    <section ref={heroRef} className="section frprotech-hero-section" id="heroSection">
+      {/* Background: Signal Path (circuit-trace lines + traveling pulses + cursor-follow glow) */}
       <div className="frprotech-hero-bg">
         <div className="frprotech-hero-gradient-overlay" />
-        <div className="frprotech-hero-dots-container frprotech-css-dots" aria-hidden="true" />
-        <div className="frprotech-orb orb-left" aria-hidden="true" />
-        <div className="frprotech-orb orb-right" aria-hidden="true" />
+
+        <svg className="signal-svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path className="signal-path path-a" d="M 80 500 L 80 320 L 220 320 L 220 180" />
+          <path className="signal-path path-b" d="M 1120 500 L 1120 300 L 980 300 L 980 160" />
+          <path className="signal-path path-c" d="M 300 60 L 500 60 L 500 20" />
+          <path className="signal-path path-d" d="M 150 500 L 350 500 L 350 420" />
+
+          <circle className="signal-node node-a1" cx="80" cy="500" r="3.5" fill="var(--color-primary)" />
+          <circle className="signal-node node-a2" cx="220" cy="180" r="4" fill="var(--color-primary)" />
+          <circle className="signal-node node-b1" cx="1120" cy="500" r="3.5" fill="var(--color-accent)" />
+          <circle className="signal-node node-b2" cx="980" cy="160" r="4" fill="var(--color-accent)" />
+          <circle className="signal-node node-c1" cx="500" cy="20" r="3" fill="var(--color-primary)" />
+          <circle className="signal-node node-d1" cx="350" cy="420" r="3" fill="var(--color-accent)" />
+
+          <circle className="signal-pulse glow-primary-pulse pulse-a1" r="3" fill="var(--color-primary)" />
+          <circle className="signal-pulse glow-primary-pulse pulse-a2" r="3" fill="var(--color-primary)" />
+          <circle className="signal-pulse glow-accent-pulse pulse-b1" r="3" fill="var(--color-accent)" />
+          <circle className="signal-pulse glow-accent-pulse pulse-b2" r="3" fill="var(--color-accent)" />
+          <circle className="signal-pulse glow-primary-pulse pulse-c1" r="2.5" fill="var(--color-primary)" />
+          <circle className="signal-pulse glow-accent-pulse pulse-d1" r="2.5" fill="var(--color-accent)" />
+        </svg>
+
+        <div ref={glowRef} className="cursor-glow" id="cursorGlow" />
         <div className="frprotech-hero-vignette" />
       </div>
 
       <Container>
-        {/* No mounted-gate — content is visible immediately, animations are additive */}
-        <div className="frprotech-hero-content is-animated">
+        {/* Content is visible immediately, animations are additive */}
+        <div className="frprotech-hero-content is-animated" id="heroContent">
 
           <div className="frprotech-fade-item fade-1">
             <span className="frprotech-top-badge">

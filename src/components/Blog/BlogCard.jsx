@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function BlogCard({ post }) {
   return (
-    <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex' }}>
+    <Link href={`/blog/${post.slug}`} data-cursor-text="Read" style={{ textDecoration: 'none', color: 'inherit', display: 'flex' }}>
       <div className="card card-hover" style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'space-between' }}>
         <div>
           <div style={{ height: '200px', borderRadius: '20px', overflow: 'hidden', position: 'relative', marginBottom: '20px', background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-primary-light) 100%)' }}>

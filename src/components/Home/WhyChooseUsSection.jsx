@@ -44,6 +44,7 @@ export default function WhyChooseUsSection() {
               <div
                 key={item.number}
                 className={`flip-card ${isFlipped ? 'is-flipped' : ''}`}
+                data-cursor-text="Flip"
                 onClick={() => toggleFlip(item.number)}
                 role="button"
                 tabIndex={0}

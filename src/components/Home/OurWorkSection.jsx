@@ -22,7 +22,7 @@ export default function OurWorkSection() {
           {[0, 1].map((copy) => (
             <div key={copy} className="work-marquee__track" aria-hidden={copy === 1}>
               {items.map((item) => (
-                <Link key={item.id} href={item.link} className="work-card-item">
+                <Link key={item.id} href={item.link} className="work-card-item" data-cursor-text="View">
                   <div className="work-card-img-wrapper">
                     <img
                       src={item.image}

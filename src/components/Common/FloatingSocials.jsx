@@ -112,6 +112,7 @@ export default function FloatingSocials() {
       <button
         type="button"
         className="floating-socials__toggle"
+        data-cursor-stick
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-haspopup="true"

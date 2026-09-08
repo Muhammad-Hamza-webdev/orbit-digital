@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ProjectCard({ project }) {
   return (
-    <div className="card card-hover" style={{ overflow: 'hidden', padding: '0', display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div className="card card-hover" data-cursor-text="View" style={{ overflow: 'hidden', padding: '0', display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* Portfolio Card Banner Graphic */}
       <div style={{ height: '220px', background: 'linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', padding: '24px' }}>
         <div style={{ padding: '12px 20px', backgroundColor: '#FFFFFF', borderRadius: '20px', boxShadow: 'var(--shadow-md)', textAlign: 'center' }}>

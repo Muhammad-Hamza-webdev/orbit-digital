@@ -36,6 +36,7 @@ export default function ScrollToTop() {
       type="button"
       onClick={scrollToTop}
       className={`scroll-to-top ${isVisible ? 'is-visible' : ''}`}
+      data-cursor-stick
       aria-label="Scroll to top of page"
       title="Go to top"
     >
