@@ -7,21 +7,40 @@ export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+    let cachedScrollHeight = 0;
+    let isMobile = false;
+
+    const updateDimensions = () => {
+      cachedScrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      isMobile = window.innerWidth < 768;
+    };
+
     const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      if (scrollHeight > 0) {
-        const scrollPercentage = (scrollTop / scrollHeight) * 100;
-        const isMobile = window.innerWidth < 768;
-        const threshold = isMobile ? 5 : 10;
-        setIsVisible(scrollPercentage >= threshold);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (cachedScrollHeight <= 0) updateDimensions();
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const scrollPercentage = cachedScrollHeight > 0 ? (scrollTop / cachedScrollHeight) * 100 : 0;
+          const threshold = isMobile ? 5 : 10;
+          const shouldBeVisible = scrollPercentage >= threshold;
+          setIsVisible((prev) => (prev !== shouldBeVisible ? shouldBeVisible : prev));
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    updateDimensions();
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateDimensions, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateDimensions);
+    };
   }, []);
 
   const scrollToTop = () => {

@@ -1,63 +1,14 @@
-'use client';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Container from '../Common/Container';
 import Button from '../Common/Button';
+import HeroCursorGlow from './HeroCursorGlow';
 import { siteData } from '../../data/siteData';
 
 export default function HeroSection() {
   const { hero } = siteData.home;
-  const heroRef = useRef(null);
-  const glowRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (reduceMotion || !hasFinePointer) return;
-
-    const heroSection = heroRef.current;
-    const cursorGlow = glowRef.current;
-    if (!heroSection || !cursorGlow) return;
-
-    let raf = null;
-
-    const handleMouseMove = (e) => {
-      const rect = heroSection.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        if (cursorGlow) {
-          cursorGlow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }
-        raf = null;
-      });
-    };
-
-    const handleMouseEnter = () => {
-      if (cursorGlow) cursorGlow.style.opacity = '1';
-    };
-
-    const handleMouseLeave = () => {
-      if (cursorGlow) cursorGlow.style.opacity = '0';
-    };
-
-    heroSection.addEventListener('mousemove', handleMouseMove);
-    heroSection.addEventListener('mouseenter', handleMouseEnter);
-    heroSection.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      if (raf) cancelAnimationFrame(raf);
-      heroSection.removeEventListener('mousemove', handleMouseMove);
-      heroSection.removeEventListener('mouseenter', handleMouseEnter);
-      heroSection.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
 
   return (
-    <section ref={heroRef} className="section frprotech-hero-section" id="heroSection">
+    <section className="section frprotech-hero-section" id="heroSection">
       {/* Background: Signal Path (circuit-trace lines + traveling pulses + cursor-follow glow) */}
       <div className="frprotech-hero-bg">
         <div className="frprotech-hero-gradient-overlay" />
@@ -83,7 +34,7 @@ export default function HeroSection() {
           <circle className="signal-pulse glow-accent-pulse pulse-d1" r="2.5" fill="var(--color-accent)" />
         </svg>
 
-        <div ref={glowRef} className="cursor-glow" id="cursorGlow" />
+        <HeroCursorGlow />
         <div className="frprotech-hero-vignette" />
       </div>
 

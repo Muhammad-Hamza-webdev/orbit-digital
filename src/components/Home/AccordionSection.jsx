@@ -10,37 +10,52 @@ export default function AccordionSection() {
   const stackCards = siteData.home.servicesStack;
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
 
-    const mm = gsap.matchMedia(sectionRef);
+    let mm = null;
 
-    // Desktop: subtle progressive scale down and brightness depth on prior cards
-    mm.add("(min-width: 769px)", () => {
-      const cardEls = gsap.utils.toArray(".cs-stack-card");
+    const initScrollTrigger = () => {
+      gsap.registerPlugin(ScrollTrigger);
+      mm = gsap.matchMedia(sectionRef);
 
-      cardEls.forEach((card, index) => {
-        if (index < cardEls.length - 1) {
-          const nextCard = cardEls[index + 1];
-          gsap.to(card, {
-            scale: 0.96 - (cardEls.length - 2 - index) * 0.02,
-            scrollTrigger: {
-              trigger: nextCard,
-              start: "top 85%",
-              end: "top 120px",
-              scrub: true,
-            },
-          });
-        }
+      // Desktop: subtle progressive scale down and brightness depth on prior cards
+      mm.add("(min-width: 769px)", () => {
+        const cardEls = gsap.utils.toArray(sectionEl.querySelectorAll(".cs-stack-card"));
+
+        cardEls.forEach((card, index) => {
+          if (index < cardEls.length - 1) {
+            const nextCard = cardEls[index + 1];
+            gsap.to(card, {
+              scale: 0.96 - (cardEls.length - 2 - index) * 0.02,
+              scrollTrigger: {
+                trigger: nextCard,
+                start: "top 85%",
+                end: "top 120px",
+                scrub: true,
+              },
+            });
+          }
+        });
       });
-    });
+    };
 
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 200);
+    // Lazy initialize when section approaches viewport (400px rootMargin)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          initScrollTrigger();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+
+    observer.observe(sectionEl);
 
     return () => {
-      clearTimeout(refreshTimer);
-      mm.revert();
+      observer.disconnect();
+      if (mm) mm.revert();
     };
   }, []);
 

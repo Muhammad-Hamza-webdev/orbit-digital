@@ -62,14 +62,18 @@ export default function Header() {
 
   // Track scroll position for subtle shadow elevation
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 20;
+          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -89,6 +93,8 @@ export default function Header() {
               src={logoUrl}
               alt="Orbit Digital"
               className="header-logo-img"
+              width="115"
+              height="32"
             />
           </Link>
 
@@ -174,6 +180,8 @@ export default function Header() {
               src={logoUrl}
               alt="Orbit Digital"
               className="header-logo-img"
+              width="115"
+              height="32"
             />
           </Link>
 
@@ -215,6 +223,8 @@ export default function Header() {
               src={logoUrl}
               alt="Orbit Digital"
               className="header-logo-img"
+              width="115"
+              height="32"
             />
           </Link>
 
