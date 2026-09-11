@@ -1,9 +1,25 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { siteData } from "../../data/siteData";
+
+const slugMap = {
+  "WordPress Websites": "/services/wordpress-websites",
+  "Shopify Stores": "/services/shopify-stores",
+  "Custom Websites (Next.js)": "/services/custom-nextjs-websites",
+  "Programming & APIs": "/services/programming-custom-apps",
+  "AI Automation": "/services/ai-automation",
+  "AI Tools Integration": "/services/ai-tools-integration",
+  "Graphic Designing": "/services/graphic-designing",
+  "Video Editing": "/services/video-editing",
+  "Social Media Management": "/services/social-media-management",
+  "Social Media Marketing": "/services/social-media-marketing",
+  "Performance Marketing": "/services/performance-marketing",
+  "SEO": "/services/seo",
+};
 
 export default function AccordionSection() {
   const sectionRef = useRef(null);
@@ -75,15 +91,22 @@ export default function AccordionSection() {
               <span className="cs-stack-card__num">{card.number}</span>
               <div className="cs-stack-card__content">
                 <div className="cs-stack-card__header">
-                  <h3 className="cs-stack-card__title">{card.title}</h3>
+                  <h3 className="cs-stack-card__title">
+                    <Link href={`/services#${card.title.toLowerCase()}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      {card.title}
+                    </Link>
+                  </h3>
                 </div>
                 <p className="cs-stack-card__desc">{card.desc}</p>
                 <div className="cs-stack-card__pills">
-                  {card.pills.map((pill) => (
-                    <span key={pill} className="cs-stack-card__pill">
-                      {pill}
-                    </span>
-                  ))}
+                  {card.pills.map((pill) => {
+                    const href = slugMap[pill] || `/services#${card.title.toLowerCase()}`;
+                    return (
+                      <Link key={pill} href={href} className="cs-stack-card__pill" style={{ textDecoration: 'none' }}>
+                        {pill}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
               <div className="cs-stack-card__visual">

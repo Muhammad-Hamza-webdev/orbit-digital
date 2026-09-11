@@ -35,6 +35,20 @@ export default function ServicesPage() {
             <p className="text-lead">
               {hero.description}
             </p>
+
+            {/* Quick Category Jump Bar */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '32px' }}>
+              {categories.map((cat) => (
+                <a
+                  key={cat.id}
+                  href={`#${cat.id}`}
+                  className="btn btn-secondary btn-sm"
+                  style={{ borderRadius: '30px', padding: '8px 20px', fontWeight: '700', fontSize: '0.88rem' }}
+                >
+                  {cat.title} ({cat.services.length})
+                </a>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
@@ -44,6 +58,7 @@ export default function ServicesPage() {
         <section
           key={category.id}
           id={category.id}
+          style={{ scrollMarginTop: '90px' }}
           className={`section services-category-section ${index % 2 === 1 ? 'section-bg-surface' : ''}`}
         >
           <Container>

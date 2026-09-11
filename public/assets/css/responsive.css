@@ -204,6 +204,112 @@ body {
   transform: translateX(3px);
 }
 
+/* Mega Dropdown Menu */
+.header-pill__dropdown-menu--mega {
+  width: 820px;
+  max-width: 92vw;
+  padding: 24px 28px 16px 28px;
+  border-radius: 24px;
+}
+
+.header-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.header-mega-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-mega-category-title {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.header-mega-category-title:hover {
+  color: var(--color-primary-dark);
+}
+
+.header-mega-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-mega-item {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: block;
+  transition: all var(--transition-fast);
+  line-height: 1.35;
+}
+
+.header-mega-item:hover,
+.header-mega-item:focus {
+  background-color: rgba(91, 95, 239, 0.09);
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+.header-mega-footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: right;
+}
+
+.header-mega-footer-link {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.header-mega-footer-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Mobile Drawer Categorized Menu */
+.mobile-drawer__cat-group {
+  margin-bottom: 14px;
+}
+
+.mobile-drawer__cat-title {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  padding: 6px 8px 4px 8px;
+  text-decoration: none;
+}
+
+.mobile-drawer__cat-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 8px;
+}
+
 .header-pill__actions {
   display: flex;
   align-items: center;
