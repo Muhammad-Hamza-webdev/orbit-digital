@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '../Common/Container';
 import Button from '../Common/Button';
-import HeroCursorGlow from './HeroCursorGlow';
+import SplashCursor from './SplashCursor';
 import { siteData } from '../../data/siteData';
 
 export default function HeroSection() {
@@ -9,34 +9,23 @@ export default function HeroSection() {
 
   return (
     <section className="section frprotech-hero-section" id="heroSection">
-      {/* Background: Signal Path (circuit-trace lines + traveling pulses + cursor-follow glow) */}
       <div className="frprotech-hero-bg">
         <div className="frprotech-hero-gradient-overlay" />
-
-        <svg className="signal-svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <path className="signal-path path-a" d="M 80 500 L 80 320 L 220 320 L 220 180" />
-          <path className="signal-path path-b" d="M 1120 500 L 1120 300 L 980 300 L 980 160" />
-          <path className="signal-path path-c" d="M 300 60 L 500 60 L 500 20" />
-          <path className="signal-path path-d" d="M 150 500 L 350 500 L 350 420" />
-
-          <circle className="signal-node node-a1" cx="80" cy="500" r="3.5" fill="var(--color-primary)" />
-          <circle className="signal-node node-a2" cx="220" cy="180" r="4" fill="var(--color-primary)" />
-          <circle className="signal-node node-b1" cx="1120" cy="500" r="3.5" fill="var(--color-accent)" />
-          <circle className="signal-node node-b2" cx="980" cy="160" r="4" fill="var(--color-accent)" />
-          <circle className="signal-node node-c1" cx="500" cy="20" r="3" fill="var(--color-primary)" />
-          <circle className="signal-node node-d1" cx="350" cy="420" r="3" fill="var(--color-accent)" />
-
-          <circle className="signal-pulse glow-primary-pulse pulse-a1" r="3" fill="var(--color-primary)" />
-          <circle className="signal-pulse glow-primary-pulse pulse-a2" r="3" fill="var(--color-primary)" />
-          <circle className="signal-pulse glow-accent-pulse pulse-b1" r="3" fill="var(--color-accent)" />
-          <circle className="signal-pulse glow-accent-pulse pulse-b2" r="3" fill="var(--color-accent)" />
-          <circle className="signal-pulse glow-primary-pulse pulse-c1" r="2.5" fill="var(--color-primary)" />
-          <circle className="signal-pulse glow-accent-pulse pulse-d1" r="2.5" fill="var(--color-accent)" />
-        </svg>
-
-        <HeroCursorGlow />
         <div className="frprotech-hero-vignette" />
       </div>
+
+      <SplashCursor
+        DENSITY_DISSIPATION={3.5}
+        VELOCITY_DISSIPATION={2}
+        PRESSURE={0.1}
+        CURL={3}
+        SPLAT_RADIUS={0.2}
+        SPLAT_FORCE={6000}
+        COLOR_UPDATE_SPEED={10}
+        SHADING
+        RAINBOW_MODE={false}
+        COLOR="#A855F7"
+      />
 
       <Container>
         {/* Content is visible immediately, animations are additive */}
