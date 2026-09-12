@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer";
 import FloatingSocials from "../components/Common/FloatingSocials";
 import ScrollToTop from "../components/Common/ScrollToTop";
 import CustomCursor from "../components/Common/CustomCursor";
+import SplashCursor from "../components/Home/SplashCursor";
 
 const gilroy = localFont({
   src: [
@@ -65,6 +66,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={gilroy.variable}>
       <body>
+        <SplashCursor
+          DENSITY_DISSIPATION={3.5}
+          VELOCITY_DISSIPATION={2}
+          PRESSURE={0.1}
+          CURL={3}
+          SPLAT_RADIUS={0.2}
+          SPLAT_FORCE={6000}
+          COLOR_UPDATE_SPEED={10}
+          SHADING
+          RAINBOW_MODE={false}
+          COLOR="#0fa3f3"
+          COLOR_FAST="#0a0aa2"
+        />
         <Header />
         <main>{children}</main>
         <Footer />

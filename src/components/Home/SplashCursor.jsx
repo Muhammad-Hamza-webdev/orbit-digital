@@ -30,8 +30,8 @@ function SplashCursor({
     // Track if the effect is still active for cleanup
     let isActive = true;
 
-    // Scope event listeners to the hero section so the splash cursor is ONLY active on the hero section
-    const targetElement = canvas.closest('#heroSection') || canvas.parentElement || window;
+    // Global event listeners across the entire window
+    const targetElement = window;
 
     let config = {
       SIM_RESOLUTION,
@@ -1150,14 +1150,14 @@ function SplashCursor({
       updatePointerUpData(pointer);
     }
 
-    // Add event listeners on target element (scoped to hero section)
-    targetElement.addEventListener('mousedown', handleMouseDown);
-    targetElement.addEventListener('mousemove', handleMouseMove, { passive: true });
-    targetElement.addEventListener('mouseleave', handleMouseLeave);
+    // Add event listeners on window (active across whole website)
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('mouseup', handleMouseUp);
-    targetElement.addEventListener('touchstart', handleTouchStart, { passive: true });
-    targetElement.addEventListener('touchmove', handleTouchMove, { passive: true });
-    targetElement.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd);
 
     updateFrame();
 
@@ -1176,13 +1176,13 @@ function SplashCursor({
       }
 
       // Remove event listeners
-      targetElement.removeEventListener('mousedown', handleMouseDown);
-      targetElement.removeEventListener('mousemove', handleMouseMove);
-      targetElement.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('mouseup', handleMouseUp);
-      targetElement.removeEventListener('touchstart', handleTouchStart);
-      targetElement.removeEventListener('touchmove', handleTouchMove);
-      targetElement.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -1190,13 +1190,13 @@ function SplashCursor({
   return (
     <div
       style={{
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
         zIndex: 50,
         pointerEvents: 'none',
-        width: '100%',
-        height: '100%',
+        width: '100vw',
+        height: '100vh',
         overflow: 'hidden'
       }}
     >

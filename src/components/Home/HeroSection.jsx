@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../Common/Container';
 import Button from '../Common/Button';
-import SplashCursor from './SplashCursor';
 import { siteData } from '../../data/siteData';
 
 export default function HeroSection() {
@@ -13,20 +12,6 @@ export default function HeroSection() {
         <div className="frprotech-hero-gradient-overlay" />
         <div className="frprotech-hero-vignette" />
       </div>
-
-      <SplashCursor
-        DENSITY_DISSIPATION={3.5}
-        VELOCITY_DISSIPATION={2}
-        PRESSURE={0.1}
-        CURL={3}
-        SPLAT_RADIUS={0.2}
-        SPLAT_FORCE={6000}
-        COLOR_UPDATE_SPEED={10}
-        SHADING
-        RAINBOW_MODE={false}
-        COLOR="#0fa3f3"
-        COLOR_FAST="#0a0aa2"
-      />
 
       <Container>
         {/* Content is visible immediately, animations are additive */}
