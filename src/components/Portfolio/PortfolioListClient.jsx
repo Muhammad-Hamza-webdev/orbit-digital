@@ -19,8 +19,7 @@ export default function PortfolioListClient({ categories = [], projects = [] }) 
             key={cat}
             type="button"
             onClick={() => setSelectedCategory(cat)}
-            className={`btn ${selectedCategory === cat ? 'btn-primary' : 'btn-secondary'} btn-sm`}
-            style={{ borderRadius: '20px' }}
+            className={`btn ${selectedCategory === cat ? 'btn-primary' : 'btn-secondary'}`}
           >
             {cat}
           </button>

@@ -55,11 +55,11 @@ export default function ServiceCard({ service }) {
         )}
       </div>
 
-      <div style={{ paddingTop: '18px', borderTop: '1px solid var(--color-border)', display: 'flex', gap: '10px' }}>
-        <Link href={serviceUrl} className="btn-secondary btn btn-sm" style={{ flex: '1', textAlign: 'center', justifyContent: 'center' }}>
+      <div className="service-card__actions" style={{ paddingTop: '18px', borderTop: '1px solid var(--color-border)', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <Link href={serviceUrl} className="btn btn-secondary" style={{ flex: '1', textAlign: 'center', justifyContent: 'center' }}>
           View Details &rarr;
         </Link>
-        <Link href={`/contact?service=${service.slug}`} className="btn-primary btn btn-sm" style={{ flex: '1', textAlign: 'center', justifyContent: 'center' }}>
+        <Link href={`/contact?service=${service.slug}`} className="btn btn-primary" style={{ flex: '1', textAlign: 'center', justifyContent: 'center' }}>
           Consultation
         </Link>
       </div>

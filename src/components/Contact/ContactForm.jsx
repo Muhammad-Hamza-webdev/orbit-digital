@@ -147,7 +147,7 @@ export default function ContactForm() {
             />
           </div>
 
-          <Button type="submit" variant="primary" size="lg" fullWidth>
+          <Button type="submit" variant="primary" fullWidth>
             Send My Project Details
           </Button>
         </form>

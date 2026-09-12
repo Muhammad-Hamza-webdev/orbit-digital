@@ -21,7 +21,7 @@ export default function ContactPage() {
         <Container>
           <div style={{ maxWidth: '800px', marginInline: 'auto', textAlign: 'center' }}>
             <span className="section-badge">{contact.hero.badge}</span>
-            <h1 className="heading-1" style={{ marginBlock: '16px 24px' }}>
+            <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginBlock: '16px 24px' }}>
               {contact.hero.titlePart}
               <span className="frprotech-gradient-text">{contact.hero.highlight}</span>
               {contact.hero.titleEnd}
@@ -40,7 +40,7 @@ export default function ContactPage() {
             {/* Contact Information & Channels */}
             <div>
               <span className="section-badge section-badge-accent">{contact.directContact.badge}</span>
-              <h2 className="heading-2" style={{ marginBlock: '16px 24px' }}>
+              <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginBlock: '16px 24px' }}>
                 {contact.directContact.titlePart}
                 <span className="frprotech-gradient-text">{contact.directContact.highlight}</span>
               </h2>
@@ -105,7 +105,6 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', padding: '10px 20px', textDecoration: 'none' }}
                 >
                   <span>📅</span>
                   <span>{contact.quickCallCta.buttonText}</span>

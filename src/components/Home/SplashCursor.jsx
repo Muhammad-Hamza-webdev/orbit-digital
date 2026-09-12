@@ -16,8 +16,9 @@ function SplashCursor({
   COLOR_UPDATE_SPEED = 10,
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
-  RAINBOW_MODE = true,
-  COLOR = '#ff0000'
+  RAINBOW_MODE = false,
+  COLOR = '#0fa3f3',
+  COLOR_FAST = '#0a0aa2'
 }) {
   const canvasRef = useRef(null);
   const animationFrameId = useRef(null);
@@ -31,19 +32,6 @@ function SplashCursor({
 
     // Scope event listeners to the hero section so the splash cursor is ONLY active on the hero section
     const targetElement = canvas.closest('#heroSection') || canvas.parentElement || window;
-
-    function pointerPrototype() {
-      this.id = -1;
-      this.texcoordX = 0;
-      this.texcoordY = 0;
-      this.prevTexcoordX = 0;
-      this.prevTexcoordY = 0;
-      this.deltaX = 0;
-      this.deltaY = 0;
-      this.down = false;
-      this.moved = false;
-      this.color = [0, 0, 0];
-    }
 
     let config = {
       SIM_RESOLUTION,
@@ -62,8 +50,50 @@ function SplashCursor({
       BACK_COLOR,
       TRANSPARENT,
       RAINBOW_MODE,
-      COLOR
+      COLOR,
+      COLOR_FAST
     };
+
+    const baseColor = Object.freeze(hexToRGB(config.COLOR || '#0fa3f3'));
+    const fastColor = Object.freeze(hexToRGB(config.COLOR_FAST || '#0a0aa2'));
+
+    let motionIntensity = 0;
+    let lastMoveTime = 0;
+    let lastPosX = 0;
+    let lastPosY = 0;
+
+    function lerpColor(c1, c2, t) {
+      const clampedT = Math.max(0, Math.min(1, t));
+      return {
+        r: c1.r + (c2.r - c1.r) * clampedT,
+        g: c1.g + (c2.g - c1.g) * clampedT,
+        b: c1.b + (c2.b - c1.b) * clampedT
+      };
+    }
+
+    function getCurrentColor() {
+      if (config.RAINBOW_MODE) {
+        let c = HSVtoRGB(Math.random(), 1.0, 1.0);
+        c.r *= 0.15;
+        c.g *= 0.15;
+        c.b *= 0.15;
+        return c;
+      }
+      return lerpColor(baseColor, fastColor, motionIntensity);
+    }
+
+    function pointerPrototype() {
+      this.id = -1;
+      this.texcoordX = 0;
+      this.texcoordY = 0;
+      this.prevTexcoordX = 0;
+      this.prevTexcoordY = 0;
+      this.deltaX = 0;
+      this.deltaY = 0;
+      this.down = false;
+      this.moved = false;
+      this.color = getCurrentColor();
+    }
 
     let pointers = [new pointerPrototype()];
 
@@ -730,6 +760,11 @@ function SplashCursor({
     }
 
     function updateColors(dt) {
+      const now = performance.now();
+      // When user is idle (not moving), decay motion intensity back to 0
+      if (now - lastMoveTime > 120) {
+        motionIntensity = Math.max(0, motionIntensity - dt * 4.0);
+      }
       colorUpdateTimer += dt * config.COLOR_UPDATE_SPEED;
       if (colorUpdateTimer >= 1) {
         colorUpdateTimer = wrap(colorUpdateTimer, 0, 1);
@@ -834,10 +869,13 @@ function SplashCursor({
     }
 
     function clickSplat(pointer) {
-      const color = generateColor();
-      color.r *= 10.0;
-      color.g *= 10.0;
-      color.b *= 10.0;
+      const c = getCurrentColor();
+      // Safe, cloned color with subtle accent that never mutates baseColor or overflows
+      const color = {
+        r: Math.min(c.r * 2.0, 0.8),
+        g: Math.min(c.g * 2.0, 0.8),
+        b: Math.min(c.b * 2.0, 0.8)
+      };
       let dx = 10 * (Math.random() - 0.5);
       let dy = 30 * (Math.random() - 0.5);
       splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
@@ -848,13 +886,18 @@ function SplashCursor({
       gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
       gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas.width / canvas.height);
       gl.uniform2f(splatProgram.uniforms.point, x, y);
-      gl.uniform3f(splatProgram.uniforms.color, dx, dy, 0.0);
+      const safeDx = Math.max(-500, Math.min(dx || 0, 500));
+      const safeDy = Math.max(-500, Math.min(dy || 0, 500));
+      gl.uniform3f(splatProgram.uniforms.color, safeDx, safeDy, 0.0);
       gl.uniform1f(splatProgram.uniforms.radius, correctRadius(config.SPLAT_RADIUS / 100.0));
       blit(velocity.write);
       velocity.swap();
 
       gl.uniform1i(splatProgram.uniforms.uTarget, dye.read.attach(0));
-      gl.uniform3f(splatProgram.uniforms.color, color.r, color.g, color.b);
+      const safeR = Math.max(0, Math.min(color?.r || 0, 1.0));
+      const safeG = Math.max(0, Math.min(color?.g || 0, 1.0));
+      const safeB = Math.max(0, Math.min(color?.b || 0, 1.0));
+      gl.uniform3f(splatProgram.uniforms.color, safeR, safeG, safeB);
       blit(dye.write);
       dye.swap();
     }
@@ -915,14 +958,7 @@ function SplashCursor({
     }
 
     function generateColor() {
-      if (!config.RAINBOW_MODE) {
-        return hexToRGB(config.COLOR);
-      }
-      let c = HSVtoRGB(Math.random(), 1.0, 1.0);
-      c.r *= 0.15;
-      c.g *= 0.15;
-      c.b *= 0.15;
-      return c;
+      return getCurrentColor();
     }
 
     function HSVtoRGB(h, s, v) {
@@ -1007,35 +1043,61 @@ function SplashCursor({
       const rect = canvas.getBoundingClientRect();
       let posX = scaleByPixelRatio(e.clientX - rect.left);
       let posY = scaleByPixelRatio(e.clientY - rect.top);
+      const now = performance.now();
+      if (now - lastMoveTime > 180) {
+        motionIntensity = 0;
+      }
+      pointer.color = getCurrentColor();
       updatePointerDownData(pointer, -1, posX, posY);
       clickSplat(pointer);
     }
 
-    let firstMouseMoveHandled = false;
     function handleMouseMove(e) {
       let pointer = pointers[0];
       const rect = canvas.getBoundingClientRect();
       let posX = scaleByPixelRatio(e.clientX - rect.left);
       let posY = scaleByPixelRatio(e.clientY - rect.top);
-      if (!firstMouseMoveHandled) {
-        let color = generateColor();
-        updatePointerMoveData(pointer, posX, posY, color);
-        firstMouseMoveHandled = true;
+
+      const now = performance.now();
+      const dt = lastMoveTime > 0 ? (now - lastMoveTime) : 999;
+
+      // If user paused or stopped for > 180ms, restart color immediately from #0fa3f3
+      if (dt > 180) {
+        motionIntensity = 0;
       } else {
-        updatePointerMoveData(pointer, posX, posY, pointer.color);
+        const dist = Math.hypot(e.clientX - lastPosX, e.clientY - lastPosY);
+        const speed = dist / Math.max(dt, 8); // px/ms
+        const speedFactor = Math.min(speed / 2.0, 1.0);
+        const distFactor = Math.min(dist / 80, 0.4);
+        const delta = speedFactor * 0.35 + distFactor * 0.25;
+        motionIntensity = Math.min(1.0, motionIntensity * 0.90 + delta);
       }
+
+      lastMoveTime = now;
+      lastPosX = e.clientX;
+      lastPosY = e.clientY;
+
+      let color = getCurrentColor();
+      updatePointerMoveData(pointer, posX, posY, color);
     }
 
     function handleMouseLeave() {
       let pointer = pointers[0];
       updatePointerUpData(pointer);
-      firstMouseMoveHandled = false;
+      motionIntensity = 0;
+      lastMoveTime = 0;
     }
 
     function handleTouchStart(e) {
       const rect = canvas.getBoundingClientRect();
       const touches = e.targetTouches;
       let pointer = pointers[0];
+      motionIntensity = 0;
+      lastMoveTime = performance.now();
+      if (touches.length > 0) {
+        lastPosX = touches[0].clientX;
+        lastPosY = touches[0].clientY;
+      }
       for (let i = 0; i < touches.length; i++) {
         let posX = scaleByPixelRatio(touches[i].clientX - rect.left);
         let posY = scaleByPixelRatio(touches[i].clientY - rect.top);
@@ -1047,10 +1109,29 @@ function SplashCursor({
       const rect = canvas.getBoundingClientRect();
       const touches = e.targetTouches;
       let pointer = pointers[0];
+      const now = performance.now();
+      const dt = lastMoveTime > 0 ? (now - lastMoveTime) : 999;
+      if (touches.length > 0) {
+        if (dt > 180) {
+          motionIntensity = 0;
+        } else {
+          const dist = Math.hypot(touches[0].clientX - lastPosX, touches[0].clientY - lastPosY);
+          const speed = dist / Math.max(dt, 8);
+          const speedFactor = Math.min(speed / 2.0, 1.0);
+          const distFactor = Math.min(dist / 80, 0.4);
+          const delta = speedFactor * 0.35 + distFactor * 0.25;
+          motionIntensity = Math.min(1.0, motionIntensity * 0.90 + delta);
+        }
+        lastPosX = touches[0].clientX;
+        lastPosY = touches[0].clientY;
+      }
+      lastMoveTime = now;
+
+      let color = getCurrentColor();
       for (let i = 0; i < touches.length; i++) {
         let posX = scaleByPixelRatio(touches[i].clientX - rect.left);
         let posY = scaleByPixelRatio(touches[i].clientY - rect.top);
-        updatePointerMoveData(pointer, posX, posY, pointer.color);
+        updatePointerMoveData(pointer, posX, posY, color);
       }
     }
 
@@ -1060,12 +1141,20 @@ function SplashCursor({
       for (let i = 0; i < touches.length; i++) {
         updatePointerUpData(pointer);
       }
+      motionIntensity = 0;
+      lastMoveTime = 0;
+    }
+
+    function handleMouseUp() {
+      let pointer = pointers[0];
+      updatePointerUpData(pointer);
     }
 
     // Add event listeners on target element (scoped to hero section)
     targetElement.addEventListener('mousedown', handleMouseDown);
     targetElement.addEventListener('mousemove', handleMouseMove, { passive: true });
     targetElement.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mouseup', handleMouseUp);
     targetElement.addEventListener('touchstart', handleTouchStart, { passive: true });
     targetElement.addEventListener('touchmove', handleTouchMove, { passive: true });
     targetElement.addEventListener('touchend', handleTouchEnd);
@@ -1090,6 +1179,7 @@ function SplashCursor({
       targetElement.removeEventListener('mousedown', handleMouseDown);
       targetElement.removeEventListener('mousemove', handleMouseMove);
       targetElement.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mouseup', handleMouseUp);
       targetElement.removeEventListener('touchstart', handleTouchStart);
       targetElement.removeEventListener('touchmove', handleTouchMove);
       targetElement.removeEventListener('touchend', handleTouchEnd);

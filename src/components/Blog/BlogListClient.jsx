@@ -53,7 +53,7 @@ export default function BlogListClient({ posts }) {
                 </span>
               </div>
 
-              <h2 className="heading-2" style={{ marginBottom: '16px', color: 'var(--color-secondary)' }}>
+              <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginBottom: '16px', color: 'var(--color-secondary)' }}>
                 <Link href={`/blog/${featuredPost.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                   {featuredPost.title}
                 </Link>
@@ -64,7 +64,7 @@ export default function BlogListClient({ posts }) {
               </p>
 
               <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
-                <Link href={`/blog/${featuredPost.slug}`} className="button button-primary">
+                <Link href={`/blog/${featuredPost.slug}`} className="btn btn-primary">
                   Read Full Post →
                 </Link>
                 <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
@@ -99,18 +99,9 @@ export default function BlogListClient({ posts }) {
             return (
               <button
                 key={cat}
+                type="button"
                 onClick={() => setSelectedCategory(cat)}
-                style={{
-                  padding: '8px 20px',
-                  borderRadius: '20px',
-                  border: isActive ? '1px solid var(--color-primary)' : '1px solid var(--color-border)',
-                  backgroundColor: isActive ? 'var(--color-primary)' : 'var(--color-surface)',
-                  color: isActive ? '#FFFFFF' : 'var(--color-text)',
-                  fontWeight: '600',
-                  fontSize: '0.9rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                }}
+                className={`btn ${isActive ? 'btn-primary' : 'btn-secondary'} btn-sm`}
               >
                 {cat === 'All' ? 'All Insights' : cat}
               </button>
@@ -158,7 +149,7 @@ export default function BlogListClient({ posts }) {
               setSearchTerm('');
               setSelectedCategory('All');
             }}
-            className="button button-secondary"
+            className="btn btn-secondary"
           >
             Reset Filters
           </button>

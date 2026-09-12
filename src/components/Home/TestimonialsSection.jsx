@@ -16,7 +16,7 @@ export default function TestimonialsSection() {
       <Container>
         <div className="section-heading text-center">
           <span className="section-badge">Client Testimonials</span>
-          <h2 className="heading-2">
+          <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
             Trusted by Fast-Growing{" "}
             <span className="frprotech-gradient-text">Enterprise Teams</span>
           </h2>

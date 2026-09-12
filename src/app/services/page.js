@@ -28,7 +28,7 @@ export default function ServicesPage() {
         <Container>
           <div className="section-heading section-heading--wide text-center">
             <span className="section-badge">{hero.badge}</span>
-            <h1 className="heading-1">
+            <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
               {hero.titlePart}
               <span className="frprotech-gradient-text">{hero.highlight}</span>
             </h1>
@@ -43,7 +43,6 @@ export default function ServicesPage() {
                   key={cat.id}
                   href={`#${cat.id}`}
                   className="btn btn-secondary btn-sm"
-                  style={{ borderRadius: '30px', padding: '8px 20px', fontWeight: '700', fontSize: '0.88rem' }}
                 >
                   {cat.title} ({cat.services.length})
                 </a>

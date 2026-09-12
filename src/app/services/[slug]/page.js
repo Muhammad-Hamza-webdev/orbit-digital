@@ -64,7 +64,7 @@ export default async function ServiceDetailPage({ params }) {
       {/* 1. Hero Section */}
       <header className="section section-bg-surface">
         <Container>
-          <div style={{ maxWidth: '880px', marginInline: 'auto', textAlign: 'center' }}>
+          <div style={{ maxWidth: '100%', marginInline: 'auto', textAlign: 'center' }}>
             {/* Breadcrumbs */}
             <nav style={{ marginBottom: '20px', fontSize: '0.88rem', color: 'var(--color-text-muted)' }} aria-label="Breadcrumb">
               <Link href="/" style={{ color: 'var(--color-text-muted)', textDecoration: 'none' }}>
@@ -97,21 +97,21 @@ export default async function ServiceDetailPage({ params }) {
             </div>
 
             {/* H1 Heading */}
-            <h1 className="heading-1" style={{ marginBottom: '24px', lineHeight: '1.2' }}>
+            <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginBottom: '24px', lineHeight: '1.2' }}>
               {service.h1Heading || service.title}
             </h1>
 
             {/* Intro Paragraph */}
-            <p className="text-lead" style={{ marginInline: 'auto', maxWidth: '780px', marginBottom: '32px' }}>
+            <p className="text-lead" style={{ marginInline: 'auto', maxWidth: '100%', marginBottom: '32px' }}>
               {service.intro || service.description}
             </p>
 
             {/* Hero Quick Actions */}
             <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href={`/contact?service=${service.slug}`} className="button button-primary">
+              <Link href={`/contact?service=${service.slug}`} className="btn btn-primary">
                 {cta.buttonText || "Get a Free Consultation"} &rarr;
               </Link>
-              <a href="#whats-included" className="button button-secondary">
+              <a href="#whats-included" className="btn btn-secondary">
                 What&apos;s Included &darr;
               </a>
             </div>
@@ -127,7 +127,7 @@ export default async function ServiceDetailPage({ params }) {
             <div className="card" style={{ padding: 'clamp(24px, 4vw, 36px)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ marginBottom: '20px' }}>
                 <span className="section-badge">Deliverables</span>
-                <h2 className="heading-3" style={{ marginTop: '8px' }}>
+                <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginTop: '8px' }}>
                   What&apos;s Included
                 </h2>
               </div>
@@ -172,7 +172,7 @@ export default async function ServiceDetailPage({ params }) {
             <div className="card" style={{ padding: 'clamp(24px, 4vw, 36px)', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-surface)' }}>
               <div style={{ marginBottom: '20px' }}>
                 <span className="section-badge">The Advantage</span>
-                <h2 className="heading-3" style={{ marginTop: '8px' }}>
+                <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginTop: '8px' }}>
                   Why Orbit Digital
                 </h2>
               </div>
@@ -223,7 +223,7 @@ export default async function ServiceDetailPage({ params }) {
             <div style={{ maxWidth: '840px', marginInline: 'auto' }}>
               <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                 <span className="section-badge">Common Questions</span>
-                <h2 className="heading-2">
+                <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
                   Frequently Asked <span className="frprotech-gradient-text">Questions</span>
                 </h2>
               </div>
@@ -291,17 +291,17 @@ export default async function ServiceDetailPage({ params }) {
             <span className="badge" style={{ backgroundColor: 'var(--color-primary)', color: '#FFFFFF', marginBottom: '16px' }}>
               Get Started
             </span>
-            <h2 className="heading-2" style={{ color: '#FFFFFF', marginBottom: '16px' }}>
+            <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ color: '#FFFFFF', marginBottom: '16px' }}>
               {cta.title}
             </h2>
             <p style={{ color: 'rgba(255, 255, 255, 0.85)', maxWidth: '580px', marginInline: 'auto', marginBottom: '28px', fontSize: '1.05rem', lineHeight: '1.6' }}>
               {cta.description}
             </p>
             <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href={`/contact?service=${service.slug}`} className="button button-primary">
+              <Link href={`/contact?service=${service.slug}`} className="btn btn-primary">
                 {cta.buttonText} &rarr;
               </Link>
-              <Link href="/services" className="button button-secondary" style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.3)' }}>
+              <Link href="/services" className="btn btn-secondary" style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.3)' }}>
                 Explore Other Services
               </Link>
             </div>
@@ -315,7 +315,7 @@ export default async function ServiceDetailPage({ params }) {
           <Container>
             <div style={{ textAlign: 'center', marginBottom: '36px' }}>
               <span className="section-badge">More Options</span>
-              <h2 className="heading-2">
+              <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
                 Related <span className="frprotech-gradient-text">Services</span>
               </h2>
             </div>
@@ -340,7 +340,7 @@ export default async function ServiceDetailPage({ params }) {
                     </p>
                   </div>
                   <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '14px' }}>
-                    <Link href={`/services/${rService.slug}`} className="btn btn-secondary btn-sm" style={{ width: '100%', textAlign: 'center' }}>
+                    <Link href={`/services/${rService.slug}`} className="btn btn-secondary" style={{ width: '100%', textAlign: 'center' }}>
                       Learn More &rarr;
                     </Link>
                   </div>

@@ -31,7 +31,7 @@ export default function AboutPage() {
         <Container>
           <div className="section-heading section-heading--wide text-center">
             <span className="section-badge">{hero.badge}</span>
-            <h1 className="heading-1">
+            <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
               {hero.title}
               <span className="frprotech-gradient-text">{hero.highlight}</span>
               {hero.titleEnd}
@@ -52,7 +52,7 @@ export default function AboutPage() {
               <span className="section-badge section-badge-accent">
                 {story.badge}
               </span>
-              <h2 className="heading-3">
+              <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
                 {story.title}
               </h2>
               <p>
@@ -77,7 +77,7 @@ export default function AboutPage() {
               <span className="section-badge">
                 {mission.badge}
               </span>
-              <h2 className="heading-3">
+              <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
                 {mission.title}
               </h2>
               <p>

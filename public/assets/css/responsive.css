@@ -1156,10 +1156,36 @@ body {
     position: static;
   }
 
-  .floating-socials__item:hover .floating-socials__tooltip {
+  .floating-socials__item:hover .floating-socials__tooltip,
+  .floating-socials__item:focus-visible .floating-socials__tooltip,
+  .floating-socials__toggle:hover .floating-socials__tooltip {
     opacity: 1;
     visibility: visible;
     transform: translateY(-50%) translateX(0);
   }
 }
+
+/* ==========================================
+   MOBILE (<= 550px) FULL-WIDTH BUTTONS
+   ========================================== */
+@media (max-width: 550px) {
+  .btn,
+  .button {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .frprotech-cta-group {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .service-card__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 

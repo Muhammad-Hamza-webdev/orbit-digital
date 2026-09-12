@@ -10,7 +10,7 @@ export default function ProcessSection() {
       <Container>
         <div className="section-heading text-center">
           <span className="section-badge">{badge}</span>
-          <h2 className="heading-2">
+          <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
             {title}
             <span className="frprotech-gradient-text">{highlight}</span>
           </h2>

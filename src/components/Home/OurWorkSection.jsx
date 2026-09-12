@@ -10,7 +10,7 @@ export default function OurWorkSection() {
     <section className="section our-work-fullwidth-section">
       <div className="section-heading text-center" style={{ marginBottom: '44px', paddingInline: '20px' }}>
         <p className="section-badge frprotech-subbadge">{badge}</p>
-        <h2 className="heading-2">
+        <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
           {title}
           <span className="frprotech-gradient-text">{highlight}</span>
         </h2>

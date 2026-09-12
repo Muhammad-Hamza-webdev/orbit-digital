@@ -10,7 +10,7 @@ export default function CTASection({
   description,
   buttonText = 'Start Your Project ↗',
   buttonHref = '/contact',
-  buttonVariant = 'accent',
+  buttonVariant = 'primary',
   bgSurface = true,
   className = '',
 }) {
@@ -28,7 +28,7 @@ export default function CTASection({
     <section className={`section ${bgSurface ? 'section-bg-surface' : ''} ${className}`.trim()}>
       <Container>
         <div className="card cta-banner-card">
-          <h2 className="heading-2 cta-banner-card__title">
+          <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2 cta-banner-card__title">
             {renderedTitle}
           </h2>
           {description && (
@@ -36,7 +36,7 @@ export default function CTASection({
               {description}
             </p>
           )}
-          <Button href={buttonHref} variant={buttonVariant} size="lg" className="frprotech-btn-pill">
+          <Button href={buttonHref} variant={buttonVariant}>
             {buttonText}
           </Button>
         </div>

@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }) {
             </div>
 
             {/* H1 Heading */}
-            <h1 className="heading-1" style={{ marginBottom: '24px', lineHeight: '1.2' }}>
+            <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginBottom: '24px', lineHeight: '1.2' }}>
               {post.title}
             </h1>
 
@@ -148,7 +148,7 @@ export default async function BlogPostPage({ params }) {
             {/* Structured Sections */}
             {post.sections && post.sections.map((sec, idx) => (
               <div key={idx} style={{ marginBottom: '48px' }}>
-                <h2 className="heading-2" style={{ marginBottom: '20px', color: 'var(--color-secondary)' }}>
+                <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginBottom: '20px', color: 'var(--color-secondary)' }}>
                   {sec.heading}
                 </h2>
 
@@ -251,7 +251,7 @@ export default async function BlogPostPage({ params }) {
               <p style={{ color: 'rgba(255, 255, 255, 0.85)', maxWidth: '560px', marginInline: 'auto', marginBottom: '28px', fontSize: '1rem', lineHeight: '1.6' }}>
                 Whether you need a high-converting website, AI automated pipelines, brand creative, or revenue-driven marketing — Orbit Digital handles it all under one roof.
               </p>
-              <Link href="/contact" className="button button-primary">
+              <Link href="/contact" className="btn btn-primary">
                 Book a Free Discovery Call →
               </Link>
             </div>
@@ -265,7 +265,7 @@ export default async function BlogPostPage({ params }) {
           <Container>
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
               <span className="section-badge">More Insights</span>
-              <h2 className="heading-2">
+              <h2 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
                 Related <span className="frprotech-gradient-text">Articles</span>
               </h2>
             </div>

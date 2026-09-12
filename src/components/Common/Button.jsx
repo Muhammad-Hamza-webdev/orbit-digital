@@ -13,7 +13,8 @@ export default function Button({
   className = '',
   ...props
 }) {
-  const variantClass = `btn-${variant}`;
+  const resolvedVariant = variant === 'secondary' ? 'secondary' : 'primary';
+  const variantClass = `btn-${resolvedVariant}`;
   const sizeClass = size !== 'md' ? `btn-${size}` : '';
   const fullWidthClass = fullWidth ? 'btn-full' : '';
   

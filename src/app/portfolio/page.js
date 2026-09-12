@@ -25,7 +25,7 @@ export default function PortfolioPage() {
         <Container>
           <div style={{ maxWidth: '800px', marginInline: 'auto', textAlign: 'center' }}>
             <span className="section-badge">{hero.badge}</span>
-            <h1 className="heading-1" style={{ marginBlock: '16px 24px' }}>
+            <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2" style={{ marginBlock: '16px 24px' }}>
               {hero.titlePart}
               <span className="frprotech-gradient-text">{hero.highlight}</span>
             </h1>

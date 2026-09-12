@@ -24,19 +24,13 @@ export default function HeroSection() {
         COLOR_UPDATE_SPEED={10}
         SHADING
         RAINBOW_MODE={false}
-        COLOR="#A855F7"
+        COLOR="#0fa3f3"
+        COLOR_FAST="#0a0aa2"
       />
 
       <Container>
         {/* Content is visible immediately, animations are additive */}
         <div className="frprotech-hero-content is-animated" id="heroContent">
-
-          <div className="frprotech-fade-item fade-1">
-            <span className="frprotech-top-badge">
-              <span className="frprotech-badge-star">★</span>
-              <span>{hero.badge}</span>
-            </span>
-          </div>
 
           <h1 className="heading-display frprotech-hero-title frprotech-fade-item fade-2">
             {hero.titlePart1}
@@ -51,10 +45,10 @@ export default function HeroSection() {
           </p>
 
           <div className="frprotech-cta-group frprotech-fade-item fade-4">
-            <Button href={hero.primaryCta.href} variant="primary" size="lg" className="frprotech-btn-pill">
+            <Button href={hero.primaryCta.href} variant="primary">
               {hero.primaryCta.text}
             </Button>
-            <Button href={hero.secondaryCta.href} variant="secondary" size="lg" className="frprotech-btn-pill">
+            <Button href={hero.secondaryCta.href} variant="secondary">
               {hero.secondaryCta.text}
             </Button>
           </div>

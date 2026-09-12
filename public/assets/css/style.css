@@ -49,6 +49,16 @@
   --color-secondary-light: #1F2937;
   --color-accent: #8B5CF6;
   --color-accent-light: #F3E8FF;
+  --gradient-btn: linear-gradient(
+    135deg,
+    #0fa3f3 0%,
+    #8d27e8 22%,
+    #0a0aa2 44%,
+    #8d27e8 58%,
+    #0fa3f3 72%,
+    #8d27e8 86%,
+    #0a0aa2 100%
+  );
   
   /* Neutral Surfaces & Backgrounds */
   --color-background: #FFFFFF;
@@ -173,7 +183,9 @@ ul, ol {
 /* ------------------------------------------
    5. BUTTON SYSTEM (3-TIER)
    ------------------------------------------ */
-.btn {
+.btn,
+.button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -186,71 +198,246 @@ ul, ol {
   border-radius: 20px;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: var(--transition-normal);
   text-decoration: none;
   white-space: nowrap;
   user-select: none;
+  overflow: hidden;
+  isolation: isolate;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
 }
 
-.btn:focus-visible {
-  outline: 3px solid var(--color-accent);
+.btn > *,
+.button > *,
+.floating-socials__toggle > *,
+.scroll-to-top > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Base button orbital gradient layer */
+.btn::before,
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -2;
+  pointer-events: none;
+  background-color: #8d27e8;
+  background-image:
+    radial-gradient(circle 105px at center, #0fa3f3 0%, #0fa3f3d1 45%, #0fa3f300 80%),
+    radial-gradient(circle 105px at center, #0a0aa2 0%, #0a0aa2d1 45%, #0a0aa200 80%),
+    radial-gradient(circle 110px at center, #8d27e8 0%, #8d27e8e6 45%, #8d27e800 85%);
+  background-size: 250% 250%, 250% 250%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 15% 50%, 85% 50%, 50% 50%;
+  animation: buttonOrbitalFlowReverse 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover: Curved orbital gradient motion */
+.btn:hover::before,
+.button:hover::before {
+  animation: buttonOrbitalFlow 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+}
+
+/* Semi-transparent, soft blurred light reflection (shine sweep) */
+.btn::after,
+.button::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -120%;
+  width: 60%;
+  height: 220%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.03) 80%,
+    transparent 100%
+  );
+  transform: rotate(25deg) translateX(-100%);
+  pointer-events: none;
+  filter: blur(5px);
+  opacity: 0;
+  z-index: -1;
+  transition: transform 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95), opacity 0.3s ease;
+}
+
+.btn:hover::after,
+.button:hover::after {
+  opacity: 1;
+  transform: rotate(25deg) translateX(450%);
+}
+
+.floating-socials__toggle::after,
+.scroll-to-top::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -100%;
+  width: 60%;
+  height: 220%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.05) 80%,
+    transparent 100%
+  );
+  transform: rotate(25deg) translateX(-120%);
+  pointer-events: none;
+  filter: blur(4px);
+  opacity: 0;
+  z-index: 1;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.floating-socials__toggle:hover::after,
+.scroll-to-top:hover::after {
+  opacity: 1;
+  transform: rotate(25deg) translateX(380%);
+}
+
+.btn:focus-visible,
+.button:focus-visible {
+  outline: 3px solid #8d27e8;
   outline-offset: 2px;
 }
 
-/* Button 1: Primary */
-.btn-primary {
-  background-color: var(--color-primary);
+/* Button 1: Primary & Accent */
+.btn-primary,
+.button-primary,
+.btn-accent {
+  background: transparent;
   color: #FFFFFF;
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 14px rgba(91, 95, 239, 0.25);
-  transition: all 0.3s ease;
+  border-color: transparent;
+  box-shadow: 0 4px 18px rgba(141, 39, 232, 0.28);
 }
 
-/* Primary becomes Secondary on hover */
-.btn-primary:hover {
-  background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  box-shadow: none;
+.btn-primary:hover,
+.button-primary:hover,
+.btn-accent:hover {
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(15, 163, 243, 0.32), 0 4px 16px rgba(141, 39, 232, 0.32);
   transform: translateY(-2px);
 }
 
-/* Button 2: Secondary */
-.btn-secondary {
+/* Button 2: Secondary (Border button) */
+.btn-secondary,
+.button-secondary {
   background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  color: #8d27e8;
+  border-color: #8d27e8;
   box-shadow: none;
-  transition: all 0.3s ease;
 }
 
-/* Secondary becomes Primary on hover */
-.btn-secondary:hover {
-  background-color: var(--color-primary);
+.btn-secondary::before,
+.button-secondary::before {
+  opacity: 0;
+}
+
+.btn-secondary:hover,
+.button-secondary:hover {
   color: #FFFFFF;
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 14px rgba(91, 95, 239, 0.25);
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(15, 163, 243, 0.32), 0 4px 16px rgba(141, 39, 232, 0.32);
   transform: translateY(-2px);
+}
+
+.btn-secondary:hover::before,
+.button-secondary:hover::before {
+  opacity: 1;
 }
 
 .btn-primary:active,
-.btn-secondary:active {
+.button-primary:active,
+.btn-secondary:active,
+.button-secondary:active,
+.btn-accent:active {
   transform: translateY(0);
 }
 
-/* Button 3: Accent */
-.btn-accent {
-  background-color: var(--color-accent);
-  color: #FFFFFF;
-  border-color: var(--color-accent);
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.25);
+/* Exact curved trajectory:
+   Light Blue: Right -> Top -> Left (arcing upward then left)
+   Dark Blue: Left -> Bottom -> Right (arcing downward then right)
+   Purple: Centered anchor throughout */
+@keyframes buttonOrbitalFlow {
+  0% {
+    background-position:
+      15% 50%,    /* Light Blue: Right side */
+      85% 50%,    /* Dark Blue: Left side */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  20% {
+    background-position:
+      28% 76%,    /* Light Blue: Moving upward towards top */
+      72% 24%,    /* Dark Blue: Moving downward towards bottom */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  50% {
+    background-position:
+      50% 90%,    /* Light Blue: Visibly across the top */
+      50% 10%,    /* Dark Blue: Visibly across the bottom */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  80% {
+    background-position:
+      72% 76%,    /* Light Blue: Traversing downward towards left */
+      28% 24%,    /* Dark Blue: Traversing upward towards right */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  100% {
+    background-position:
+      85% 50%,    /* Light Blue: Left side */
+      15% 50%,    /* Dark Blue: Right side */
+      50% 50%;    /* Purple: Centered anchor */
+  }
 }
 
-.btn-accent:hover {
-  background-color: #7C3AED;
-  border-color: #7C3AED;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-accent);
+/* Reverse curved trajectory on mouse leave (unhover):
+   Light Blue: Left -> Top -> Right
+   Dark Blue: Right -> Bottom -> Left
+   Purple: Centered anchor throughout */
+@keyframes buttonOrbitalFlowReverse {
+  0% {
+    background-position:
+      85% 50%,    /* Light Blue: Left side */
+      15% 50%,    /* Dark Blue: Right side */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  20% {
+    background-position:
+      72% 76%,    /* Light Blue: Moving upward towards top */
+      28% 24%,    /* Dark Blue: Moving downward towards bottom */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  50% {
+    background-position:
+      50% 90%,    /* Light Blue: Visibly across the top */
+      50% 10%,    /* Dark Blue: Visibly across the bottom */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  80% {
+    background-position:
+      28% 76%,    /* Light Blue: Traversing downward towards right */
+      72% 24%,    /* Dark Blue: Traversing upward towards left */
+      50% 50%;    /* Purple: Centered anchor */
+  }
+  100% {
+    background-position:
+      15% 50%,    /* Light Blue: Back to right side */
+      85% 50%,    /* Dark Blue: Back to left side */
+      50% 50%;    /* Purple: Centered anchor */
+  }
 }
 
 /* Button sizes & variations */
@@ -267,6 +454,16 @@ ul, ol {
 
 .btn-full {
   width: 100%;
+}
+
+@media (max-width: 550px) {
+  .btn,
+  .button {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 .btn-icon {
@@ -1503,25 +1700,34 @@ padding-bottom: clamp(0, 0px, 140px);
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background-image: var(--gradient-btn);
+  background-size: 240% 240%;
+  background-position: 0% 0%;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-repeat: no-repeat;
   color: #FFFFFF;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(91, 95, 239, 0.4);
-  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 6px 20px rgba(141, 39, 232, 0.4);
+  transition: 
+    background-position 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
   position: relative;
   z-index: 2;
   outline-offset: 3px;
   padding: 0;
+  overflow: hidden;
 }
 
 .floating-socials__toggle:hover {
-  background: var(--color-primary-dark);
+  background-position: 100% 100%;
   transform: scale(1.06);
-  box-shadow: 0 8px 26px rgba(91, 95, 239, 0.55);
+  box-shadow: 0 8px 26px rgba(15, 163, 243, 0.35), 0 4px 18px rgba(141, 39, 232, 0.4);
 }
 
 .floating-socials__toggle:focus-visible {
@@ -1659,12 +1865,13 @@ padding-bottom: clamp(0, 0px, 140px);
   transform: translateY(0) scale(1.08);
 }
 
-/* Tooltips */
+/* Tooltips (Positioned to the right of the social items) */
 .floating-socials__tooltip {
   position: absolute;
-  right: calc(100% + 12px);
+  left: calc(100% + 12px);
+  right: auto;
   top: 50%;
-  transform: translateY(-50%) translateX(4px);
+  transform: translateY(-50%) translateX(-4px);
   background-color: #111827;
   color: #FFFFFF;
   font-family: var(--font-family-base);
@@ -1684,11 +1891,20 @@ padding-bottom: clamp(0, 0px, 140px);
   content: '';
   position: absolute;
   top: 50%;
-  left: 100%;
+  right: 100%;
+  left: auto;
   transform: translateY(-50%);
-  border-width: 5px 0 5px 5px;
+  border-width: 5px 5px 5px 0;
   border-style: solid;
-  border-color: transparent transparent transparent #111827;
+  border-color: transparent #111827 transparent transparent;
+}
+
+.floating-socials__item:hover .floating-socials__tooltip,
+.floating-socials__item:focus-visible .floating-socials__tooltip,
+.floating-socials__toggle:hover .floating-socials__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
 }
 
 
@@ -1853,10 +2069,15 @@ padding-bottom: clamp(0, 0px, 140px);
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary, #5B5FEF) 0%, var(--color-accent, #8B5CF6) 100%);
+  background-image: var(--gradient-btn);
+  background-size: 240% 240%;
+  background-position: 0% 0%;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-repeat: no-repeat;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 10px 25px -5px rgba(91, 95, 239, 0.45);
+  box-shadow: 0 10px 25px -5px rgba(141, 39, 232, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1865,11 +2086,14 @@ padding-bottom: clamp(0, 0px, 140px);
   opacity: 0;
   visibility: hidden;
   transform: translateY(16px) scale(0.9);
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.2s ease;
+  transition: 
+    background-position 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s ease;
   outline: none;
+  overflow: hidden;
 }
 
 .scroll-to-top.is-visible {
@@ -1878,9 +2102,11 @@ padding-bottom: clamp(0, 0px, 140px);
   transform: translateY(0) scale(1);
 }
 
-.scroll-to-top:hover {
+.scroll-to-top:hover,
+.scroll-to-top.is-visible:hover {
+  background-position: 100% 100%;
   transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 14px 30px -4px rgba(91, 95, 239, 0.6);
+  box-shadow: 0 14px 30px -4px rgba(15, 163, 243, 0.35), 0 4px 18px rgba(141, 39, 232, 0.4);
   color: #ffffff;
 }
 
